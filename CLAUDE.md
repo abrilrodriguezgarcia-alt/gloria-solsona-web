@@ -7,9 +7,13 @@ Abans de tocar codi, llegeix en aquest ordre:
 1. `CLAUDE.md`
 2. `docs/landing-master-spec.md`
 3. la imatge aprovada a `assets/reference/landing-approved.png`
-4. la resta de documentació de `/docs`
+4. `assets/reference/README.md`
+5. la resta d'imatges de `assets/reference/`, que funcionen com a moodboard visual facilitat per Glòria Solsona
+6. la resta de documentació de `/docs`
 
 La **imatge aprovada + `docs/landing-master-spec.md`** defineixen la landing. No redissenyis ni reinterpretis la proposta per criteri propi.
+
+Les altres imatges de `assets/reference/` **no són assets finals de producció ni substitueixen la landing aprovada**. Serveixen per entendre millor els gustos, l'atmosfera i la sensibilitat visual de Glòria Solsona i per validar refinaments visuals compatibles amb la direcció ja aprovada.
 
 Si detectes una contradicció entre documents, no la resolguis silenciosament: identifica-la i prioritza la decisió més recent confirmada al projecte.
 
@@ -28,9 +32,11 @@ La **direcció visual de la landing ja està aprovada**. El teu objectiu no és 
 5. No publiquis la web ni configuris domini, DNS, hosting o serveis externs sense instrucció expressa.
 6. No canviïs l'estructura general, estil visual o jerarquia de la landing aprovada sense autorització expressa.
 7. No facis canvis globals per resoldre un problema local si poden alterar altres seccions.
-8. Abans d'implementar una modificació visual important, comprova que encaixa amb `docs/landing-master-spec.md`, el brief i l'especificació tècnica.
+8. Abans d'implementar una modificació visual important, comprova que encaixa amb `docs/landing-master-spec.md`, el brief, l'especificació tècnica i, quan sigui pertinent, amb els patrons visuals detectats al moodboard de `assets/reference/`.
 9. No substitueixis fotografies aprovades per stock o imatges generades.
 10. No converteixis la captura de referència en una sola imatge: la web s'ha de construir amb HTML, CSS i assets reals.
+11. No utilitzis automàticament cap imatge de `assets/reference/` al frontend. Per defecte, tracta-les com a referències visuals, excepte si un fitxer està identificat explícitament com a asset aprovat per a producció.
+12. No copiïs literalment una composició, una fotografia o una identitat visual de les referències. Extreu-ne criteris i patrons generals, no rèpliques.
 
 ## 3. Direcció visual aprovada
 
@@ -56,6 +62,35 @@ S'han de conservar les decisions visuals aprovades de la landing, incloent:
 - secció d'ubicació preparada per integrar Google Maps, sense repetir necessàriament l'adreça en text si el mapa ja la representa.
 
 La descripció detallada, secció per secció, és a `docs/landing-master-spec.md`.
+
+### 3.1. Moodboard de Glòria Solsona
+
+La carpeta `assets/reference/` pot contenir fotografies i referències visuals facilitades per Glòria Solsona per mostrar quin tipus d'estètica, atmosfera i sensibilitat visual li agraden.
+
+Aquest material s'ha d'analitzar **com un conjunt**, no com una llista d'imatges independents. Quan sigui útil per a una decisió de disseny, identifica patrons recurrents com ara:
+
+- paleta i temperatura del color;
+- llum, contrast i tractament fotogràfic;
+- composició i enquadraments;
+- ús de l'espai negatiu;
+- nivell de minimalisme o densitat visual;
+- textures i materials;
+- estil editorial i sofisticació;
+- sensació de proximitat, serenitat, autoritat o calidesa;
+- tipus de tipografia i jerarquia que suggereixen les referències;
+- grau de formalitat i to general.
+
+L'objectiu és utilitzar aquests patrons per **afinar i validar** la web ja aprovada, no per iniciar un nou redisseny.
+
+Jerarquia de decisió visual:
+
+1. decisions explícitament aprovades per la clienta;
+2. `docs/landing-master-spec.md` i `landing-approved.png`;
+3. instruccions més recents documentades al projecte;
+4. patrons generals extrets del moodboard de `assets/reference/`;
+5. criteri propi de disseny.
+
+Si el moodboard suggereix una direcció incompatible amb una decisió ja aprovada, no canviïs la web silenciosament: documenta la discrepància i conserva la decisió aprovada fins que s'indiqui el contrari.
 
 ## 4. Desenvolupament
 
@@ -142,6 +177,7 @@ No inventar destinataris ni serveis. Cal deixar l'arquitectura preparada perquè
 Una tasca no està acabada només perquè visualment sembli correcta. Ha de complir també:
 
 - fidelitat amb `docs/landing-master-spec.md` i la imatge aprovada;
+- coherència amb els patrons del moodboard quan aquests siguin rellevants i no contradiguin decisions aprovades;
 - responsive verificat;
 - sense errors de consola rellevants;
 - navegació amb teclat funcional;
