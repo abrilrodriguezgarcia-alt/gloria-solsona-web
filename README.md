@@ -15,11 +15,21 @@ Per aquest motiu, de moment:
 - no s'introdueix cap dada personal de la desenvolupadora;
 - qualsevol prova s'ha de fer localment o en previsualització privada.
 
+## Font principal de la landing
+
+La landing aprovada queda documentada a:
+
+- `docs/landing-master-spec.md` — document mestre secció per secció;
+- `assets/reference/landing-approved.png` — captura visual aprovada que s'ha de conservar dins del projecte.
+
+La imatge i el document mestre són la referència principal per al desenvolupament. No s'ha de redissenyar la proposta.
+
 ## Documentació del projecte
 
 Abans de començar a programar, cal llegir:
 
 - `CLAUDE.md`
+- `docs/landing-master-spec.md`
 - `docs/project-brief.md`
 - `docs/content-status.md`
 - `docs/technical-spec.md`
