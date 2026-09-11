@@ -1,5 +1,18 @@
 # Instruccions per a Claude Code
 
+## 0. Fonts de veritat del projecte
+
+Abans de tocar codi, llegeix en aquest ordre:
+
+1. `CLAUDE.md`
+2. `docs/landing-master-spec.md`
+3. la imatge aprovada a `assets/reference/landing-approved.png`
+4. la resta de documentació de `/docs`
+
+La **imatge aprovada + `docs/landing-master-spec.md`** defineixen la landing. No redissenyis ni reinterpretis la proposta per criteri propi.
+
+Si detectes una contradicció entre documents, no la resolguis silenciosament: identifica-la i prioritza la decisió més recent confirmada al projecte.
+
 ## 1. Context del projecte
 
 Aquest repositori conté la web professional de **Glòria Solsona Martí, advocada**.
@@ -15,7 +28,9 @@ La **direcció visual de la landing ja està aprovada**. El teu objectiu no és 
 5. No publiquis la web ni configuris domini, DNS, hosting o serveis externs sense instrucció expressa.
 6. No canviïs l'estructura general, estil visual o jerarquia de la landing aprovada sense autorització expressa.
 7. No facis canvis globals per resoldre un problema local si poden alterar altres seccions.
-8. Abans d'implementar una modificació visual important, comprova que encaixa amb el brief i l'especificació tècnica.
+8. Abans d'implementar una modificació visual important, comprova que encaixa amb `docs/landing-master-spec.md`, el brief i l'especificació tècnica.
+9. No substitueixis fotografies aprovades per stock o imatges generades.
+10. No converteixis la captura de referència en una sola imatge: la web s'ha de construir amb HTML, CSS i assets reals.
 
 ## 3. Direcció visual aprovada
 
@@ -39,6 +54,8 @@ S'han de conservar les decisions visuals aprovades de la landing, incloent:
 - targetes de ressenyes visualment consistents;
 - navegació del carrusel discreta i ben integrada;
 - secció d'ubicació preparada per integrar Google Maps, sense repetir necessàriament l'adreça en text si el mapa ja la representa.
+
+La descripció detallada, secció per secció, és a `docs/landing-master-spec.md`.
 
 ## 4. Desenvolupament
 
@@ -124,6 +141,7 @@ No inventar destinataris ni serveis. Cal deixar l'arquitectura preparada perquè
 
 Una tasca no està acabada només perquè visualment sembli correcta. Ha de complir també:
 
+- fidelitat amb `docs/landing-master-spec.md` i la imatge aprovada;
 - responsive verificat;
 - sense errors de consola rellevants;
 - navegació amb teclat funcional;
