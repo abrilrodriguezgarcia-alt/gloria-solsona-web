@@ -4,7 +4,7 @@ Repositori del projecte web de Glòria Solsona Martí, advocada.
 
 ## Estat actual
 
-El projecte es troba en fase de preparació prèvia al desenvolupament. La direcció visual de la landing està aprovada, però encara queden dades professionals, legals i de contacte pendents de validació amb la clienta.
+El projecte es troba en fase de preparació prèvia al desenvolupament. La direcció visual de la landing està aprovada, però encara queden algunes dades professionals i legals pendents de validació amb la clienta.
 
 Per aquest motiu, de moment:
 
@@ -36,6 +36,11 @@ Abans de començar a programar, cal llegir:
 - `docs/seo-plan.md`
 - `docs/legal-requirements.md`
 - `docs/qa-checklist.md`
+
+Per sincronitzar de manera segura la carpeta local del Mac amb aquest repositori:
+
+- `docs/local-sync.md`
+- `scripts/prepare-reference.sh`
 
 ## Principi de treball
 
