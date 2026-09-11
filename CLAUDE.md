@@ -6,12 +6,16 @@ Abans de tocar codi, llegeix en aquest ordre:
 
 1. `CLAUDE.md`
 2. `docs/landing-master-spec.md`
-3. la imatge aprovada a `assets/reference/landing-approved.png`
-4. `assets/reference/README.md`
-5. la resta d'imatges de `assets/reference/`, que funcionen com a moodboard visual facilitat per Glòria Solsona
-6. la resta de documentació de `/docs`
+3. `docs/landing-addendum-office.md`
+4. `docs/art-direction.md`
+5. la imatge aprovada a `assets/reference/landing-approved.png`
+6. `assets/reference/README.md`
+7. la resta d'imatges de `assets/reference/`, que funcionen com a moodboard visual facilitat per Glòria Solsona
+8. la resta de documentació de `/docs`
 
-La **imatge aprovada + `docs/landing-master-spec.md`** defineixen la landing. No redissenyis ni reinterpretis la proposta per criteri propi.
+La **imatge aprovada + `docs/landing-master-spec.md`** defineixen la base de la landing. Les decisions aprovades posteriorment, com la nova secció **`El despatx`**, estan documentades a `docs/landing-addendum-office.md` i tenen prioritat sobre l'estructura original només en allò que modifiquen expressament.
+
+`docs/art-direction.md` defineix els criteris de direcció d'art derivats del moodboard i s'ha d'utilitzar per afinar i validar el disseny, no per iniciar un redisseny global.
 
 Les altres imatges de `assets/reference/` **no són assets finals de producció ni substitueixen la landing aprovada**. Serveixen per entendre millor els gustos, l'atmosfera i la sensibilitat visual de Glòria Solsona i per validar refinaments visuals compatibles amb la direcció ja aprovada.
 
@@ -30,9 +34,9 @@ La **direcció visual de la landing ja està aprovada**. El teu objectiu no és 
 3. Si una dada no està confirmada, utilitza un placeholder clar o deixa-la preparada per incorporar-la més endavant.
 4. No introdueixis cap dada personal d'Abril Rodríguez, la desenvolupadora, en cap text legal, metadada, formulari o contingut públic.
 5. No publiquis la web ni configuris domini, DNS, hosting o serveis externs sense instrucció expressa.
-6. No canviïs l'estructura general, estil visual o jerarquia de la landing aprovada sense autorització expressa.
+6. No canviïs l'estructura general, estil visual o jerarquia de la landing aprovada sense autorització expressa. La incorporació de la secció `El despatx` entre `Trajectòria` i `Ressenyes` sí està expressament autoritzada i definida a `docs/landing-addendum-office.md`.
 7. No facis canvis globals per resoldre un problema local si poden alterar altres seccions.
-8. Abans d'implementar una modificació visual important, comprova que encaixa amb `docs/landing-master-spec.md`, el brief, l'especificació tècnica i, quan sigui pertinent, amb els patrons visuals detectats al moodboard de `assets/reference/`.
+8. Abans d'implementar una modificació visual important, comprova que encaixa amb `docs/landing-master-spec.md`, `docs/landing-addendum-office.md`, `docs/art-direction.md`, el brief, l'especificació tècnica i, quan sigui pertinent, amb els patrons visuals detectats al moodboard de `assets/reference/`.
 9. No substitueixis fotografies aprovades per stock o imatges generades.
 10. No converteixis la captura de referència en una sola imatge: la web s'ha de construir amb HTML, CSS i assets reals.
 11. No utilitzis automàticament cap imatge de `assets/reference/` al frontend. Per defecte, tracta-les com a referències visuals, excepte si un fitxer està identificat explícitament com a asset aprovat per a producció.
@@ -46,7 +50,10 @@ La web ha de transmetre:
 - proximitat i confiança;
 - serenitat;
 - rigor;
+- cultura i ofici;
+- calidesa continguda;
 - una imatge contemporània i humana;
+- elegància discreta;
 - absència d'estètica genèrica de plantilla o d'"AI-generated website".
 
 S'han de conservar les decisions visuals aprovades de la landing, incloent:
@@ -59,9 +66,10 @@ S'han de conservar les decisions visuals aprovades de la landing, incloent:
 - ressenyes de Google amb cinc estrelles visibles;
 - targetes de ressenyes visualment consistents;
 - navegació del carrusel discreta i ben integrada;
-- secció d'ubicació preparada per integrar Google Maps, sense repetir necessàriament l'adreça en text si el mapa ja la representa.
+- secció d'ubicació preparada per integrar Google Maps, sense repetir necessàriament l'adreça en text si el mapa ja la representa;
+- nova secció `El despatx`, integrada entre `Trajectòria` i `Ressenyes`, amb fotografia real de l'espai i composició editorial segons `docs/landing-addendum-office.md`.
 
-La descripció detallada, secció per secció, és a `docs/landing-master-spec.md`.
+La descripció detallada, secció per secció, és a `docs/landing-master-spec.md` i a les addendes posteriors.
 
 ### 3.1. Moodboard de Glòria Solsona
 
@@ -85,10 +93,11 @@ L'objectiu és utilitzar aquests patrons per **afinar i validar** la web ja apro
 Jerarquia de decisió visual:
 
 1. decisions explícitament aprovades per la clienta;
-2. `docs/landing-master-spec.md` i `landing-approved.png`;
-3. instruccions més recents documentades al projecte;
-4. patrons generals extrets del moodboard de `assets/reference/`;
-5. criteri propi de disseny.
+2. decisions posteriors documentades en addendes, inclosa `docs/landing-addendum-office.md`;
+3. `docs/landing-master-spec.md` i `landing-approved.png`;
+4. `docs/art-direction.md`;
+5. patrons generals extrets del moodboard de `assets/reference/`;
+6. criteri propi de disseny.
 
 Si el moodboard suggereix una direcció incompatible amb una decisió ja aprovada, no canviïs la web silenciosament: documenta la discrepància i conserva la decisió aprovada fins que s'indiqui el contrari.
 
@@ -176,8 +185,8 @@ No inventar destinataris ni serveis. Cal deixar l'arquitectura preparada perquè
 
 Una tasca no està acabada només perquè visualment sembli correcta. Ha de complir també:
 
-- fidelitat amb `docs/landing-master-spec.md` i la imatge aprovada;
-- coherència amb els patrons del moodboard quan aquests siguin rellevants i no contradiguin decisions aprovades;
+- fidelitat amb `docs/landing-master-spec.md`, les addendes vigents i la imatge aprovada;
+- coherència amb `docs/art-direction.md` i amb els patrons del moodboard quan aquests siguin rellevants i no contradiguin decisions aprovades;
 - responsive verificat;
 - sense errors de consola rellevants;
 - navegació amb teclat funcional;
