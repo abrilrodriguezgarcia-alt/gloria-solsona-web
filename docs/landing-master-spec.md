@@ -396,10 +396,19 @@ No inventar noms de persones, dates ni puntuacions.
 
 Franja clara/gris molt pàl·lid.
 
+> **Addenda (2026-09-11, instrucció expressa):** en incorporar-se el
+> formulari de contacte, la composició de dues columnes es reorganitza:
+>
+> - esquerra: `Contacte` (dades + `Ubicació`/Google Maps, apilats);
+> - dreta: formulari de contacte.
+>
+> Substitueix la composició original d'aquest apartat (`Contacte` |
+> `Ubicació`). Vegeu §10.5 per al formulari.
+
 Desktop en dues columnes:
 
-- esquerra: `Contacte`;
-- dreta: `Ubicació` + Google Maps.
+- esquerra: `Contacte` (dades de contacte + `Ubicació`/mapa);
+- dreta: formulari de contacte.
 
 Separador vertical al centre.
 
@@ -436,6 +445,12 @@ La intenció és incorporar-lo només si la Glòria confirma que el despatx en d
 
 No mostrar WhatsApp abans d'aquesta confirmació.
 
+## 10.4a Horari
+
+**PENDENT DE CONFIRMACIÓ** (docs/client-validation-checklist.md).
+
+No mostrar horari d'atenció fins que la Glòria el confirmi.
+
 ## 10.4 Ubicació
 
 **Títol:**
@@ -453,6 +468,29 @@ Regles:
 - `loading="lazy"` quan sigui adequat;
 - `title` accessible;
 - revisar consentiment/cookies abans de producció.
+
+## 10.5 Formulari de contacte
+
+Afegit 2026-09-11 (instrucció expressa) a la columna dreta del bloc.
+
+**Títol:** `Envia'ns un missatge`.
+
+**Camps:** Nom i cognoms* · Correu electrònic* · Telèfon · Missatge*, amb
+nota discreta sota el missatge sobre no incloure informació confidencial, i
+checkbox obligatori d'acceptació de la Política de privacitat.
+
+**Botó:** `Enviar consulta`.
+
+Sense backend propi: preparat per connectar amb un servei extern senzill
+(p. ex. Formspree) — vegeu `FORM_ENDPOINT` a `src/components/contact-form.js`.
+No s'ha d'activar cap enviament real fins que la clienta confirmi
+compte/endpoint (docs/legal-requirements.md, secció «Formulari de
+contacte»).
+
+Estil: sense `border-radius` (coherent amb la resta de la landing, que no en
+fa servir enlloc), tipografia i colors dels tokens existents, botó ple en
+`--color-navy` (primer botó ple de la landing; fins ara només hi havia
+CTAs de text subratllat).
 
 ---
 

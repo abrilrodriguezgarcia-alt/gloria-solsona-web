@@ -1,0 +1,1270 @@
+/*
+  Estils de components/seccions concrets de la landing. Cada fase hi afegeix
+  només les regles de la secció que implementi, seguint
+  docs/landing-master-spec.md.
+*/
+
+/* ==========================================================================
+   Header + Hero — docs/landing-master-spec.md §5
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(600px, 88vh, 920px);
+  background-color: var(--color-off-white);
+}
+
+/* Fotografia — zona dreta amb pes visual important */
+.hero__media {
+  position: absolute;
+  inset: 0;
+  left: 40%;
+  z-index: 1;
+}
+
+.hero__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 12%;
+  /* Fusió suau amb el fons clar: evita el tall dur de dues columnes */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 32%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 32%);
+}
+
+/* Vel molt suau només a la banda on cavalca el menú, perquè el blau
+   corporatiu tingui prou contrast sense afegir cap ombra al text ni
+   enfosquir la resta de la fotografia (docs/assets-status.md: la imatge
+   només rep ajustos tècnics de presentació, no es toca aquí el fitxer). */
+.hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 15%;
+  min-height: 110px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+/* Monograma GS decoratiu (assets/brand/monogram-gs.png) — part baixa de la
+   zona esquerra, opacitat molt baixa. Mateix asset oficial que el logotip,
+   retallat per aïllar només el monograma. */
+.hero__monogram {
+  position: absolute;
+  left: var(--container-padding);
+  bottom: 0;
+  z-index: 1;
+  width: clamp(6.5rem, 15vw, 11.5rem);
+  height: auto;
+  opacity: 0.09;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Barra logo + navegació */
+.hero__bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-6);
+}
+
+.hero__bar-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* Selector d'idioma — discret, no competeix amb la navegació principal.
+   Sempre en blau corporatiu (no gris secundari): sobre la fotografia del
+   hero, un to més clar es perd amb més facilitat que el navy. */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.lang-switch__link {
+  color: var(--color-navy);
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: font-weight var(--motion-fast) var(--easing-standard),
+    border-color var(--motion-fast) var(--easing-standard);
+}
+
+.lang-switch__link--active,
+.lang-switch__link:hover,
+.lang-switch__link:focus-visible {
+  font-weight: 700;
+}
+
+.lang-switch__link:hover,
+.lang-switch__link:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+.lang-switch__sep {
+  color: var(--color-navy);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Logotip oficial (assets/brand/logotip.png, fons transparent) */
+.logo__image {
+  height: 60px;
+  width: auto;
+}
+
+/* Sobre el fons fosc del footer el logotip (navy) es recoloreja a blanc.
+   La forma i les proporcions no canvien, només el color pla. Una mica més
+   gran que al menú (72px vs 60px) perquè tingui presència pròpia al
+   footer sense esdevenir protagonista. */
+.footer__brand .logo__image {
+  height: 72px;
+  filter: brightness(0) invert(1);
+}
+
+.nav ul {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.nav a {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-navy);
+  padding-block: var(--space-1);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--motion-fast) var(--easing-standard);
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-navy);
+  transition: transform var(--motion-fast) var(--easing-standard),
+    opacity var(--motion-fast) var(--easing-standard);
+}
+
+.nav-toggle__bars {
+  position: relative;
+  display: block;
+}
+
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle__bars::before {
+  top: -7px;
+}
+
+.nav-toggle__bars::after {
+  top: 7px;
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bars {
+  background-color: transparent;
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bars::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bars::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* Contingut principal del hero — zona esquerra */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: min(46%, 640px);
+  padding-inline-start: var(--container-padding);
+  padding-block: var(--space-8);
+}
+
+.hero__title {
+  max-width: 10.2ch;
+}
+
+.hero__subtitle {
+  margin-top: var(--space-2);
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 1vw + 1.2rem, 2rem);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.hero__divider {
+  margin-block: var(--space-6);
+  margin-inline-start: 0;
+}
+
+.hero__areas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 0.4vw + 1rem, 1.25rem);
+  color: var(--color-navy);
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-8);
+  width: fit-content;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-navy);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.hero__cta-arrow {
+  display: inline-block;
+  transition: transform var(--motion-fast) var(--easing-standard);
+}
+
+.hero__cta:hover .hero__cta-arrow,
+.hero__cta:focus-visible .hero__cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Frase editorial — part inferior dreta, sobre la fotografia */
+.hero__quote {
+  position: absolute;
+  z-index: 2;
+  right: var(--container-padding);
+  bottom: var(--space-8);
+  max-width: 15rem;
+  text-align: right;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-white);
+  font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.3rem);
+  line-height: 1.4;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+}
+
+.hero__quote-line {
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  margin-top: var(--space-3);
+  margin-left: auto;
+  background-color: var(--color-white);
+  opacity: 0.85;
+}
+
+/* ---- Tablet / portàtil ---- */
+@media (max-width: 1100px) {
+  .hero__media {
+    left: 44%;
+  }
+
+  .hero__content {
+    max-width: 54%;
+  }
+}
+
+/* ---- Menú mòbil ---- */
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .hero__bar {
+    position: relative;
+  }
+
+  .logo__image {
+    height: 40px;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-line);
+    box-shadow: 0 12px 24px -12px rgba(var(--color-navy-rgb), 0.25);
+  }
+
+  .nav.nav--open {
+    display: block;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav a {
+    display: block;
+    padding: var(--space-4) var(--container-padding);
+    border-bottom: 1px solid var(--color-line);
+  }
+}
+
+/* ---- Mòbil: hero apilat ---- */
+@media (max-width: 720px) {
+  .hero {
+    min-height: 0;
+  }
+
+  .hero__media {
+    position: relative;
+    inset: auto;
+    left: auto;
+    order: 2;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+
+  .hero__photo {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero__bar {
+    order: 1;
+    padding-block: var(--space-4);
+  }
+
+  .hero__content {
+    order: 3;
+    max-width: none;
+    padding-inline: var(--container-padding);
+    padding-block: var(--space-8);
+  }
+
+  .hero__monogram {
+    position: absolute;
+    left: var(--container-padding);
+    bottom: var(--space-4);
+    width: clamp(4.5rem, 24vw, 6.5rem);
+  }
+
+  .hero__quote {
+    right: var(--space-4);
+    bottom: var(--space-4);
+    max-width: 11rem;
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================================
+   Àrees de pràctica — docs/landing-master-spec.md §6
+   ========================================================================== */
+
+.arees__grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.5fr) auto 1fr auto 1fr auto 1fr;
+  align-items: start;
+  column-gap: var(--space-8);
+}
+
+.arees__intro {
+  max-width: 30ch;
+  padding-inline-end: var(--space-4);
+}
+
+.arees__text {
+  margin-top: var(--space-4);
+  max-width: 34ch;
+}
+
+.arees__item {
+  padding-inline: var(--space-2);
+}
+
+.arees__number {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--fs-display-number);
+  line-height: 1;
+  color: var(--color-navy);
+}
+
+/* Alineació òptica amb la intro: "Àrees de pràctica" ocupa dues línies
+   (--fs-h2 a --lh-tight), mentre el número és una sola línia molt més
+   grossa; sense aquest ajust la línia accent de cada bloc (accent-line)
+   quedava a alçades diferents dins la mateixa fila. Només aplica quan
+   intro i blocs comparteixen fila (per sobre del breakpoint de tablet). */
+@media (min-width: 901px) {
+  .arees__number {
+    margin-top: calc(2.3 * var(--fs-h2) - var(--fs-display-number));
+  }
+}
+
+.arees__name {
+  margin: 0;
+  font-size: var(--fs-h3);
+}
+
+.arees__description {
+  margin-top: var(--space-2);
+  max-width: 22ch;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ---- Portàtil ---- */
+@media (max-width: 1100px) {
+  .arees__grid {
+    column-gap: var(--space-6);
+  }
+
+  .arees__intro {
+    max-width: 26ch;
+  }
+}
+
+/* ---- Tablet: la intro passa a ocupar tota l'amplada, les tres àrees continuen en fila ---- */
+@media (max-width: 900px) {
+  .arees__grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      'intro intro intro'
+      'a1 a2 a3';
+    row-gap: var(--space-8);
+  }
+
+  .arees__grid > .divider-v {
+    display: none;
+  }
+
+  .arees__intro {
+    grid-area: intro;
+    max-width: 46ch;
+  }
+
+  .arees__item--1 {
+    grid-area: a1;
+  }
+
+  .arees__item--2 {
+    grid-area: a2;
+  }
+
+  .arees__item--3 {
+    grid-area: a3;
+  }
+}
+
+/* ---- Mòbil: tot apilat, separadors verticals reinterpretats com a línies horitzontals ---- */
+@media (max-width: 600px) {
+  .arees__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: unset;
+    row-gap: var(--space-8);
+  }
+
+  .arees__intro,
+  .arees__item--1,
+  .arees__item--2,
+  .arees__item--3 {
+    grid-area: auto;
+    max-width: none;
+  }
+
+  .arees__grid > .divider-v {
+    display: block;
+    width: 100%;
+    height: 1px;
+  }
+}
+
+/* ==========================================================================
+   Presentació de Glòria Solsona Martí — docs/landing-master-spec.md §7
+   ========================================================================== */
+
+.gloria {
+  /* Bloc més compacte que la resta: la maqueta li dona menys alçada */
+  padding-block: var(--space-16);
+}
+
+.gloria__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+/* La fotografia arrenca a l'extrem del contenidor, no dins del padding */
+.gloria__media {
+  flex: 0 0 min(38%, 380px);
+  aspect-ratio: 8 / 5;
+  margin-inline-start: calc(-1 * var(--container-padding));
+  overflow: hidden;
+}
+
+.gloria__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  /* Enquadrament propi d'aquest bloc (no el mateix retall que el hero):
+     espatlles i toga visibles amb aire per sobre del cap, i el subjecte
+     lleugerament desplaçat cap a la dreta del requadre (més a prop del
+     titular) en lloc de centrat, per a un resultat més editorial. */
+  transform: scale(1.85);
+  transform-origin: 42% 30%;
+}
+
+.gloria__content {
+  flex: 1;
+  max-width: 46ch;
+}
+
+.gloria__text {
+  max-width: 42ch;
+}
+
+/* ---- Portàtil ---- */
+@media (max-width: 1100px) {
+  .gloria__row {
+    gap: var(--space-8);
+  }
+}
+
+/* ---- Tablet estret / mòbil: composició apilada ---- */
+@media (max-width: 760px) {
+  .gloria__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-8);
+  }
+
+  .gloria__media {
+    flex-basis: auto;
+    aspect-ratio: 16 / 9;
+    margin-inline: calc(-1 * var(--container-padding));
+  }
+
+  .gloria__content {
+    max-width: none;
+  }
+
+  .gloria__text {
+    max-width: 60ch;
+  }
+}
+
+/* ==========================================================================
+   Trajectòria — docs/landing-master-spec.md §8
+   ========================================================================== */
+
+/* Secció una mica més baixa que l'estàndard: el bloc central (25+) ja té
+   prou pes visual propi i no necessita tant d'aire vertical (només a
+   partir de portàtil ample; mòbil/tablet ja són prou compactes). */
+@media (min-width: 1025px) {
+  .trajectoria {
+    padding-block: var(--space-28);
+  }
+}
+
+.trajectoria__grid {
+  display: grid;
+  grid-template-columns: 1.1fr auto 1fr auto 1.4fr;
+  align-items: center;
+  column-gap: var(--space-8);
+}
+
+.trajectoria__intro,
+.trajectoria__closing {
+  max-width: 28ch;
+}
+
+.trajectoria__text {
+  max-width: 26ch;
+}
+
+.trajectoria__stat {
+  text-align: center;
+}
+
+.trajectoria__number {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(4.5rem, 3rem + 7vw, 8rem);
+  line-height: 1;
+  color: var(--color-navy);
+}
+
+.trajectoria__label {
+  margin-top: var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-navy);
+}
+
+/* ---- Portàtil ---- */
+@media (max-width: 1100px) {
+  .trajectoria__grid {
+    column-gap: var(--space-6);
+  }
+
+  .trajectoria__intro,
+  .trajectoria__closing,
+  .trajectoria__text {
+    max-width: 24ch;
+  }
+
+  .trajectoria__label {
+    letter-spacing: 0.06em;
+  }
+}
+
+/* ---- Tablet estret / mòbil: composició apilada ---- */
+@media (max-width: 760px) {
+  .trajectoria__grid {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    row-gap: var(--space-8);
+  }
+
+  .trajectoria__intro,
+  .trajectoria__closing,
+  .trajectoria__text {
+    max-width: 42ch;
+  }
+
+  .trajectoria__stat {
+    text-align: left;
+  }
+
+  .trajectoria__grid > .divider-v {
+    display: block;
+    width: 100%;
+    height: 1px;
+  }
+}
+
+@media (max-width: 430px) {
+  .trajectoria__number {
+    font-size: clamp(4rem, 3rem + 12vw, 5.5rem);
+  }
+}
+
+/* ==========================================================================
+   Ressenyes — docs/landing-master-spec.md §9
+   ========================================================================== */
+
+/* Només s'ajusta l'aire vertical de la secció; el disseny intern de les
+   targetes/carrusel no es toca en aquesta passada. */
+@media (min-width: 1025px) {
+  .ressenyes {
+    padding-block: var(--space-28);
+  }
+}
+
+.ressenyes__layout {
+  display: grid;
+  grid-template-columns: 1fr auto 2.7fr;
+  column-gap: var(--space-8);
+  align-items: start;
+}
+
+.ressenyes__intro {
+  max-width: 26ch;
+}
+
+.ressenyes__controls {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-8);
+}
+
+/* Fletxes discretes: sense caixa de botó, només el glif amb una línia
+   fina sota (mateix llenguatge que .nav a / .lang-switch__link) que es
+   marca en passar-hi per sobre. L'àrea clicable de 44px es manté sencera
+   per accessibilitat encara que visualment només s'hi vegi la fletxa. */
+.ressenyes__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1rem;
+  color: var(--color-navy);
+  background: none;
+  border: 0;
+  transition: opacity var(--motion-fast) var(--easing-standard);
+}
+
+.ressenyes__btn span {
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--motion-fast) var(--easing-standard);
+}
+
+.ressenyes__btn:hover:not(:disabled) span,
+.ressenyes__btn:focus-visible span {
+  border-bottom-color: currentColor;
+}
+
+.ressenyes__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.ressenyes__viewport {
+  overflow: hidden;
+}
+
+.ressenyes__track {
+  display: flex;
+  --visible: 3;
+  transition: transform var(--motion-base) var(--easing-standard);
+}
+
+.ressenyes__card {
+  flex: 0 0 calc(100% / var(--visible));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding-inline: var(--space-6);
+  border-inline-start: 1px solid var(--color-line);
+}
+
+/* La línia separadora només té sentit entre targetes d'una mateixa
+   tongada visible (--visible): cal amagar-la a la primera de cada grup,
+   no només a la primera targeta absoluta, perquè totes les tongades
+   mantinguin el mateix disseny que la primera. */
+.ressenyes__card:nth-child(3n + 1) {
+  padding-inline-start: 0;
+  border-inline-start: 0;
+}
+
+/* Centrat vertical: amb longituds de text molt diferents, alinear només
+   per la base (estrelles/procedència) deixava les cites curtes amb un buit
+   gran a sota i les llargues gairebé tocant les estrelles. Centrant el
+   text dins de l'espai disponible, les tres columnes queden més
+   equilibrades entre elles encara que ocupin un nombre de línies diferent. */
+.ressenyes__quote {
+  flex: 1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.ressenyes__quote p {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-navy);
+  font-size: clamp(1.05rem, 0.3vw + 1rem, 1.2rem);
+  line-height: 1.5;
+}
+
+.ressenyes__meta {
+  margin-top: var(--space-6);
+}
+
+.ressenyes__stars {
+  margin: 0;
+  color: var(--color-navy);
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+}
+
+.ressenyes__source {
+  margin-top: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+}
+
+/* ---- Tablet: 2 ressenyes visibles ---- */
+@media (max-width: 1024px) {
+  .ressenyes__track {
+    --visible: 2;
+  }
+
+  .ressenyes__layout {
+    grid-template-columns: 1fr auto 2fr;
+    column-gap: var(--space-6);
+  }
+
+  /* Grups de 2: reinicia el patró de 3 en 3 de l'escriptori */
+  .ressenyes__card {
+    padding-inline-start: var(--space-6);
+    border-inline-start: 1px solid var(--color-line);
+  }
+
+  .ressenyes__card:nth-child(2n + 1) {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
+}
+
+/* ---- Mòbil: intro a dalt, 1 ressenya visible ---- */
+@media (max-width: 700px) {
+  .ressenyes__track {
+    --visible: 1;
+  }
+
+  .ressenyes__layout {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-8);
+  }
+
+  .ressenyes__intro {
+    max-width: none;
+  }
+
+  .ressenyes__layout > .divider-v {
+    display: none;
+  }
+
+  .ressenyes__card {
+    padding-inline: 0;
+  }
+
+  .ressenyes__card:not(:first-child) {
+    border-inline-start: 0;
+  }
+}
+
+/* ==========================================================================
+   Contacte + Ubicació + Formulari — docs/landing-master-spec.md §10
+   ========================================================================== */
+
+.contacte__grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: var(--space-16);
+  align-items: start;
+}
+
+.contacte__intro {
+  max-width: 38ch;
+}
+
+.contacte__list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: var(--space-6);
+  row-gap: var(--space-4);
+  margin: var(--space-8) 0 0;
+}
+
+.contacte__list dt {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.contacte__list dd {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.contacte__list a {
+  display: inline-block;
+  padding-block: 0.5em;
+  margin-block: -0.5em;
+  color: inherit;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--motion-fast) var(--easing-standard);
+}
+
+.contacte__list a:hover,
+.contacte__list a:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+.contacte__map {
+  margin-top: var(--space-8);
+  width: 100%;
+  height: 480px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-line);
+  overflow: hidden;
+}
+
+.contacte__map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Placeholder visual fins tenir l'iframe definitiu de Google Maps — vegeu
+   comentari a index.html, secció Ubicació. Mateixes dimensions que el mapa
+   final perquè el layout no "salti" en substituir-lo. */
+.contacte__map--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface-muted);
+  padding-inline: var(--space-8);
+  text-align: center;
+}
+
+.contacte__map-placeholder-text {
+  margin: 0;
+  max-width: 32ch;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+/* ---- Portàtil ---- */
+@media (max-width: 1100px) {
+  .contacte__grid {
+    column-gap: var(--space-8);
+  }
+
+  .contacte__map {
+    height: 400px;
+  }
+}
+
+/* ---- Mòbil: apilat, Contacte abans d'Ubicació ---- */
+@media (max-width: 760px) {
+  .contacte__grid {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-16);
+  }
+
+  .contacte__grid > .divider-v {
+    display: none;
+  }
+
+  .contacte__intro {
+    max-width: none;
+  }
+
+  .contacte__map {
+    height: 320px;
+  }
+}
+
+/* ---- Mòbil petit ---- */
+@media (max-width: 420px) {
+  .contacte__map {
+    height: 280px;
+  }
+}
+
+/* Subtítol "Ubicació", ara dins la columna esquerra (sobre el mateix
+   .contacte__title), amb menys pes visual que "Contacte" */
+.contacte__subtitle {
+  margin-top: var(--space-12);
+  font-size: var(--fs-h3);
+}
+
+/* ---- Formulari de contacte ---- */
+
+.contacte-form__legend {
+  margin-top: var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+}
+
+.contacte-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.contacte-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contacte-form__label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.contacte-form__control {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  color: var(--color-navy);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-line);
+  transition: border-color var(--motion-fast) var(--easing-standard);
+}
+
+.contacte-form__control::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.contacte-form__control:hover,
+.contacte-form__control:focus-visible {
+  border-color: var(--color-navy);
+}
+
+textarea.contacte-form__control {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+.contacte-form__note {
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+}
+
+.contacte-form__checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.contacte-form__checkbox-row input[type='checkbox'] {
+  flex-shrink: 0;
+  width: 1.15em;
+  height: 1.15em;
+  margin-top: 0.2em;
+  accent-color: var(--color-navy);
+}
+
+.contacte-form__checkbox-row label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.contacte-form__checkbox-row a {
+  color: var(--color-navy);
+  border-bottom: 1px solid var(--color-line);
+  transition: border-color var(--motion-fast) var(--easing-standard);
+}
+
+.contacte-form__checkbox-row a:hover,
+.contacte-form__checkbox-row a:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+.contacte-form__submit {
+  width: fit-content;
+  padding: var(--space-3) var(--space-8);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  background-color: var(--color-navy);
+  transition: background-color var(--motion-fast) var(--easing-standard);
+}
+
+.contacte-form__submit:hover {
+  background-color: var(--color-navy-footer);
+}
+
+.contacte-form__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contacte-form__status {
+  padding-inline-start: var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  border-inline-start: 2px solid currentColor;
+}
+
+.contacte-form__status[data-state='success'] {
+  color: var(--color-success);
+}
+
+.contacte-form__status[data-state='error'] {
+  color: var(--color-error);
+}
+
+/* ==========================================================================
+   Footer — docs/landing-master-spec.md §11
+   ========================================================================== */
+
+.site-footer {
+  padding-block: var(--space-12);
+}
+
+.footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.footer__legal ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.footer__legal li {
+  padding-inline-start: var(--space-4);
+  border-inline-start: 1px solid var(--color-line-light);
+}
+
+.footer__legal li:first-child {
+  padding-inline-start: 0;
+  border-inline-start: 0;
+}
+
+.footer__legal a {
+  display: inline-block;
+  padding-block: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--color-white);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--motion-fast) var(--easing-standard);
+}
+
+.footer__legal a:hover,
+.footer__legal a:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+.footer__rule {
+  margin-block: var(--space-8);
+  border: 0;
+  height: 1px;
+  background-color: var(--color-line-light);
+}
+
+.footer__copyright {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ==========================================================================
+   Pàgines legals provisionals (avís legal / privacitat / cookies)
+   ========================================================================== */
+
+.legal-header {
+  padding-block: var(--space-6);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.legal-header__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.legal-header__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.legal-header__back {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--color-navy);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--motion-fast) var(--easing-standard);
+}
+
+.legal-header__back:hover,
+.legal-header__back:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+.legal {
+  max-width: 68ch;
+  padding-block: var(--space-24);
+}
+
+.legal__notice {
+  padding: var(--space-6);
+  margin-bottom: var(--space-12);
+  background-color: var(--color-surface-muted);
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+}
+
+.legal section {
+  margin-top: var(--space-8);
+}
+
+.legal section + section {
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-line);
+}
+
+.legal h2 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-3);
+}
+
+.legal p {
+  max-width: 68ch;
+}
+
+.legal__back {
+  margin-top: var(--space-16);
+}

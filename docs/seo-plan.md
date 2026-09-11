@@ -112,6 +112,20 @@ En producció:
 - URLs netes;
 - pàgina 404 si l'arquitectura ho requereix.
 
+## Hreflang i canonical (arquitectura CA/ES)
+
+La web té versió catalana (`/`) i versió castellana (`/es/`), generades a partir
+d'un únic diccionari de traducció (`src/i18n/es.json` + `scripts/build-i18n.py`).
+
+**Pendent deliberadament fins tenir domini definitiu**: no s'ha afegit cap
+`canonical` ni `hreflang` amb URL absoluta, per no inventar un domini que
+encara no existeix. Abans de publicar caldrà implementar, com a mínim:
+
+- `canonical` propi de cada pàgina, apuntant a la seva pròpia URL absoluta;
+- relacions `hreflang` recíproques entre cada parell CA/ES equivalent
+  (català → català, català → castellà, castellà → català, castellà → castellà);
+- `x-default` si l'arquitectura final ho fa pertinent.
+
 ## Imatges
 
 - noms de fitxer comprensibles quan sigui útil;

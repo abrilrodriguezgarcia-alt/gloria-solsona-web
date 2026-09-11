@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/brand/monogram-gs.png" />
+    <title>Glòria Solsona Martí — Advocada</title>
+    <meta
+      name="description"
+      content="Lloc web professional de Glòria Solsona Martí, advocada. Contingut en desenvolupament."
+    />
+    <!--
+      SEO tècnic (title/description definitius, Open Graph, canonical,
+      dades estructurades) es completa a la fase de SEO un cop les dades
+      estiguin confirmades. Vegeu docs/seo-plan.md.
+    -->
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contingut-principal">Salta al contingut principal</a>
+
+    <!-- Header integrat al hero — docs/landing-master-spec.md §5 -->
+    <header class="site-header" id="site-header">
+      <div class="hero">
+        <div class="hero__media">
+          <img
+            class="hero__photo"
+            src="/images/gloria-hero-provisional.jpg"
+            alt="Glòria Solsona Martí, advocada, asseguda amb toga en un espai amb columnes de pedra."
+            width="1170"
+            height="1230"
+            fetchpriority="high"
+          />
+
+          <p class="hero__quote">
+            “El dret<br />al servei<br />de les persones.”
+            <span class="hero__quote-line" aria-hidden="true"></span>
+          </p>
+        </div>
+
+        <img
+          class="hero__monogram"
+          src="/brand/monogram-gs.png"
+          alt=""
+          aria-hidden="true"
+          width="120"
+          height="127"
+        />
+
+        <div class="hero__bar container">
+          <a class="logo" href="/">
+            <img
+              class="logo__image"
+              src="/brand/logotip.png"
+              alt="Glòria Solsona Martí — Advocat"
+              width="568"
+              height="200"
+            />
+          </a>
+
+          <div class="hero__bar-controls">
+            <nav class="lang-switch" aria-label="Selector d'idioma">
+              <a href="/" class="lang-switch__link lang-switch__link--active" aria-current="page" lang="ca" hreflang="ca">CA</a>
+              <span class="lang-switch__sep" aria-hidden="true">/</span>
+              <a href="/es/" class="lang-switch__link" lang="es" hreflang="es">ES</a>
+            </nav>
+
+            <button
+              class="nav-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="nav-principal"
+            >
+              <span class="visually-hidden">Obrir el menú</span>
+              <span class="nav-toggle__bars" aria-hidden="true"></span>
+            </button>
+
+            <nav class="nav" id="nav-principal" aria-label="Navegació principal">
+              <ul role="list">
+                <li><a href="#arees">Àrees</a></li>
+                <li><a href="#gloria">Glòria</a></li>
+                <li><a href="#ressenyes">Ressenyes</a></li>
+                <li><a href="#contacte">Contacte</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="hero__content">
+          <h1 class="hero__title">Glòria Solsona Martí</h1>
+          <p class="hero__subtitle">Advocada</p>
+
+          <hr class="divider-h hero__divider" />
+
+          <ul class="hero__areas" role="list">
+            <li>Dret de família</li>
+            <li>Dret successori</li>
+            <li>Dret civil català</li>
+          </ul>
+
+          <a class="hero__cta" href="#contacte">
+            Contacte <span class="hero__cta-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="contingut-principal">
+      <!--
+        Àrees de pràctica — docs/landing-master-spec.md §6
+        Descripcions afegides a petició expressa (2026-09-11): són
+        definicions genèriques de cada àmbit del dret (no formaven part de
+        la maqueta aprovada ni fan cap afirmació sobre l'experiència o els
+        serveis concrets de la Glòria). Revisar-ne el to amb la clienta
+        abans de producció.
+      -->
+      <section id="arees" class="section section--muted arees" aria-labelledby="arees-titol">
+        <div class="container arees__grid">
+          <div class="arees__intro">
+            <h2 class="arees__title" id="arees-titol">Àrees<br />de pràctica</h2>
+            <hr class="divider-h accent-line" aria-hidden="true" />
+            <p class="arees__text">
+              Assessorament especialitzat en dret de família, successoris i dret civil català.
+            </p>
+          </div>
+
+          <hr class="divider-v" aria-hidden="true" />
+
+          <div class="arees__item arees__item--1">
+            <span class="arees__number">01</span>
+            <hr class="divider-h accent-line" aria-hidden="true" />
+            <h3 class="arees__name">Dret de família</h3>
+            <p class="arees__description">
+              Separacions, divorcis, custòdia i relacions familiars.
+            </p>
+          </div>
+
+          <hr class="divider-v" aria-hidden="true" />
+
+          <div class="arees__item arees__item--2">
+            <span class="arees__number">02</span>
+            <hr class="divider-h accent-line" aria-hidden="true" />
+            <h3 class="arees__name">Dret successori</h3>
+            <p class="arees__description">Herències, testaments i successions.</p>
+          </div>
+
+          <hr class="divider-v" aria-hidden="true" />
+
+          <div class="arees__item arees__item--3">
+            <span class="arees__number">03</span>
+            <hr class="divider-h accent-line" aria-hidden="true" />
+            <h3 class="arees__name">Dret civil català</h3>
+            <p class="arees__description">
+              Dret civil propi de Catalunya en l'àmbit patrimonial i familiar.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Presentació de Glòria Solsona Martí — docs/landing-master-spec.md §7 -->
+      <section id="gloria" class="section gloria" aria-labelledby="gloria-titol">
+        <div class="container gloria__row">
+          <!--
+            Encara no hi ha cap fotografia dedicada a aquest bloc
+            (docs/assets-status.md: "fotografia/retrat definitiu del bloc de
+            presentació" continua pendent). Mentrestant s'utilitza el mateix
+            asset del hero (assets/images/gloria-hero-provisional.jpg) amb un
+            enquadrament més tancat (object-position) per aproximar el crop
+            de la referència aprovada, sense retocar ni generar cap imatge
+            nova. Substituir per la fotografia dedicada quan arribi.
+          -->
+          <div class="gloria__media">
+            <img
+              src="/images/gloria-hero-provisional.jpg"
+              alt="Retrat de Glòria Solsona Martí, advocada."
+              width="1170"
+              height="1230"
+            />
+          </div>
+
+          <div class="gloria__content">
+            <h2 class="gloria__title" id="gloria-titol">Glòria Solsona Martí</h2>
+            <hr class="divider-h accent-line" aria-hidden="true" />
+            <p class="gloria__text">
+              Especialista en dret de família, dret successori i dret civil català. Més de 25 anys
+              de professionalitat al teu servei, amb dedicació i formació continuada.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trajectòria — docs/landing-master-spec.md §8 -->
+      <section id="trajectoria" class="section section--muted trajectoria" aria-labelledby="trajectoria-titol">
+        <div class="container trajectoria__grid">
+          <div class="trajectoria__intro">
+            <h2 class="trajectoria__title" id="trajectoria-titol">Trajectòria</h2>
+            <hr class="divider-h accent-line" aria-hidden="true" />
+            <p class="trajectoria__text">Tota una vida dedicada al dret.</p>
+          </div>
+
+          <hr class="divider-v" aria-hidden="true" />
+
+          <div class="trajectoria__stat">
+            <p class="trajectoria__number">25+</p>
+            <p class="trajectoria__label">ANYS DE TRAJECTÒRIA</p>
+          </div>
+
+          <hr class="divider-v" aria-hidden="true" />
+
+          <div class="trajectoria__closing">
+            <p class="trajectoria__text">
+              Un exercici de l'advocacia basat en el rigor, la proximitat i el compromís amb cada
+              persona.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        Ressenyes — docs/landing-master-spec.md §9
+        Primeres 3: contingut literal validat al projecte, sense noms de
+        persona (§9.3, §9.5 i docs/content-status.md marquen els noms com a
+        pendents de confirmar — no se n'inventa cap).
+
+        Següents 3: localitzades i verificades manualment (cerca web,
+        cost-referenciades per telèfon/adreça ja confirmats al projecte) al
+        perfil públic de Google del despatx. Originals en castellà; traduïdes
+        al català a petició expressa (2026-09-11) per mantenir l'idioma
+        coherent amb la resta del lloc — es preserva el sentit, no és el text
+        literal d'origen. Se n'omet el nom de la persona autora per
+        coherència amb les 3 primeres (el projecte encara no ha decidit si es
+        mostraran noms). PENDENT: confirmar la traducció i el contingut amb
+        la clienta abans de publicar-les en producció.
+
+        Atribució sempre "Opinió a Google" (mai "Ressenya publicada a
+        Google", que no forma part de la proposta).
+      -->
+      <section id="ressenyes" class="section ressenyes" aria-labelledby="ressenyes-titol">
+        <div class="container ressenyes__layout">
+          <div class="ressenyes__intro">
+            <h2 class="ressenyes__title" id="ressenyes-titol">Ressenyes</h2>
+            <hr class="divider-h accent-line" aria-hidden="true" />
+            <p class="ressenyes__text">
+              La confiança dels qui m'han acompanyat també es reflecteix en les seves paraules.
+            </p>
+
+            <div class="ressenyes__controls">
+              <button type="button" class="ressenyes__btn ressenyes__btn--prev" aria-label="Ressenya anterior">
+                <span aria-hidden="true">←</span>
+              </button>
+              <button type="button" class="ressenyes__btn ressenyes__btn--next" aria-label="Ressenya següent">
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+
+          <hr class="divider-v" aria-hidden="true" />
+
+          <div class="ressenyes__viewport">
+            <ul class="ressenyes__track" role="list">
+              <li class="ressenyes__card">
+                <blockquote class="ressenyes__quote">
+                  <p>“Des del primer moment em vaig sentir escoltada i acompanyada.”</p>
+                </blockquote>
+                <div class="ressenyes__meta">
+                  <p class="ressenyes__stars" role="img" aria-label="5 de 5 estrelles">★★★★★</p>
+                  <p class="ressenyes__source">Opinió a Google</p>
+                </div>
+              </li>
+
+              <li class="ressenyes__card">
+                <blockquote class="ressenyes__quote">
+                  <p>“La Glòria no només defensa; escolta, entén i acompanya.”</p>
+                </blockquote>
+                <div class="ressenyes__meta">
+                  <p class="ressenyes__stars" role="img" aria-label="5 de 5 estrelles">★★★★★</p>
+                  <p class="ressenyes__source">Opinió a Google</p>
+                </div>
+              </li>
+
+              <li class="ressenyes__card">
+                <blockquote class="ressenyes__quote">
+                  <p>
+                    “A més de ser una gran professional, transmet confiança i tranquil·litat en tot
+                    moment.”
+                  </p>
+                </blockquote>
+                <div class="ressenyes__meta">
+                  <p class="ressenyes__stars" role="img" aria-label="5 de 5 estrelles">★★★★★</p>
+                  <p class="ressenyes__source">Opinió a Google</p>
+                </div>
+              </li>
+
+              <li class="ressenyes__card">
+                <blockquote class="ressenyes__quote">
+                  <p>“Bons professionals amb valors i sense enganys.”</p>
+                </blockquote>
+                <div class="ressenyes__meta">
+                  <p class="ressenyes__stars" role="img" aria-label="5 de 5 estrelles">★★★★★</p>
+                  <p class="ressenyes__source">Opinió a Google</p>
+                </div>
+              </li>
+
+              <li class="ressenyes__card">
+                <blockquote class="ressenyes__quote">
+                  <p>
+                    “Molt bona professional! Ens ha ajudat molt. És molt empàtica. Sens dubte és
+                    la meva advocada de referència.”
+                  </p>
+                </blockquote>
+                <div class="ressenyes__meta">
+                  <p class="ressenyes__stars" role="img" aria-label="5 de 5 estrelles">★★★★★</p>
+                  <p class="ressenyes__source">Opinió a Google</p>
+                </div>
+              </li>
+
+              <li class="ressenyes__card">
+                <blockquote class="ressenyes__quote">
+                  <p>“Bona persona i millor advocada.”</p>
+                </blockquote>
+                <div class="ressenyes__meta">
+                  <p class="ressenyes__stars" role="img" aria-label="5 de 5 estrelles">★★★★★</p>
+                  <p class="ressenyes__source">Opinió a Google</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        Contacte + Ubicació + Formulari — docs/landing-master-spec.md §10.
+        Composició actualitzada (2026-09-11, instrucció expressa): dues
+        columnes — esquerra (info de contacte + ubicació/mapa), dreta
+        (formulari de contacte). Vegeu addenda a landing-master-spec.md §10.1.
+
+        Dades literals confirmades a docs/content-status.md. Horari i
+        WhatsApp NO s'implementen: continuen pendents de confirmació
+        (docs/client-validation-checklist.md). Quan la clienta ho confirmi,
+        afegir-los com a <dt>/<dd> addicionals a .contacte__list, seguint el
+        mateix patró que telèfon/correu (WhatsApp amb enllaç oficial wa.me).
+
+        Formulari: sense backend propi, preparat per a un servei extern
+        senzill (p. ex. Formspree). Vegeu FORM_ENDPOINT a
+        src/components/contact-form.js — pendent que la clienta confirmi
+        compte/endpoint. Fins llavors no s'envia cap dada enlloc.
+      -->
+      <section id="contacte" class="section section--muted contacte" aria-labelledby="contacte-titol">
+        <div class="container contacte__grid">
+          <div class="contacte__info">
+            <h2 class="contacte__title" id="contacte-titol">Contacte</h2>
+            <hr class="divider-h accent-line" aria-hidden="true" />
+            <p class="contacte__intro">
+              Per concertar una consulta o demanar més informació, podeu contactar directament amb
+              el despatx.
+            </p>
+
+            <dl class="contacte__list">
+              <dt>Telèfon</dt>
+              <dd><a href="tel:932777995">93 277 79 95</a></dd>
+
+              <dt>Correu</dt>
+              <dd><a href="mailto:gloria@gloriasolsona.cat">gloria@gloriasolsona.cat</a></dd>
+
+              <dt>Adreça</dt>
+              <dd>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&amp;query=Carrer%20Pintor%20Carbonell%2C%2017-19%2C%2008750%20Molins%20de%20Rei%2C%20Barcelona"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Carrer Pintor Carbonell, 17-19 entresol<br />
+                  08750 Molins de Rei, Barcelona
+                </a>
+              </dd>
+            </dl>
+
+            <h3 class="contacte__subtitle" id="ubicacio-titol">Ubicació</h3>
+
+            <!--
+              PLACEHOLDER — Google Maps embed pendent (instrucció expressa
+              2026-09-11): encara no tenim l'iframe definitiu generat des de
+              Google Maps, per tant NO es genera cap URL ni API key aquí.
+
+              QUAN TINGUEM L'IFRAME DEFINITIU: substituir tot el
+              <div class="contacte__map contacte__map--placeholder">...</div>
+              de sota per:
+
+                <div class="contacte__map" aria-labelledby="ubicacio-titol">
+                  <iframe
+                    class="contacte__map-iframe"
+                    src="[URL D'INCRUSTACIÓ DE GOOGLE MAPS]"
+                    title="Ubicació de Glòria Solsona Martí a Molins de Rei"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+
+              (treure també la classe modificadora "contacte__map--placeholder"
+              i el paràgraf de dins — vegeu src/styles/components.css,
+              regles .contacte__map / .contacte__map-placeholder-text).
+
+              PRIVACITAT/COOKIES (docs/legal-requirements.md, secció "Google
+              Maps"): abans de producció, revisar si cal consentiment previ
+              per carregar l'iframe (Google pot desar cookies pròpies en
+              carregar-lo). Si cal, l'iframe anterior s'ha de renderitzar
+              condicionalment (p. ex. només després d'acceptar cookies de
+              tercers), mantenint aquest mateix <div class="contacte__map">
+              com a punt d'inserció únic.
+            -->
+            <div class="contacte__map contacte__map--placeholder" aria-labelledby="ubicacio-titol">
+              <p class="contacte__map-placeholder-text">
+                Mapa de Google Maps — pendent d'incrustar l'iframe definitiu
+              </p>
+            </div>
+          </div>
+
+          <hr class="divider-v" aria-hidden="true" />
+
+          <div class="contacte__form-col">
+            <h2 class="contacte__title" id="formulari-titol">Envia'ns un missatge</h2>
+            <hr class="divider-h accent-line" aria-hidden="true" />
+            <p class="contacte-form__legend">Els camps marcats amb * són obligatoris.</p>
+
+            <form class="contacte-form" method="post" action="#contacte" aria-labelledby="formulari-titol">
+              <div class="contacte-form__field">
+                <label class="contacte-form__label" for="contacte-nom">
+                  Nom i cognoms <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="contacte-form__control"
+                  type="text"
+                  id="contacte-nom"
+                  name="nom"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+
+              <div class="contacte-form__field">
+                <label class="contacte-form__label" for="contacte-email">
+                  Correu electrònic <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="contacte-form__control"
+                  type="email"
+                  id="contacte-email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <div class="contacte-form__field">
+                <label class="contacte-form__label" for="contacte-telefon">Telèfon</label>
+                <input
+                  class="contacte-form__control"
+                  type="tel"
+                  id="contacte-telefon"
+                  name="telefon"
+                  autocomplete="tel"
+                />
+              </div>
+
+              <div class="contacte-form__field">
+                <label class="contacte-form__label" for="contacte-missatge">
+                  Missatge <span aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  class="contacte-form__control"
+                  id="contacte-missatge"
+                  name="missatge"
+                  rows="5"
+                  aria-describedby="contacte-missatge-nota"
+                  required
+                ></textarea>
+                <p class="contacte-form__note" id="contacte-missatge-nota">
+                  No incloguis informació confidencial o especialment sensible en aquest formulari.
+                </p>
+              </div>
+
+              <div class="contacte-form__checkbox-row">
+                <input type="checkbox" id="contacte-privacitat" name="privacitat" required />
+                <label for="contacte-privacitat">
+                  He llegit i accepto la
+                  <a href="/legal/privacitat.html">Política de privacitat</a>.
+                </label>
+              </div>
+
+              <button class="contacte-form__submit" type="submit">Enviar consulta</button>
+
+              <p class="contacte-form__status" role="status" aria-live="polite" hidden></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer — docs/landing-master-spec.md §11 -->
+    <footer class="site-footer section--dark" id="site-footer">
+      <div class="container footer__row">
+        <a class="logo footer__brand" href="/">
+          <img
+            class="logo__image"
+            src="/brand/logotip.png"
+            alt="Glòria Solsona Martí — Advocat"
+            width="568"
+            height="200"
+          />
+        </a>
+
+        <nav class="footer__legal" aria-label="Enllaços legals">
+          <ul role="list">
+            <li><a href="/legal/avis-legal.html">Avís legal</a></li>
+            <li><a href="/legal/privacitat.html">Privacitat</a></li>
+            <li><a href="/legal/cookies.html">Cookies</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <hr class="footer__rule" aria-hidden="true" />
+
+      <div class="container">
+        <p class="footer__copyright">© 2026 Glòria Solsona Martí. Tots els drets reservats.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

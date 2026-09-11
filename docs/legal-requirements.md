@@ -74,6 +74,12 @@ Abans d'afegir un banner de cookies, auditar què s'està carregant realment. No
 
 Si només hi ha tecnologies estrictament necessàries, la solució pot ser diferent de la d'una web amb analítica, publicitat o embeds que requereixin consentiment.
 
+La web és bilingüe (català a `/`, castellà a `/es/`). Quan s'implementi el
+bàner/CMP definitiu, haurà de funcionar íntegrament en tots dos idiomes
+(text, categories, botons, preferències i enllaç a la política de cookies),
+coherent amb l'idioma de la pàgina on es mostri. No s'ha d'afegir cap bàner
+provisional ni cap script de mesurament abans d'aquesta fase.
+
 ## Ressenyes
 
 Comprovar abans de publicació:

@@ -45,3 +45,16 @@ Per sincronitzar de manera segura la carpeta local del Mac amb aquest repositori
 ## Principi de treball
 
 La landing aprovada és la referència visual del projecte. El desenvolupament ha de reproduir-la amb fidelitat i millorar només aspectes tècnics, d'accessibilitat, responsive, rendiment i mantenibilitat sense redissenyar-la.
+
+## Desenvolupament local
+
+Stack: Vite + HTML + CSS + JavaScript (docs/implementation-plan.md).
+
+```bash
+npm install
+npm run dev
+```
+
+Estat actual: base tècnica del projecte (fase 1). Encara no hi ha header, hero
+ni cap secció de contingut implementada — vegeu `docs/implementation-plan.md`
+per a l'ordre de fases previst.

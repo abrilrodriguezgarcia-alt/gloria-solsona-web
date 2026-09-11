@@ -21,8 +21,8 @@ Aquest document identifica quins recursos visuals del projecte són definitius, 
 - Utilitza `assets/images/gloria-hero-provisional.jpg` mentre no existeixi una fotografia definitiva.
 - No generis una fotografia substitutiva amb IA.
 - No substitueixis aquesta fotografia per stock.
-- No la retoquis de manera que alteri la persona, la indumentària o el context.
-- Es poden aplicar únicament ajustos tècnics de presentació necessaris per a la web, com `object-fit`, `object-position`, crop responsive no destructiu i optimització de pes.
+- No la retoquis de manera que alteri la persona, la indumentària o el context (pose, vestimenta, entorn arquitectònic).
+- Es poden aplicar ajustos tècnics de presentació (`object-fit`, `object-position`, crop responsive no destructiu, optimització de pes) **i, a petició expressa de la clienta/usuària (2026-09-11), ajustos d'edició fotogràfica global i localitzada** (llum, contrast, saturació, suavitzat de textures) per millorar l'acabat editorial i la llegibilitat del menú superior sense recórrer a efectes artificials de CSS (contorns, ombres de text, degradats). Aquests ajustos no poden alterar la persona, la indumentària ni el context, només la gradació tonal de la imatge.
 - Quan arribi la fotografia definitiva, la substitució de l'asset no ha de provocar un redisseny del hero aprovat.
 
 ## Assets encara pendents

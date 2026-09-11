@@ -1,0 +1,7 @@
+/* Punt d'entrada únic d'estils. L'ordre importa. */
+
+@import './reset.css';
+@import './tokens.css';
+@import './global.css';
+@import './layout.css';
+@import './components.css';
