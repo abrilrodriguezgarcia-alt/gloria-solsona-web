@@ -11,6 +11,26 @@
     - --color-text-muted (subtítol "Advocada"): mostra ~#7a7778 (4.4:1) →
       #6a6768 (~5.6:1), per mantenir marge en mides de text més petites.
 
+  Ajust de temperatura (2026-09-12, instrucció expressa): els neutres es
+  desplacen molt subtilment cap a un blanc trencat / gris pedra càlid, per
+  apropar la interfície freda a la temperatura de les fotografies del
+  despatx, sense convertir la paleta en beige ni alterar el navy de marca.
+  Canvi de to únicament (mateixa lluminositat aproximada, marges WCAG
+  recalculats i mantinguts):
+    - --color-white:         #ffffff → #fdfcfa
+    - --color-off-white:     #fdfdfd → #faf8f5
+    - --color-surface-muted: #eff1f3 → #f1efea
+  Contrastos verificats sense canvi de categoria AA (navy ≥ 12.3:1,
+  text-secondary ≥ 5.8:1, text-muted ≥ 4.8:1 sobre els tres neutres nous).
+
+  --color-border-input (nou, 2026-09-12): el --color-line general (alpha
+  0.28) dona només ~1.8:1 de contrast sobre blanc, insuficient per al
+  contorn d'un component interactiu (WCAG 2.2 SC 1.4.11, mínim 3:1). Els
+  camps del formulari de contacte utilitzen aquest token específic
+  (alpha 0.55, ~3.5:1) en lloc de --color-line; la resta de línies/
+  separadors decoratius de la landing no són components interactius i
+  mantenen --color-line sense canvis.
+
   Breakpoints de referència (docs/technical-spec.md) — no es poden expressar
   com a custom properties dins de @media, es documenten aquí per coherència:
     - mòbil:     360–430px
@@ -24,13 +44,14 @@
   --color-navy: #0d2c4a;
   --color-navy-rgb: 13, 44, 74;
   --color-navy-footer: #17324c;
-  --color-white: #ffffff;
-  --color-off-white: #fdfdfd;
-  --color-surface-muted: #eff1f3;
+  --color-white: #fdfcfa;
+  --color-off-white: #faf8f5;
+  --color-surface-muted: #f1efea;
   --color-text-secondary: #4d5d74;
   --color-text-muted: #6a6768;
   --color-line: rgba(var(--color-navy-rgb), 0.28);
   --color-line-light: rgba(255, 255, 255, 0.3);
+  --color-border-input: rgba(var(--color-navy-rgb), 0.55);
   --color-monogram: rgba(var(--color-navy-rgb), 0.08);
 
   /* Feedback del formulari de contacte — verd/vermell apagats per mantenir

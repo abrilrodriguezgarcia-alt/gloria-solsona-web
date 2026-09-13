@@ -8,12 +8,25 @@
    Header + Hero — docs/landing-master-spec.md §5
    ========================================================================== */
 
+/* Franja superior del header — fora de .hero (FASE 3, 2026-09-13,
+   instrucció expressa). El menú ja no viu sobre la fotografia: és una
+   franja pròpia, amb el mateix fons clar que la resta de la web, perquè
+   els textos en blau es llegeixin sense cap efecte artificial (ni halo,
+   ni ombra). Un sol filet fi de separació (mateix recurs que la resta de
+   la landing) la distingeix de la foto que comença immediatament a sota. */
+.site-header__bar {
+  position: relative;
+  z-index: 3;
+  background-color: var(--color-off-white);
+  border-bottom: 1px solid var(--color-line);
+}
+
 .hero {
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: clamp(600px, 88vh, 920px);
+  min-height: clamp(560px, 82vh, 880px);
   background-color: var(--color-off-white);
 }
 
@@ -35,17 +48,28 @@
   mask-image: linear-gradient(to right, transparent 0%, #000 32%);
 }
 
-/* Vel molt suau només a la banda on cavalca el menú, perquè el blau
-   corporatiu tingui prou contrast sense afegir cap ombra al text ni
-   enfosquir la resta de la fotografia (docs/assets-status.md: la imatge
-   només rep ajustos tècnics de presentació, no es toca aquí el fitxer). */
+/* Vel molt subtil al racó inferior dret (FASE 3, 2026-09-13, instrucció
+   expressa): abans hi havia un vel a la banda superior perquè el menú s'hi
+   pogués llegir; ara el menú ja no és sobre la foto (vegeu
+   .site-header__bar) i aquest vel es reaprofita per a la frase editorial
+   (.hero__quote), que sí que continua sobre la fotografia. És un degradat
+   molt discret — no un halo ni una ombra al text — que enfosqueix
+   lleugerament només el racó on cau la cita, sense afectar la lectura de
+   la persona asseguda (docs/assets-status.md: ajust de presentació, no es
+   toca el fitxer). */
 .hero__media::after {
   content: '';
   position: absolute;
-  inset: 0 0 auto 0;
-  height: 15%;
-  min-height: 110px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  right: 0;
+  bottom: 0;
+  width: min(58%, 26rem);
+  height: 44%;
+  background: radial-gradient(
+    ellipse at bottom right,
+    rgba(9, 13, 20, 0.55) 0%,
+    rgba(9, 13, 20, 0.22) 45%,
+    rgba(9, 13, 20, 0) 75%
+  );
   pointer-events: none;
 }
 
@@ -64,10 +88,9 @@
   user-select: none;
 }
 
-/* Barra logo + navegació */
+/* Barra logo + navegació. Viu dins .site-header__bar (fons clar propi),
+   no sobre la fotografia — no calen halos ni ombres per llegir el text. */
 .hero__bar {
-  position: relative;
-  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,12 +101,10 @@
 .hero__bar-controls {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
 }
 
-/* Selector d'idioma — discret, no competeix amb la navegació principal.
-   Sempre en blau corporatiu (no gris secundari): sobre la fotografia del
-   hero, un to més clar es perd amb més facilitat que el navy. */
+/* Selector d'idioma — discret, no competeix amb la navegació principal. */
 .lang-switch {
   display: flex;
   align-items: center;
@@ -122,9 +143,18 @@
   gap: var(--space-3);
 }
 
-/* Logotip oficial (assets/brand/logotip.png, fons transparent) */
+/* Logotip pla oficial (assets/brand/logotip.png). Usat tal qual al header
+   i al footer de la landing, i a les pàgines legals independents
+   (legal/*.html, es/legal/*.html) — mateix fitxer, mateix text "Advocat"
+   gravat als píxels arreu (docs/client-validation-checklist.md: pendent
+   de confirmar amb la clienta si ha de dir "Advocat" o "Advocada").
+   Revertit al header (FASE 4, 2026-09-13, instrucció expressa): una
+   revisió anterior (FASE 2) havia reconstruït aquest lockup amb text real
+   ("Advocada") en lloc del logotip oficial; la clienta ha indicat que el
+   header ha de fer servir el logotip oficial tal com és, igual que ja
+   fa el footer (FASE 7). */
 .logo__image {
-  height: 60px;
+  height: 66px;
   width: auto;
 }
 
@@ -137,17 +167,21 @@
   filter: brightness(0) invert(1);
 }
 
+/* 5 ítems (Àrees / Glòria / El despatx / Ressenyes / Contacte): pes una
+   mica menys fort i tracking més editorial que un simple menú SaaS, amb el
+   gap moderadament ajustat perquè hi càpiguen amb aire fins a 1280px. */
 .nav ul {
   display: flex;
-  gap: var(--space-8);
+  gap: var(--space-6);
 }
 
 .nav a {
   display: inline-block;
+  white-space: nowrap;
   font-family: var(--font-sans);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.045em;
   color: var(--color-navy);
   padding-block: var(--space-1);
   border-bottom: 1px solid transparent;
@@ -276,11 +310,14 @@
   transform: translateX(4px);
 }
 
-/* Frase editorial — part inferior dreta, sobre la fotografia */
+/* Frase editorial — part inferior dreta, sobre la fotografia. Desplaçada
+   lleugerament cap a l'interior (desktop) respecte al marge del contenidor
+   perquè no quedi enganxada a la vora dreta i formi més part de la
+   composició fotogràfica; sense centrar-la ni tocar-ne la mida o el to. */
 .hero__quote {
   position: absolute;
   z-index: 2;
-  right: var(--container-padding);
+  right: calc(var(--container-padding) + 1.75rem);
   bottom: var(--space-8);
   max-width: 15rem;
   text-align: right;
@@ -289,7 +326,13 @@
   color: var(--color-white);
   font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.3rem);
   line-height: 1.4;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+  /* Llegibilitat resolta pel vel discret de .hero__media::after (racó
+     inferior dret), no per un halo al text (FASE 3, 2026-09-13, instrucció
+     expressa: cap efecte artificial sobre el text mateix). Es manté només
+     una ombra petita i neta, el mateix tractament editorial que ja portava
+     la cita abans que el retall de la foto (FASE 2) revelés terra clar
+     sota seu. */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .hero__quote-line {
@@ -363,7 +406,6 @@
     position: relative;
     inset: auto;
     left: auto;
-    order: 2;
     width: 100%;
     aspect-ratio: 4 / 5;
   }
@@ -374,12 +416,10 @@
   }
 
   .hero__bar {
-    order: 1;
     padding-block: var(--space-4);
   }
 
   .hero__content {
-    order: 3;
     max-width: none;
     padding-inline: var(--container-padding);
     padding-block: var(--space-8);
@@ -537,27 +577,188 @@
   display: flex;
   align-items: center;
   gap: var(--space-12);
+  /* Ajust 2026-09-13: amb el --container-max general (1440px) la foto i el
+     text, en assolir la seva amplada màxima pròpia, deixaven una franja
+     buida molt gran a la dreta (el contingut no arribava mai a omplir la
+     resta de l'espai flexible). Es limita l'amplada d'aquest bloc perquè
+     la composició foto+text quedi compacta i centrada, i l'espai sobrant
+     passi a ser marge simètric fora de la franja (deliberat) en lloc de
+     buit residual dins seu. No toca --container-max global. */
+  max-width: 1140px;
 }
 
 /* La fotografia arrenca a l'extrem del contenidor, no dins del padding */
 .gloria__media {
+  position: relative;
   flex: 0 0 min(38%, 380px);
-  aspect-ratio: 8 / 5;
+  aspect-ratio: 4 / 5;
   margin-inline-start: calc(-1 * var(--container-padding));
   overflow: hidden;
 }
 
-.gloria__media img {
+/* ---- Diapositives de l'apartat Glòria (petició expressa 2026-09-12) ----
+   Abans aquest bloc repetia la mateixa fotografia del hero (retallada).
+   Ara mostra, en seqüència, quatre fotografies personals noves —
+   assets/images/gloria/gloria-galeria-0{1..4}.jpg, retallades a partir
+   dels originals de assets/images/gloria*.png a petició expressa— perquè
+   l'apartat no dupliqui el retrat amb toga i aporti una cara més
+   propera i humana. Vegeu src/components/gloria-slideshow.js per al
+   comportament (avanç automàtic amb pausa, punts de navegació) i
+   docs/assets-status.md per a l'origen de cada fotografia. */
+.gloria__slideshow-stage {
+  position: absolute;
+  inset: 0;
+}
+
+.gloria__slide {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 20%;
-  /* Enquadrament propi d'aquest bloc (no el mateix retall que el hero):
-     espatlles i toga visibles amb aire per sobre del cap, i el subjecte
-     lleugerament desplaçat cap a la dreta del requadre (més a prop del
-     titular) en lloc de centrat, per a un resultat més editorial. */
-  transform: scale(1.85);
-  transform-origin: 42% 30%;
+  object-position: center;
+  opacity: 0;
+  transition: opacity var(--motion-base) var(--easing-standard);
+}
+
+.gloria__slide--active {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gloria__slide {
+    transition: none;
+  }
+}
+
+.gloria__slideshow-controls {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: var(--space-6) var(--space-2) var(--space-3);
+  /* Escrim subtil perquè els controls blancs es llegeixin igual sobre
+     qualsevol de les quatre fotografies, sense afegir cap capa opaca. */
+  background: linear-gradient(to top, rgba(var(--color-navy-rgb), 0.5), transparent);
+}
+
+/* ---- Refinament de discreció dels controls (petició expressa 2026-09-13) ----
+   Punts i botó de pausa una mica més petits, més junts i amb menys pes
+   visual en repòs, perquè no llegeixin com el component de carrusel
+   genèric d'una plantilla. En repòs guarden prou contrast per ser
+   perceptibles; en hover/focus recuperen protagonisme. Els punts sí
+   mantenen mida tàctil suficient (28px, per sobre del mínim de 24px de
+   WCAG 2.2 SC 2.5.8) encara que el punt visible s'hagi reduït. */
+.gloria__slideshow-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.gloria__slideshow-dot::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(253, 252, 250, 0.4);
+  border: 1px solid rgba(253, 252, 250, 0.6);
+  transition:
+    background-color var(--motion-fast) var(--easing-standard),
+    border-color var(--motion-fast) var(--easing-standard),
+    transform var(--motion-fast) var(--easing-standard);
+}
+
+.gloria__slideshow-dot:hover::before,
+.gloria__slideshow-dot:focus-visible::before {
+  background: rgba(253, 252, 250, 0.75);
+  border-color: rgba(253, 252, 250, 0.9);
+}
+
+.gloria__slideshow-dot--active::before {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  transform: scale(1.15);
+}
+
+.gloria__slideshow-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-inline-start: var(--space-1);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.gloria__slideshow-toggle-icon {
+  position: relative;
+  width: 9px;
+  height: 10px;
+  opacity: 0.65;
+  transition: opacity var(--motion-fast) var(--easing-standard);
+}
+
+.gloria__slideshow-toggle:hover .gloria__slideshow-toggle-icon,
+.gloria__slideshow-toggle:focus-visible .gloria__slideshow-toggle-icon {
+  opacity: 1;
+}
+
+.gloria__slideshow-toggle-icon::before,
+.gloria__slideshow-toggle-icon::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  width: 2px;
+  background: var(--color-white);
+}
+
+.gloria__slideshow-toggle-icon::before {
+  left: 0;
+}
+
+.gloria__slideshow-toggle-icon::after {
+  right: 0;
+}
+
+/* Estat pausat: la icona de dues barres esdevé un triangle de reproducció */
+.gloria__slideshow-toggle--paused .gloria__slideshow-toggle-icon {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 9px;
+  border-color: transparent transparent transparent var(--color-white);
+  background: none;
+}
+
+.gloria__slideshow-toggle--paused .gloria__slideshow-toggle-icon::before,
+.gloria__slideshow-toggle--paused .gloria__slideshow-toggle-icon::after {
+  content: none;
+}
+
+.gloria__slideshow-dot:focus-visible,
+.gloria__slideshow-toggle:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gloria__slideshow-dot::before,
+  .gloria__slideshow-toggle-icon {
+    transition: none;
+  }
 }
 
 .gloria__content {
@@ -586,7 +787,10 @@
 
   .gloria__media {
     flex-basis: auto;
-    aspect-ratio: 16 / 9;
+    /* Es manté la relació 4:5 (mateixa que desktop): les quatre fotografies
+       de la diapositiva són retrats verticals, no un retall panoràmic com
+       l'anterior. Un 4:5 a amplada completa de mòbil ja dona prou alçada
+       sense necessitat d'acotar-la més. */
     margin-inline: calc(-1 * var(--container-padding));
   }
 
@@ -612,11 +816,42 @@
   }
 }
 
+/* Conté l'element gràfic de fons (.trajectoria__emblem, més avall) perquè
+   no sobresurti de la secció ni provoqui overflow horitzontal. */
+.trajectoria {
+  position: relative;
+  overflow: hidden;
+}
+
 .trajectoria__grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.1fr auto 1fr auto 1.4fr;
   align-items: center;
   column-gap: var(--space-8);
+}
+
+/* Recurs gràfic editorial secundari — balança/espasa + llorer, extret del
+   moodboard facilitat per la Glòria (assets/reference/, mateix univers
+   gràfic que el monograma GS; vegeu docs/landing-master-spec.md §8,
+   addenda 2026-09-12, i docs/assets-status.md). Fons molt subtil,
+   descentrat i a gran escala: reforça `25+` sense esdevenir una icona ni
+   competir-hi. z-index 0, sota .trajectoria__grid (z-index 1). No té cap
+   moviment ni animació, per la qual cosa no li afecta
+   prefers-reduced-motion. */
+.trajectoria__emblem {
+  position: absolute;
+  top: 46%;
+  left: 60%;
+  z-index: 0;
+  width: clamp(22rem, 18vw + 14rem, 40rem);
+  height: auto;
+  transform: translate(-38%, -50%);
+  opacity: 0.05;
+  filter: blur(2.5px);
+  pointer-events: none;
+  user-select: none;
 }
 
 .trajectoria__intro,
@@ -689,6 +924,16 @@
     width: 100%;
     height: 1px;
   }
+
+  /* Composició apilada: mida més continguda i desplaçat a la dreta perquè
+     continuï llegint-se com a fons, no com un element que envaeixi el
+     text (que ara ocupa tot l'ample). */
+  .trajectoria__emblem {
+    top: 42%;
+    left: 78%;
+    width: clamp(14rem, 60vw, 20rem);
+    opacity: 0.045;
+  }
 }
 
 @media (max-width: 430px) {
@@ -698,14 +943,335 @@
 }
 
 /* ==========================================================================
+   El despatx — docs/landing-master-spec.md §8a (secció afegida a petició
+   expressa, 2026-09-11). Columna esquerra: intro + placa editorial (intacta
+   des de §8a.10). Columna dreta (§8a.11): una única galeria compacta —
+   1 imatge gran + 3 miniatures secundàries — no una foto principal en
+   columna pròpia més una galeria a part. Sense targetes, ombres ni
+   border-radius.
+   ========================================================================== */
+
+/* Mateix ritme vertical que Trajectòria i Ressenyes (§8/§9): abans
+   d'aquesta revisió la secció tenia més aire superior/inferior que les
+   veïnes i trencava el ritme Trajectòria → El despatx → Ressenyes
+   (revisió 2026-09-12, ~12% menys que el .section per defecte).
+   padding-top es manté igual que Ressenyes (§9) perquè el ritme
+   Trajectòria → El despatx no canviï; només padding-bottom es retalla
+   (petició expressa, 2026-09-12): sumat al padding-top de `.ressenyes`
+   (també retallat, més avall), el buit entre el final de la galeria i
+   "Ressenyes" passava de ~224px a ~112px — les dues seccions comparteixen
+   el mateix fons (cap és `.section--muted`), així que aquell buit es
+   llegia com contingut que faltava, no com un canvi de franja. */
+@media (min-width: 1025px) {
+  .despatx {
+    padding-top: var(--space-28);
+    padding-bottom: var(--space-16);
+  }
+}
+
+/* 2 columnes (revisió §8a.11, substitueix les 3 de §8a.8 ara que la foto
+   principal ja no té columna pròpia): intro a l'esquerra, galeria
+   compacta a la dreta. `align-items: start` (no `stretch`): la galeria ja
+   no necessita estirar-se a l'alçada de cap foto de referència externa —
+   fixa la seva pròpia alçada (escenari + miniatures) i la intro simplement
+   hi queda alineada per dalt. */
+.despatx__layout {
+  display: grid;
+  grid-template-columns: 1fr 2.15fr;
+  grid-template-areas: 'intro gallery';
+  column-gap: var(--space-8);
+  align-items: start;
+}
+
+.despatx__intro {
+  grid-area: intro;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.despatx__text {
+  margin-top: var(--space-4);
+  max-width: 32ch;
+}
+
+/* Galeria compacta (§8a.12, proposta exacta de la clienta): 1 imatge gran
+   ("escenari") + 3 miniatures visibles + fletxes per navegar per una
+   reserva de 7 fotografies secundàries + comptador — mai la il·lustració
+   de la màquina d'escriure, que continua només a la placa navy. Pensada
+   per no allargar la secció: l'escenari té una relació d'aspecte apaïsada
+   (no la portrait alta d'abans de §8a.8) i les miniatures són petites.
+   Interacció (intercanvi + navegació per fletxes) a
+   src/components/despatx-gallery.js. */
+.despatx__gallery {
+  grid-area: gallery;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ritme vertical intern de la galeria (petició clienta): l'escenari i la
+   fila de miniatures han de percebre's com un únic component, no com dos
+   blocs separats — per això aquest marge és més ajustat (~24px) que el
+   que separa la fila de miniatures del comptador, just a sota, que manté
+   el ritme general de --space-4. */
+.despatx__gallery-stage {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: var(--space-6);
+}
+
+.despatx__gallery-stage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 180ms var(--easing-standard);
+}
+
+.despatx__gallery-stage img.despatx__gallery-stage-img--fading {
+  opacity: 0;
+}
+
+/* Fila de navegació: fletxa — 3 miniatures — fletxa. Les miniatures
+   ocupen tot l'espai disponible entre les dues fletxes. `gap` fixa la
+   distància entre cada fletxa i el bloc de miniatures (~24px, petició
+   expressa 2026-09-13: abans, el glif quedava centrat dins la caixa
+   clicable de 44px i semblava flotar lluny de les fotografies; ara el
+   glif s'alinea cap al costat de les miniatures —
+   `.despatx__gallery-arrow--prev/--next` més avall— i aquest `gap` és
+   exactament la distància visible resultant). */
+.despatx__gallery-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+/* 3 miniatures visibles (§8a.12): de les 7 que viuen al DOM (perquè
+   l'i18n i l'accessibilitat en tinguin sempre el text complet), només 3
+   estan sense l'atribut `hidden` en cada moment — la resta les amaga
+   src/components/despatx-gallery.js en desplaçar la finestra amb les
+   fletxes. `hidden` treu l'element del flux, així que el grid de 3
+   columnes sempre queda ple encara que la posició al DOM de les 3
+   visibles no sigui consecutiva. */
+.despatx__gallery-thumbs {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+/* Miniatura: botó real (navegable per teclat), sense caixa ni ombra.
+   Ja no hi ha cap estat "actiu" entre miniatures (la fotografia activa és
+   sempre l'escenari, mai una miniatura) — totes tenen la mateixa opacitat
+   en repòs; el canvi d'opacitat en hover/focus és només una pista
+   d'interactivitat, seguint el mateix llenguatge discret (opacitat, no
+   vores ni ombres) que la resta de la landing. */
+/* [hidden] ha de guanyar per sobre del `display: block` de sota (si no,
+   les 4 miniatures fora de la finestra visible de 3 quedarien igual de
+   visibles: un `display: block` amb selector de classe té més
+   especificitat que l'estil `[hidden]{display:none}` del navegador). */
+.despatx__gallery-thumb[hidden] {
+  display: none;
+}
+
+.despatx__gallery-thumb {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity var(--motion-fast) var(--easing-standard);
+}
+
+.despatx__gallery-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.despatx__gallery-thumb:hover,
+.despatx__gallery-thumb:focus-visible {
+  opacity: 0.8;
+}
+
+.despatx__gallery-thumb:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 2px;
+}
+
+/* Fletxes de navegació: mateix llenguatge discret que .ressenyes__btn
+   (glif sol, sense caixa ni ombra, subratllat fi en hover/focus) —
+   coherent amb la resta de la landing, no un control de plantilla. Sense
+   `:disabled` perquè la navegació és cíclica (mai cal desactivar-les). */
+.despatx__gallery-arrow {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1rem;
+  color: var(--color-navy);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: opacity var(--motion-fast) var(--easing-standard);
+}
+
+/* El glif es desplaça cap al costat de les miniatures dins la mateixa
+   caixa clicable de 44px (l'àrea tàctil no canvia, només la posició del
+   glif dins seu), perquè quedi a la distància fixada pel `gap` de
+   `.despatx__gallery-nav` en lloc de quedar centrat i semblar flotant. */
+.despatx__gallery-arrow--prev {
+  justify-content: flex-end;
+}
+
+.despatx__gallery-arrow--next {
+  justify-content: flex-start;
+}
+
+.despatx__gallery-arrow span {
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--motion-fast) var(--easing-standard);
+}
+
+.despatx__gallery-arrow:hover span,
+.despatx__gallery-arrow:focus-visible span {
+  border-bottom-color: currentColor;
+}
+
+/* Comptador discret ("01 / 07"): text petit, alineat amb la fletxa dreta
+   perquè es llegeixi com a metadada de la galeria, no com un element amb
+   pes visual propi. */
+.despatx__gallery-counter {
+  margin: 0;
+  padding-right: 44px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+/* Placa editorial navy: agrupa l'accent de la màquina d'escriure i la
+   frase en una única superfície de marca (mateix navy que el footer),
+   perquè deixin de llegir-se com una miniatura solta flotant en blanc i
+   passin a ser un petit moment deliberat de direcció d'art. Sense
+   border-radius ni ombra, coherent amb la resta de la landing.
+   "margin-top: auto" (desktop, ≥901px) l'ancora al mateix nivell
+   inferior que les fotografies; per sota, cau a un marge fix normal.
+   Padding i gap reequilibrats a §8a.10 (petició expressa "reequilibra la
+   caixa perquè il·lustració i text quedin més elegants"): la compressió
+   extrema de §8a.9 tenia sentit quan la galeria mostrava 6 fotografies
+   competint per espai; ara que la il·lustració és més completa (§8a.10) i
+   la galeria ha tornat a 5 fotografies més senzilles, la placa recupera
+   una mica d'aire perquè no es llegeixi atapeïda. */
+.despatx__editorial {
+  width: 100%;
+  margin-top: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background-color: var(--color-navy-footer);
+}
+
+/* Nota tècnica (§8a.11, no és un canvi d'estil de la placa): abans hi
+   havia un `margin-top: auto` aquí (≥901px) perquè la columna d'intro
+   s'estirava a l'alçada de la foto principal (`.despatx__layout` amb
+   `align-items: stretch`) i calia empènyer la placa cap avall perquè
+   quedés alineada amb la part inferior de les fotografies. Ara la
+   columna ja no s'estira a cap referència externa (§8a.11), així que
+   aquell `auto` ja no tenia cap espai per repartir i el marge superior
+   real de la placa hauria quedat a 0 — es treu la regla perquè torni a
+   valer sempre el `margin-top: var(--space-6)` de la declaració base,
+   mantenint el mateix aspecte de la placa d'abans. */
+
+/* Accent gràfic: il·lustració de línia de la màquina d'escriure AMB la
+   targeta (assets/images/brand/typewriter-line-navy-card.png, §8a.10),
+   amb fons transparent real. Com ara inclou la targeta a sobre de la
+   màquina, l'aspect-ratio és més "quadrat" (1516/1253 ≈ 1.21) que
+   l'anterior asset només-màquina (1535/954 ≈ 1.61, més apaïsat): amb la
+   mateixa amplada màxima, la il·lustració ara seria ~33% més alta.
+   L'amplada màxima es retalla una mica (13rem → 11.5rem) perquè l'alçada
+   final quedi semblant a la d'abans i la placa no creixi massa. */
+.despatx__accent {
+  width: 100%;
+  max-width: 11.5rem;
+  height: auto;
+}
+
+.despatx__plate-rule {
+  width: 1.5rem;
+  margin: 0;
+  background-color: var(--color-line-light);
+}
+
+/* Frase editorial secundària: no ha de competir amb la cita del hero
+   ("El dret al servei de les persones"), per això és més petita. Ara
+   viu dins la placa navy, amb color clar per contrast. */
+.despatx__quote {
+  margin: 0;
+  max-width: 26ch;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-white);
+  font-size: clamp(1rem, 0.3vw + 0.95rem, 1.15rem);
+  line-height: 1.4;
+}
+
+/* ---- Tablet i mòbil: apilat (§8a.11, simplificat a un sol breakpoint —
+   ja no calen dues transicions diferents "main"/"gallery" perquè ja no hi
+   ha una foto principal en columna pròpia). ---- */
+@media (max-width: 900px) {
+  .despatx__layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'intro'
+      'gallery';
+    row-gap: var(--space-8);
+  }
+
+  .despatx__text {
+    max-width: none;
+  }
+}
+
+/* ---- Mòbil petit: miniatures una mica més altes (4/3 és massa baix a
+   ~110px d'amplada de columna) ---- */
+@media (max-width: 480px) {
+  .despatx__gallery-thumb {
+    aspect-ratio: 1;
+  }
+}
+
+/* ==========================================================================
    Ressenyes — docs/landing-master-spec.md §9
    ========================================================================== */
 
 /* Només s'ajusta l'aire vertical de la secció; el disseny intern de les
-   targetes/carrusel no es toca en aquesta passada. */
+   targetes/carrusel no es toca en aquesta passada. padding-bottom es
+   manté igual que abans (mateix ritme abans de Contacte); només
+   padding-top es retalla (petició expressa, 2026-09-12) perquè, sumat al
+   padding-bottom retallat de `.despatx`, el buit entre el final de la
+   galeria d'"El despatx" i el títol "Ressenyes" quedi als ~100-130px
+   demanats en lloc dels ~224px anteriors. Vegeu el comentari a `.despatx`
+   més amunt. */
 @media (min-width: 1025px) {
   .ressenyes {
-    padding-block: var(--space-28);
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-28);
   }
 }
 
@@ -884,8 +1450,12 @@
 
 .contacte__grid {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  column-gap: var(--space-16);
+  /* Columnes asimètriques ~41/59 (FASE 8, petició expressa 2026-09-12,
+     abans ~46,5/53,5): la columna del formulari pesava massa visualment
+     respecte a la de contacte; trenca també la simetria de "dues caixes
+     bessones" pròpia d'una plantilla de contacte genèrica. */
+  grid-template-columns: minmax(0, 0.82fr) auto minmax(0, 1.18fr);
+  column-gap: var(--space-12);
   align-items: start;
 }
 
@@ -897,8 +1467,8 @@
   display: grid;
   grid-template-columns: max-content 1fr;
   column-gap: var(--space-6);
-  row-gap: var(--space-4);
-  margin: var(--space-8) 0 0;
+  row-gap: var(--space-3);
+  margin: var(--space-6) 0 0;
 }
 
 .contacte__list dt {
@@ -929,11 +1499,16 @@
 }
 
 .contacte__map {
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
   width: 100%;
-  height: 480px;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-line);
+  /* Aspect-ratio en lloc d'una alçada fixa: es manté estable i responsiu
+     (docs/landing-master-spec.md §10.4) sense necessitat de redefinir-la a
+     cada breakpoint. Un únic filet superior —el mateix recurs que la resta
+     de separadors de la landing (§3.3)— en lloc d'una caixa amb vora i fons
+     blancs: el mapa passa a llegir-se com una continuació natural del bloc
+     d'Ubicació, no com un component encaixat a sobre. */
+  aspect-ratio: 4 / 3;
+  border-top: 1px solid var(--color-line);
   overflow: hidden;
 }
 
@@ -944,35 +1519,57 @@
   display: block;
 }
 
-/* Placeholder visual fins tenir l'iframe definitiu de Google Maps — vegeu
-   comentari a index.html, secció Ubicació. Mateixes dimensions que el mapa
-   final perquè el layout no "salti" en substituir-lo. */
-.contacte__map--placeholder {
+/* Bloc de consentiment previ a carregar l'iframe de Google Maps — vegeu
+   src/components/maps-consent.js. Mateixes dimensions que el mapa final
+   (definides a .contacte__map) perquè el layout no "salti" en substituir-lo
+   per l'iframe un cop hi ha consentiment. */
+.contacte__map-consent {
   display: flex;
+  height: 100%;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-surface-muted);
+  gap: var(--space-4);
   padding-inline: var(--space-8);
   text-align: center;
 }
 
-.contacte__map-placeholder-text {
+.contacte__map-consent-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  color: var(--color-navy);
+}
+
+.contacte__map-consent-text {
   margin: 0;
   max-width: 32ch;
   font-family: var(--font-sans);
   font-size: var(--fs-small);
-  font-style: italic;
   color: var(--color-text-secondary);
+}
+
+.contacte__map-consent-button {
+  padding: var(--space-3) var(--space-8);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  background-color: var(--color-navy);
+  border: 0;
+  cursor: pointer;
+  transition: background-color var(--motion-fast) var(--easing-standard);
+}
+
+.contacte__map-consent-button:hover {
+  background-color: var(--color-navy-footer);
 }
 
 /* ---- Portàtil ---- */
 @media (max-width: 1100px) {
   .contacte__grid {
     column-gap: var(--space-8);
-  }
-
-  .contacte__map {
-    height: 400px;
   }
 }
 
@@ -991,76 +1588,146 @@
     max-width: none;
   }
 
+  /* A ample de columna completa el 4/3 quedaria massa alt; una relació més
+     panoràmica manté el mapa proporcionat a l'estona apilada. */
   .contacte__map {
-    height: 320px;
-  }
-}
-
-/* ---- Mòbil petit ---- */
-@media (max-width: 420px) {
-  .contacte__map {
-    height: 280px;
+    aspect-ratio: 3 / 2;
   }
 }
 
 /* Subtítol "Ubicació", ara dins la columna esquerra (sobre el mateix
-   .contacte__title), amb menys pes visual que "Contacte" */
+   .contacte__title), amb menys pes visual que "Contacte". Marge superior
+   reduït (FASE 8, de --space-12 a --space-8): manté la separació respecte
+   a les dades de contacte —no ha de llegir-se com una fitxa administrativa
+   contínua— sense inflar l'alçada total del bloc. */
 .contacte__subtitle {
-  margin-top: var(--space-12);
+  margin-top: var(--space-8);
   font-size: var(--fs-h3);
 }
+
+/* Titular del formulari ("Envia'ns un missatge"): ara un <h3>, mateix nivell
+   que "Ubicació" — vegeu index.html. No reutilitza .contacte__subtitle
+   perquè és el primer element de la seva columna i no ha de portar el
+   mateix marge superior pensat per seguir la llista de dades de contacte. */
 
 /* ---- Formulari de contacte ---- */
 
 .contacte-form__legend {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
   font-family: var(--font-sans);
   font-size: var(--fs-small);
   color: var(--color-text-secondary);
 }
 
+/* Gap vertical entre camps (FASE 9, petició expressa: de --space-4 a
+   --space-8, ~32px — dins el rang 28–36px demanat). L'espaiat ampli de la
+   maqueta original és pensat per a separacions entre seccions (§3), no
+   entre camps d'un mateix formulari, però calia prou aire perquè cada
+   label es llegeixi clarament associat al camp anterior i no al següent. */
 .contacte-form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-  margin-top: var(--space-8);
+  gap: var(--space-8);
+  margin-top: var(--space-6);
 }
 
+/* Gap label → camp (ajust visual posterior: de --space-4 a --space-3,
+   ~12px — reducció d'un 25% respecte als 16px de la FASE 9). El label
+   quedava massa separat de la línia del camp i el formulari es llegia
+   més buit del necessari; el gap camp → camp següent (.contacte-form,
+   més amunt) es manté intacte per conservar la respiració general. */
 .contacte-form__field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
+}
+
+/* Correu electrònic + Telèfon en una mateixa fila (~50/50) en desktop i
+   tablet — FASE 8, petició expressa: abans apilats com la resta de camps,
+   cosa que allargava el formulari sense necessitat. Es desapila en mòbil
+   (vegeu breakpoint més avall). */
+.contacte-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--space-6);
+}
+
+/* Es desapila en mòbil — a ample petit, dues columnes de 50% deixarien
+   massa poc espai per escriure amb comoditat
+   (docs/landing-master-spec.md §"Responsive"). Regla situada després de
+   la definició base perquè guanyi la cascada (mateixa especificitat). */
+@media (max-width: 760px) {
+  .contacte-form__row {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-4);
+  }
 }
 
 .contacte-form__label {
   font-family: var(--font-sans);
   font-size: var(--fs-small);
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--color-navy);
 }
 
+/* Camps de tipus "línia" (sense caixa tancada): reutilitzen el mateix
+   recurs de filets fins blau marí que la resta de la landing (§3.3) en lloc
+   d'un input amb fons blanc i vora completa — menys pes visual de "caixa de
+   formulari" i més integrat en el llenguatge editorial general. El focus
+   visible el continua donant l'outline global (global.css), independent
+   d'aquesta vora. */
 .contacte-form__control {
   width: 100%;
-  padding: var(--space-3) var(--space-4);
+  padding-block: var(--space-3);
+  padding-inline: 0;
   font-family: var(--font-sans);
   font-size: var(--fs-body);
   color: var(--color-navy);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-line);
-  transition: border-color var(--motion-fast) var(--easing-standard);
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1.5px solid var(--color-border-input);
+  box-shadow: 0 1px 0 0 transparent;
+  transition: border-color var(--motion-fast) var(--easing-standard),
+    box-shadow var(--motion-fast) var(--easing-standard);
 }
 
 .contacte-form__control::placeholder {
   color: var(--color-text-secondary);
 }
 
-.contacte-form__control:hover,
-.contacte-form__control:focus-visible {
-  border-color: var(--color-navy);
+/* Hover i focus diferenciats (FASE 8, petició expressa): el hover és un
+   avís molt discret (mateix to que el text secundari); el focus és
+   inequívoc (filet blau marí + una línia extra via box-shadow, que no
+   afegeix gruix real i per tant no mou el layout). */
+.contacte-form__control:hover {
+  border-color: var(--color-text-secondary);
 }
 
+.contacte-form__control:focus-visible {
+  border-color: var(--color-navy);
+  box-shadow: 0 1px 0 0 var(--color-navy);
+}
+
+/* Estat d'error natiu (HTML5), només un cop l'usuari ha interactuat amb el
+   camp — evita marcar en vermell els camps obligatoris encara buits en
+   carregar la pàgina. Després del :hover/:focus-visible perquè l'error es
+   vegi encara que el camp tingui el focus. */
+.contacte-form__control:user-invalid {
+  border-color: var(--color-error);
+  box-shadow: 0 1px 0 0 var(--color-error);
+}
+
+/* El missatge és l'únic camp multilínia: un filet superior tanca l'àrea
+   pel cantó oposat perquè es llegeixi com un bloc propi (full ratllat),
+   sense tornar a una caixa tancada de quatre vores. Alçada inicial reduïda
+   lleugerament (ajust visual posterior: de 9rem a 7.5rem) perquè el camp
+   no es llegís desproporcionadament alt respecte a la resta; continua
+   sent prou espaiós per escriure i manté el resize vertical. */
 textarea.contacte-form__control {
-  min-height: 8.5rem;
+  min-height: 7.5rem;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-line);
   resize: vertical;
 }
 
@@ -1069,10 +1736,15 @@ textarea.contacte-form__control {
   color: var(--color-text-secondary);
 }
 
+/* Àrea clicable més còmoda (FASE 8, petició expressa) sense convertir la
+   fila en una caixa: el padding-block eixampla l'objectiu tàctil del
+   checkbox + etiqueta (docs/landing-master-spec.md / CLAUDE.md §6) i el
+   gap és lleugerament més gran perquè no es llegeixin enganxats. */
 .contacte-form__checkbox-row {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
+  gap: var(--space-4);
+  padding-block: var(--space-1);
 }
 
 .contacte-form__checkbox-row input[type='checkbox'] {
@@ -1088,6 +1760,7 @@ textarea.contacte-form__control {
   font-size: var(--fs-small);
   color: var(--color-text-secondary);
   line-height: 1.5;
+  padding-block: var(--space-1);
 }
 
 .contacte-form__checkbox-row a {
@@ -1137,8 +1810,44 @@ textarea.contacte-form__control {
   color: var(--color-error);
 }
 
+/* Estat intermedi "s'està enviant" (docs CLAUDE.md §6, estat d'enviament
+   diferenciat d'èxit/error) — to neutre, sense color de feedback. */
+.contacte-form__status[data-state='sending'] {
+  color: var(--color-text-secondary);
+}
+
+/* Entrada subtil dels dos blocs (FASE 8, petició expressa): un únic
+   fade + petit desplaçament vertical en carregar la secció, sense
+   dependre de scroll/IntersectionObserver — la landing no fa servir aquest
+   patró enlloc més i no calia introduir-hi una infraestructura nova només
+   per aquesta secció. prefers-reduced-motion ja es gestiona de forma
+   global (src/styles/reset.css): la duració de l'animació es redueix a
+   0.01ms i el bloc apareix directament en el seu estat final. */
+@keyframes contacte-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-3));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contacte__info,
+.contacte__form-col {
+  animation: contacte-entrada var(--motion-base) var(--easing-standard) both;
+}
+
+.contacte__form-col {
+  animation-delay: 80ms;
+}
+
 /* ==========================================================================
    Footer — docs/landing-master-spec.md §11
+   (restaurat 2026-09-12, petició expressa: la revisió FASE 7 d'aquesta
+   secció no funcionava visualment; es recupera el format, les proporcions
+   i el comportament responsive d'abans — vegeu addenda §11.2.)
    ========================================================================== */
 
 .site-footer {

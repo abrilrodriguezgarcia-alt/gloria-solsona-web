@@ -15,11 +15,13 @@ export function initContactForm() {
   const messages = isSpanish
     ? {
         notReady: 'El formulario aún no está activo. Mientras tanto, puedes escribirnos por teléfono o correo electrónico.',
+        sending: 'Enviando…',
         success: 'Gracias por tu mensaje. Te responderemos lo antes posible.',
         error: 'No se ha podido enviar el mensaje. Inténtalo de nuevo o escríbenos por correo electrónico.',
       }
     : {
         notReady: "El formulari encara no està actiu. Mentrestant, pots escriure'ns per telèfon o correu electrònic.",
+        sending: "S'està enviant…",
         success: 'Gràcies pel teu missatge. Et respondrem al més aviat possible.',
         error: "No s'ha pogut enviar el missatge. Torna-ho a provar o escriu-nos per correu electrònic.",
       };
@@ -39,6 +41,7 @@ export function initContactForm() {
     }
 
     submitButton.disabled = true;
+    showStatus('sending', messages.sending);
 
     try {
       const response = await fetch(FORM_ENDPOINT, {

@@ -4,7 +4,18 @@ Aquest document recull només la informació que cal confirmar amb la clienta ab
 
 ## Identitat i marca
 
-- Confirmar si el logotip oficial ha de dir `Advocat` o `Advocada`.
+- Confirmar si el logotip oficial ha de dir `Advocat` o `Advocada`. Des de
+  FASE 4 (2026-09-13, instrucció expressa) tant el header com el footer
+  fan servir el fitxer oficial `assets/brand/logotip.png` tal qual, amb
+  `Advocat` — vegeu `docs/landing-master-spec.md` §5.2.
+- **Pendent (§8a.10, 2026-09-12; abans §8a.9):** la placa navy de la
+  secció «El despatx» mostra la il·lustració
+  `assets/images/brand/typewriter-line-navy-card.png`, amb la targeta de
+  presentació de la màquina d'escriure visible: nom i el text `Advocat`
+  (masculí). Ja **no** inclou telèfon/fax/mòbil/email (a §8a.9 hi havia
+  una versió anterior amb totes les dades de contacte, retirada). Cal
+  confirmar amb la clienta si "Advocat" s'ha de corregir a "Advocada" en
+  aquest material de marca. Vegeu `docs/assets-status.md`.
 - Confirmar si existeixen versions oficials del logo en SVG, PNG o PDF.
 - Confirmar si hi ha manual de marca o colors corporatius oficials.
 - Confirmar tipografia corporativa, si n’hi ha.

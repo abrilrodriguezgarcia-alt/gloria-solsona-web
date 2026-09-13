@@ -42,7 +42,9 @@ No incorporar com a dada definitiva fins que es confirmi:
 - ús o no de serveis de tercers que impliquin cookies no essencials;
 - domini definitiu;
 - proveïdor de hosting/desplegament definitiu;
-- si el fitxer oficial del logotip ha de mantenir la paraula **«Advocat»** o s'ha d'actualitzar a **«Advocada»**.
+- si el fitxer oficial del logotip ha de mantenir la paraula **«Advocat»** o s'ha d'actualitzar a **«Advocada»**;
+- textos definitius de la secció «El despatx» (intro i frase editorial «El compromís és un acte, no una paraula.» són provisionals, sense autoria confirmada);
+- si les fotografies provisionals d'«El despatx» (docs/assets-status.md) es poden mantenir més enllà de la demo o cal fotografia professional abans de publicar.
 
 ## Regla de desenvolupament
 

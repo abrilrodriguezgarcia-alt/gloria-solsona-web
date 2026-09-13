@@ -16,17 +16,19 @@
 </head>
 <body>
 <a class="skip-link" href="#contingut-principal">Saltar al contenido principal</a>
-<!-- Header integrat al hero — docs/landing-master-spec.md §5 -->
+<!--
+      Header — docs/landing-master-spec.md §5.
+      Actualització (FASE 3, 2026-09-13, instrucció expressa): el menú ja
+      no se superposa a la fotografia. Abans el logo+nav vivien dins
+      `.hero` (superposats a `.hero__media`) i depenien d'un halo de llum
+      darrere el text per llegir-se sobre qualsevol tram de la foto; ara
+      formen una franja pròpia (`.site-header__bar`), fora de `.hero`, amb
+      el mateix fons clar que la resta de la web. Substitueix la decisió
+      "header integrat al hero" de §4/§5.1 per a la part de navegació —
+      vegeu la nota d'actualització a §5.
+    -->
 <header class="site-header" id="site-header">
-<div class="hero">
-<div class="hero__media">
-<img alt="Glòria Solsona Martí, abogada, sentada con toga en un espacio con columnas de piedra." class="hero__photo" fetchpriority="high" height="1230" src="/images/gloria-hero-provisional.jpg" width="1170"/>
-<p class="hero__quote">
-            “El derecho<br/>al servicio<br/>de las personas.”
-            <span aria-hidden="true" class="hero__quote-line"></span>
-</p>
-</div>
-<img alt="" aria-hidden="true" class="hero__monogram" height="127" src="/brand/monogram-gs.png" width="120"/>
+<div class="site-header__bar">
 <div class="hero__bar container">
 <a class="logo" href="/es/">
 <img alt="Glòria Solsona Martí — Abogado" class="logo__image" height="200" src="/brand/logotip.png" width="568"/>
@@ -45,12 +47,23 @@
 <ul role="list">
 <li><a href="#arees">Áreas</a></li>
 <li><a href="#gloria">Glòria</a></li>
+<li><a href="#despatx">El despacho</a></li>
 <li><a href="#ressenyes">Reseñas</a></li>
 <li><a href="#contacte">Contacto</a></li>
 </ul>
 </nav>
 </div>
 </div>
+</div>
+<div class="hero">
+<div class="hero__media">
+<img alt="Glòria Solsona Martí, abogada, sentada con toga en un espacio con columnas de piedra." class="hero__photo" fetchpriority="high" height="1374" src="/images/gloria-hero-provisional.jpg" width="1145"/>
+<p class="hero__quote">
+            “El derecho<br/>al servicio<br/>de las personas.”
+            <span aria-hidden="true" class="hero__quote-line"></span>
+</p>
+</div>
+<img alt="" aria-hidden="true" class="hero__monogram" height="127" src="/brand/monogram-gs.png" width="120"/>
 <div class="hero__content">
 <h1 class="hero__title">Glòria Solsona Martí</h1>
 <p class="hero__subtitle">Abogada</p>
@@ -115,16 +128,35 @@
 <section aria-labelledby="gloria-titol" class="section gloria" id="gloria">
 <div class="container gloria__row">
 <!--
-            Encara no hi ha cap fotografia dedicada a aquest bloc
-            (docs/assets-status.md: "fotografia/retrat definitiu del bloc de
-            presentació" continua pendent). Mentrestant s'utilitza el mateix
-            asset del hero (assets/images/gloria-hero-provisional.jpg) amb un
-            enquadrament més tancat (object-position) per aproximar el crop
-            de la referència aprovada, sense retocar ni generar cap imatge
-            nova. Substituir per la fotografia dedicada quan arribi.
+            Fotografia dedicada a aquest bloc (petició expressa 2026-09-12):
+            abans es reutilitzava el mateix asset del hero
+            (gloria-hero-provisional.jpg, retrat amb toga) amb un
+            enquadrament més tancat. Ara mostra, en seqüència automàtica,
+            quatre fotografies personals noves seleccionades i retallades a
+            partir dels originals que la clienta ha facilitat a
+            assets/images/ (gloria.png, "gloria 2.png", "Gloria 3.png",
+            "gloria 4.png" — vegeu docs/assets-status.md per a l'origen
+            complet i els criteris de selecció). Comportament a
+            src/components/gloria-slideshow.js: avanç automàtic cada 5s,
+            pausable (compleix WCAG 2.2.2) i aturat per defecte si
+            prefers-reduced-motion està actiu.
           -->
-<div class="gloria__media">
-<img alt="Retrato de Glòria Solsona Martí, abogada." height="1230" src="/images/gloria-hero-provisional.jpg" width="1170"/>
+<div aria-label="Fotografías de Glòria Solsona" aria-roledescription="carrusel" class="gloria__media gloria__slideshow" role="group">
+<div class="gloria__slideshow-stage">
+<img alt="Glòria Solsona Martí sonriendo en un retrato personal." class="gloria__slide gloria__slide--active" decoding="async" height="1375" loading="eager" src="/images/gloria/gloria-galeria-01.jpg" width="1100"/>
+<img alt="Glòria Solsona Martí en un momento distendido, rodeada de libros." class="gloria__slide" decoding="async" height="1375" loading="lazy" src="/images/gloria/gloria-galeria-02.jpg" width="1100"/>
+<img alt="Glòria Solsona Martí en un espacio de libros." class="gloria__slide" decoding="async" height="1375" loading="lazy" src="/images/gloria/gloria-galeria-03.jpg" width="1100"/>
+<img alt="Glòria Solsona Martí en un retrato cercano." class="gloria__slide" decoding="async" height="1375" loading="lazy" src="/images/gloria/gloria-galeria-04.jpg" width="1100"/>
+</div>
+<div class="gloria__slideshow-controls">
+<button aria-label="Fotografía 1 de 4" aria-pressed="true" class="gloria__slideshow-dot gloria__slideshow-dot--active" type="button"></button>
+<button aria-label="Fotografía 2 de 4" aria-pressed="false" class="gloria__slideshow-dot" type="button"></button>
+<button aria-label="Fotografía 3 de 4" aria-pressed="false" class="gloria__slideshow-dot" type="button"></button>
+<button aria-label="Fotografía 4 de 4" aria-pressed="false" class="gloria__slideshow-dot" type="button"></button>
+<button aria-label="Pausa la secuencia de fotografías" aria-pressed="false" class="gloria__slideshow-toggle" type="button">
+<span aria-hidden="true" class="gloria__slideshow-toggle-icon"></span>
+</button>
+</div>
 </div>
 <div class="gloria__content">
 <h2 class="gloria__title" id="gloria-titol">Glòria Solsona Martí</h2>
@@ -135,8 +167,17 @@
 </div>
 </div>
 </section>
-<!-- Trajectòria — docs/landing-master-spec.md §8 -->
+<!--
+        Trajectòria — docs/landing-master-spec.md §8. Addenda 2026-09-12:
+        recurs gràfic editorial secundari (balança/espasa + llorer) darrere
+        del bloc `25+`, extret del moodboard de la clienta. Purament
+        decoratiu (alt="" + aria-hidden), a baixa opacitat via CSS — vegeu
+        .trajectoria__emblem a components.css. Substitueix la decisió
+        anterior de no incorporar-lo (§8a.5), documentada a
+        docs/assets-status.md.
+      -->
 <section aria-labelledby="trajectoria-titol" class="section section--muted trajectoria" id="trajectoria">
+<img alt="" aria-hidden="true" class="trajectoria__emblem" decoding="async" height="963" loading="lazy" src="/images/brand/trajectoria-emblem.png" width="1074"/>
 <div class="container trajectoria__grid">
 <div class="trajectoria__intro">
 <h2 class="trajectoria__title" id="trajectoria-titol">Trayectoria</h2>
@@ -153,6 +194,80 @@
 <p class="trajectoria__text">
               Un ejercicio de la abogacía basado en el rigor, la cercanía y el compromiso con cada persona.
             </p>
+</div>
+</div>
+</section>
+<!--
+        El despatx — docs/landing-master-spec.md §8a (secció afegida a
+        petició expressa, 2026-09-11; revisada 2026-09-12 §8a.5 a §8a.12).
+        Columna esquerra (títol, text i placa navy) intacta des de §8a.10 —
+        no tocar sense instrucció expressa.
+
+        Galeria (§8a.12, reescrita segons proposta exacta de la clienta):
+        1 escenari gran + 3 miniatures visibles + fletxes per navegar per
+        una reserva de 7 fotografies secundàries + comptador "01 / 07".
+        8 fotografies reals en total (escenari inicial + les 7). Interacció
+        (src/components/despatx-gallery.js): clicar una miniatura
+        l'intercanvia amb l'escenari (fos suau); les fletxes desplacen la
+        finestra de 3 miniatures visibles per la reserva de 7 (cíclic, sense
+        autoplay). Totes 7 viuen sempre al DOM (per a l'i18n i perquè cap
+        lector de pantalla en perdi cap); les que no toca mostrar es marquen
+        `hidden` per JS. Ordre de la reserva = ordre exacte demanat: vidre
+        GS, escriptori de vidre, detall taula/llum/quadres/GS, vista ampla
+        amb impressora, taula amb flors, brodat GS, paret de llibres antics.
+      -->
+<section aria-labelledby="despatx-titol" class="section despatx" id="despatx">
+<div class="container despatx__layout">
+<div class="despatx__intro">
+<h2 class="despatx__title" id="despatx-titol">El despacho</h2>
+<hr aria-hidden="true" class="divider-h accent-line"/>
+<p class="despatx__text">
+              Un espacio cercano, sereno y pensado para atender cada consulta con la discreción que requiere.
+            </p>
+<div class="despatx__editorial">
+<img alt="" aria-hidden="true" class="despatx__accent" decoding="async" height="1253" loading="lazy" src="/images/brand/typewriter-line-navy-card.png" width="1516"/>
+<hr aria-hidden="true" class="despatx__plate-rule"/>
+<p class="despatx__quote">“El compromiso es un acto, no una palabra.”</p>
+</div>
+</div>
+<div class="despatx__gallery">
+<div class="despatx__gallery-stage">
+<img alt="Zona de atención del despacho de Glòria Solsona: butacas, lámpara de pie, estantería y los cuadros de bolígrafo, pluma y lápiz." decoding="async" height="1200" id="despatx-gallery-stage-img" loading="lazy" src="/images/office/office-meeting-area.jpg" width="870"/>
+</div>
+<div class="despatx__gallery-nav">
+<button aria-label="Fotografías anteriores" class="despatx__gallery-arrow despatx__gallery-arrow--prev" type="button">
+<span aria-hidden="true">←</span>
+</button>
+<div aria-label="Más fotografías del despacho" class="despatx__gallery-thumbs" role="group">
+<button aria-label="Mostrar como principal: monograma GS en el cristal" class="despatx__gallery-thumb" data-full="/images/office/office-glass-logo.jpg" type="button">
+<img alt="Monograma GS grabado en el cristal del despacho." decoding="async" height="1200" loading="lazy" src="/images/office/office-glass-logo.jpg" width="1600"/>
+</button>
+<button aria-label="Mostrar como principal: escritorio de cristal frente a la estantería blanca" class="despatx__gallery-thumb" data-full="/images/office/office-library.jpg" type="button">
+<img alt="Escritorio de cristal frente a la estantería blanca del despacho de Glòria Solsona." decoding="async" height="1200" loading="lazy" src="/images/office/office-library.jpg" width="1600"/>
+</button>
+<button aria-label="Mostrar como principal: detalle de la mesa de cristal, la lámpara y los cuadros con la pieza GS" class="despatx__gallery-thumb" data-full="/images/office/office-desk-detail-gs.jpg" type="button">
+<img alt="Detalle del despacho: mesa de cristal, lámpara de pie y los cuadros de pluma y lápiz, con una pieza GS." decoding="async" height="770" loading="lazy" src="/images/office/office-desk-detail-gs.jpg" width="1026"/>
+</button>
+<button aria-label="Mostrar como principal: vista amplia con la mesa principal y la impresora" class="despatx__gallery-thumb" data-full="/images/office/office-wide-view.jpg" hidden="" type="button">
+<img alt="Vista amplia del despacho con la mesa principal, la estantería, la impresora y la lámpara de pie." decoding="async" height="1250" loading="lazy" src="/images/office/office-wide-view.jpg" width="2000"/>
+</button>
+<button aria-label="Mostrar como principal: mesa con flores y estanterías jurídicas" class="despatx__gallery-thumb" data-full="/images/office/office-legal-library-flowers.jpg" hidden="" type="button">
+<img alt="Mesa con flores frente a las estanterías de fondo jurídico del despacho." decoding="async" height="1250" loading="lazy" src="/images/office/office-legal-library-flowers.jpg" width="2000"/>
+</button>
+<button aria-label="Mostrar como principal: monograma GS bordado" class="despatx__gallery-thumb" data-full="/images/office/office-gs-embroidery.jpg" hidden="" type="button">
+<img alt="Monograma GS bordado, detalle decorativo del despacho." decoding="async" height="1656" loading="lazy" src="/images/office/office-gs-embroidery.jpg" width="1486"/>
+</button>
+<button aria-label="Mostrar como principal: pared de libros antiguos" class="despatx__gallery-thumb" data-full="/images/office/office-antique-books.jpg" hidden="" type="button">
+<img alt="Pared de libros antiguos del despacho de Glòria Solsona." decoding="async" height="1260" loading="lazy" src="/images/office/office-antique-books.jpg" width="2016"/>
+</button>
+</div>
+<button aria-label="Fotografías siguientes" class="despatx__gallery-arrow despatx__gallery-arrow--next" type="button">
+<span aria-hidden="true">→</span>
+</button>
+</div>
+<p aria-live="polite" class="despatx__gallery-counter">
+<span class="despatx__gallery-counter-current">01</span> / <span class="despatx__gallery-counter-total">07</span>
+</p>
 </div>
 </div>
 </section>
@@ -273,6 +388,43 @@
         senzill (p. ex. Formspree). Vegeu FORM_ENDPOINT a
         src/components/contact-form.js — pendent que la clienta confirmi
         compte/endpoint. Fins llavors no s'envia cap dada enlloc.
+
+        Refinament FASE 6 (petició expressa, 2026-09-12): mateixa estructura
+        i mateixes dades/camps, sense afegir ni treure funcionalitat.
+        Ajustos purament visuals perquè el bloc es llegeixi menys com una
+        plantilla de "mapa + formulari" i més com una peça editorial pròpia:
+        columnes lleugerament asimètriques en lloc de 1fr/1fr, un únic
+        titular de secció (h2 "Contacte"; "Envia'ns un missatge" passa a h3,
+        mateix nivell que "Ubicació", en lloc de repetir un segon h2 mirall),
+        camps del formulari com a filet fi en lloc de caixa amb vora i fons
+        blancs, i el mapa integrat amb un filet superior en lloc d'una caixa
+        blanca amb vora pròpia. Vegeu src/styles/components.css per als
+        comentaris de detall.
+
+        Refinament FASE 8 (petició expressa, 2026-09-12): mateixes dades,
+        camps i integracions (Maps, enviament pendent) — cap canvi
+        d'estructura, funcionalitat ni dades. Objectiu: compactar l'alçada i
+        suavitzar la rigidesa de les dues columnes. Canvis:
+          - proporció de columnes ara ~41/59 (abans ~46,5/53,5);
+          - text introductori reformulat en primera persona, mateix registre
+            professional, sense copy comercial;
+          - espais verticals de la columna de contacte reduïts (llista,
+            "Ubicació", mapa);
+          - titular del formulari "Envia'ns un missatge" → "Envia'm un
+            missatge" (marca personal, coherent amb "al teu servei" del bloc
+            de trajectòria — vegeu src/i18n/es.json per a la traducció);
+          - Correu electrònic i Telèfon ara comparteixen una fila (abans
+            apilats), amb .contacte-form__row — es desapilen de nou en mòbil;
+          - separació vertical entre camps reduïda i textarea del missatge
+            amb una alçada inicial menor (min-height, vegeu components.css);
+          - microinteraccions dels camps diferenciades: hover subtil ≠ focus
+            (vegeu .contacte-form__control a components.css);
+          - fila del checkbox de privacitat amb més aire i àrea clicable
+            més còmoda, sense canviar el text ni l'enllaç;
+          - entrada subtil (fade/translate) de les dues columnes en carregar
+            la secció, respectant prefers-reduced-motion (gestionat de forma
+            global a src/styles/reset.css).
+        No es toca cap altra secció de la landing.
       -->
 <section aria-labelledby="contacte-titol" class="section section--muted contacte" id="contacte">
 <div class="container contacte__grid">
@@ -280,7 +432,7 @@
 <h2 class="contacte__title" id="contacte-titol">Contacto</h2>
 <hr aria-hidden="true" class="divider-h accent-line"/>
 <p class="contacte__intro">
-              Para concertar una consulta o solicitar más información, puede contactar directamente con el despacho.
+              Si quieres concertar una consulta o simplemente resolver una duda, escríbeme o llámame directamente.
             </p>
 <dl class="contacte__list">
 <dt>Teléfono</dt>
@@ -297,22 +449,42 @@
 </dl>
 <h3 class="contacte__subtitle" id="ubicacio-titol">Ubicación</h3>
 <!--
-              Google Maps: sense API key, sense JS API (embed lliure). A
-              petició expressa (2026-09-11) es carrega directament en lloc de
-              rere un clic. docs/legal-requirements.md continua marcant que,
-              abans de producció, cal revisar aquest comportament amb el
-              mecanisme de cookies/consentiment que s'implementi (fase
-              legal) — Google pot desar les seves pròpies cookies en carregar
-              aquest iframe.
+              Google Maps: embed lliure sense API key (recuperat tal qual,
+              instrucció expressa 2026-09-11). Carrega darrere un gate de
+              consentiment gestionat per src/components/maps-consent.js: NO
+              hi ha cap <iframe> al marcat inicial, només el bloc de
+              consentiment de sota. El JS crea l'iframe dinàmicament quan
+              l'usuari clica "Acceptar i mostrar el mapa" (o si ja hi havia
+              consentiment desat).
+
+              PENDENT quan existeixi el banner global de cookies/consentiment
+              (docs/legal-requirements.md, secció "Google Maps"): connectar-hi
+              aquest gate en lloc del clic manual — vegeu comentari a
+              src/components/maps-consent.js per als dos punts d'integració
+              previstos (funció exportada i esdeveniment global).
             -->
 <div aria-labelledby="ubicacio-titol" class="contacte__map">
-<iframe class="contacte__map-iframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Carrer%20Pintor%20Carbonell%2C%2017-19%2C%2008750%20Molins%20de%20Rei%2C%20Barcelona&amp;output=embed" title="Mapa de ubicación del despacho de Glòria Solsona Martí en Molins de Rei"></iframe>
+<div class="contacte__map-consent" data-map-consent="">
+<p class="contacte__map-consent-title">Mapa de Google Maps</p>
+<p class="contacte__map-consent-text">
+                  Para visualizar el mapa es necesario aceptar las cookies de servicios externos.
+                </p>
+<button class="contacte__map-consent-button" data-map-consent-accept="" type="button">
+                  Aceptar y mostrar el mapa
+                </button>
+</div>
 </div>
 </div>
 <hr aria-hidden="true" class="divider-v"/>
 <div class="contacte__form-col">
-<h2 class="contacte__title" id="formulari-titol">Envíanos un mensaje</h2>
-<hr aria-hidden="true" class="divider-h accent-line"/>
+<!--
+              h3 (no h2): mateix nivell que "Ubicació" §10.4. "Contacte" és
+              l'únic titular de secció (h2); el formulari i el mapa són
+              blocs secundaris dins seu — evita dos h2 mig a mig de la
+              mateixa secció i, visualment, que les dues columnes es llegeixin
+              com un mirall de pes igual (FASE 6, petició expressa).
+            -->
+<h3 class="contacte__title" id="formulari-titol">Envíame un mensaje</h3>
 <p class="contacte-form__legend">Los campos marcados con * son obligatorios.</p>
 <form action="#contacte" aria-labelledby="formulari-titol" class="contacte-form" method="post">
 <div class="contacte-form__field">
@@ -321,9 +493,13 @@
 </label>
 <input autocomplete="name" class="contacte-form__control" id="contacte-nom" name="nom" required="" type="text"/>
 </div>
+<!-- Correu i telèfon comparteixen fila en desktop/tablet (aprox.
+                   50/50); es desapilen en mòbil — vegeu .contacte-form__row
+                   a components.css. -->
+<div class="contacte-form__row">
 <div class="contacte-form__field">
 <label class="contacte-form__label" for="contacte-email">
-                  Correo electrónico <span aria-hidden="true">*</span>
+                    Correo electrónico <span aria-hidden="true">*</span>
 </label>
 <input autocomplete="email" class="contacte-form__control" id="contacte-email" name="email" required="" type="email"/>
 </div>
@@ -331,11 +507,12 @@
 <label class="contacte-form__label" for="contacte-telefon">Teléfono</label>
 <input autocomplete="tel" class="contacte-form__control" id="contacte-telefon" name="telefon" type="tel"/>
 </div>
+</div>
 <div class="contacte-form__field">
 <label class="contacte-form__label" for="contacte-missatge">
                   Mensaje <span aria-hidden="true">*</span>
 </label>
-<textarea aria-describedby="contacte-missatge-nota" class="contacte-form__control" id="contacte-missatge" name="missatge" required="" rows="5"></textarea>
+<textarea aria-describedby="contacte-missatge-nota" class="contacte-form__control" id="contacte-missatge" name="missatge" required="" rows="4"></textarea>
 <p class="contacte-form__note" id="contacte-missatge-nota">
                   No incluyas información confidencial o especialmente sensible en este formulario.
                 </p>
