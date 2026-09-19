@@ -33,7 +33,11 @@
 <p class="legal__notice">
 <strong>Este documento es provisional y no constituye una política de cookies definitiva.</strong>
           Falta auditar qué tecnologías reales se cargarán en producción. Véase
-          <code>docs/legal-requirements.md</code> para el detalle completo de lo que queda pendiente. Este sitio web <strong>todavía no incorpora ningún banner de consentimiento ni gestor de cookies (CMP)</strong>.
+          <code>docs/legal-requirements.md</code>
+          para el detalle completo de lo que queda pendiente.
+        </p>
+<p class="legal__notice">
+          El sitio web muestra un aviso de consentimiento para aceptar o rechazar el uso de Google Maps, pero <strong>todavía no se ha completado la auditoría de cookies necesaria para dar esta política por definitiva</strong>.
         </p>
 <section aria-labelledby="que-son-titol">
 <h2 id="que-son-titol">Qué son las cookies</h2>
@@ -44,19 +48,30 @@
 <section aria-labelledby="categories-titol">
 <h2 id="categories-titol">Categorías de cookies</h2>
 <p>
-            Pendiente de completar con una tabla definitiva una vez se auditen las tecnologías realmente utilizadas en producción.
+            Actualmente este sitio web no utiliza cookies propias de analítica, de medición ni de marketing. La única categoría activa es la de cookies de terceros necesarias para cargar el mapa interactivo de Google Maps en la sección de contacto, y solo se activa si das tu consentimiento (véase la siguiente sección). Esta lista se actualizará si en el futuro se incorpora algún otro servicio o herramienta al sitio web.
           </p>
 </section>
 <section aria-labelledby="propies-tercers-titol">
 <h2 id="propies-tercers-titol">Cookies propias y de terceros</h2>
 <p>
-            La sección de ubicación muestra un aviso de consentimiento antes de cargar el mapa de Google Maps: el iframe no se crea hasta que la persona usuaria hace clic para aceptarlo. Este mecanismo es temporal y local a este componente, a la espera del banner de consentimiento/CMP definitivo del sitio web. Una vez se decida el mecanismo de consentimiento definitivo, esta política deberá actualizarse con las cookies concretas que Google pueda utilizar. No hay ningún otro servicio de terceros activo.
+            Al llegar al sitio web se muestra un aviso que te permite aceptar o rechazar el uso de servicios de terceros, en concreto Google Maps para mostrar la ubicación del despacho en la sección de contacto.
+          </p>
+<p>
+            Mientras no tomas ninguna decisión, o si rechazas, Google Maps no se carga: no se inserta ningún <code>&lt;iframe&gt;</code> ni ningún script de Google, y no se envía ninguna petición a sus servidores. En este caso, la sección de ubicación muestra un enlace para abrir la ubicación directamente en Google Maps en una pestaña nueva, sin que esto implique cargar ningún contenido de Google dentro de este sitio web.
+          </p>
+<p>
+            Si aceptas los servicios de terceros, el mapa interactivo de Google Maps se carga en la sección de contacto, con el zoom, el desplazamiento y los controles habituales de Google Maps. Google, como proveedor independiente de este servicio, puede entonces establecer sus propias cookies y tratar datos técnicos de la conexión (por ejemplo, la dirección IP). No podemos garantizar qué cookies concretas intervienen, ya que pueden variar según el navegador, si tienes una sesión de Google abierta o tu propia configuración de privacidad; puedes consultar la
+            <a href="https://policies.google.com/technologies/cookies" rel="noopener noreferrer" target="_blank">política de cookies de Google</a>
+            para más detalle.
+          </p>
+<p>
+            No hay ningún otro servicio de terceros activo en el sitio web: en concreto, no se utiliza Google Analytics, Meta Pixel, publicidad, remarketing ni ningún otro rastreador de marketing.
           </p>
 </section>
 <section aria-labelledby="gestio-titol">
 <h2 id="gestio-titol">Gestión del consentimiento</h2>
 <p>
-            Todavía no se ha implementado ningún banner de consentimiento ni gestor de cookies (CMP). Se prevé incorporarlo cuando se definan los servicios de terceros definitivos del sitio web.
+            Puedes aceptar, rechazar o retirar un consentimiento ya dado en cualquier momento con el enlace «Configurar cookies» del pie de página, disponible en todas las páginas del sitio. Al hacer clic se vuelve a mostrar el aviso de consentimiento para que puedas elegir de nuevo: si cambias de Aceptar a Rechazar, Google Maps deja de cargarse inmediatamente, y a la inversa. La decisión se guarda localmente en el navegador (no se envía a ningún servidor) y no se volverá a pedir hasta que la cambies.
           </p>
 </section>
 <p class="legal__back"><a href="/es/">← Volver al inicio</a></p>
@@ -72,6 +87,11 @@
 <li><a href="/es/legal/aviso-legal.html">Aviso legal</a></li>
 <li><a href="/es/legal/privacidad.html">Privacidad</a></li>
 <li><a aria-current="page" href="/es/legal/cookies.html">Cookies</a></li>
+<li>
+<button class="footer__legal-button" data-cookie-settings="" type="button">
+                Configurar cookies
+              </button>
+</li>
 </ul>
 </nav>
 </div>

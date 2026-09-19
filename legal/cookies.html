@@ -45,9 +45,14 @@
           <strong>Aquest document és provisional i no constitueix una política de cookies
           definitiva.</strong>
           Falta auditar quines tecnologies reals es carregaran a producció. Vegeu
-          <code>docs/legal-requirements.md</code> per al detall complet del que resta pendent. Aquest
-          lloc web <strong>encara no incorpora cap bàner de consentiment ni gestor de cookies
-          (CMP)</strong>.
+          <code>docs/legal-requirements.md</code>
+          per al detall complet del que resta pendent.
+        </p>
+
+        <p class="legal__notice">
+          El lloc web mostra un avís de consentiment per acceptar o rebutjar l'ús de Google
+          Maps, però <strong>encara no s'ha completat l'auditoria de cookies necessària per
+          donar aquesta política per definitiva</strong>.
         </p>
 
         <section aria-labelledby="que-son-titol">
@@ -61,28 +66,55 @@
         <section aria-labelledby="categories-titol">
           <h2 id="categories-titol">Categories de cookies</h2>
           <p>
-            Pendent de completar amb una taula definitiva un cop s'auditin les tecnologies
-            realment utilitzades en producció.
+            Actualment aquest lloc web no utilitza cookies pròpies d'analítica, de mesurament ni
+            de màrqueting. L'única categoria activa és la de cookies de tercers necessàries per
+            carregar el mapa interactiu de Google Maps a la secció de contacte, i només s'activa
+            si hi dónes el teu consentiment (vegeu la secció següent). Aquesta llista
+            s'actualitzarà si en el futur s'incorpora algun altre servei o eina al lloc web.
           </p>
         </section>
 
         <section aria-labelledby="propies-tercers-titol">
           <h2 id="propies-tercers-titol">Cookies pròpies i de tercers</h2>
           <p>
-            La secció d'ubicació mostra un avís de consentiment abans de carregar el mapa de
-            Google Maps: l'iframe no es crea fins que la persona usuària hi clica per acceptar-lo.
-            Aquest mecanisme és temporal i local a aquest component, a l'espera del bàner de
-            consentiment/CMP definitiu del lloc web. Un cop es decideixi el mecanisme de
-            consentiment definitiu, aquesta política s'haurà d'actualitzar amb les cookies
-            concretes que Google pugui utilitzar. No hi ha cap altre servei de tercers actiu.
+            En arribar al lloc web es mostra un avís que et permet acceptar o rebutjar l'ús de
+            serveis de tercers, en concret Google Maps per mostrar la ubicació del despatx a la
+            secció de contacte.
+          </p>
+          <p>
+            Mentre no prens cap decisió, o si rebutges, Google Maps no es carrega: no s'insereix
+            cap <code>&lt;iframe&gt;</code> ni cap script de Google, i no s'envia cap petició als
+            seus servidors. En aquest cas, la secció d'ubicació mostra un enllaç per obrir la
+            ubicació directament a Google Maps en una pestanya nova, sense que això impliqui
+            carregar cap contingut de Google dins d'aquest lloc web.
+          </p>
+          <p>
+            Si acceptes els serveis de tercers, el mapa interactiu de Google Maps es carrega a la
+            secció de contacte, amb el zoom, el desplaçament i els controls habituals de Google
+            Maps. Google, com a proveïdor independent d'aquest servei, pot llavors establir les
+            seves pròpies cookies i tractar dades tècniques de la connexió (per exemple, l'adreça
+            IP). No podem garantir quines cookies concretes hi intervenen, ja que poden variar
+            segons el navegador, si tens una sessió de Google oberta o la teva pròpia
+            configuració de privadesa; pots consultar la
+            <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener noreferrer">política de cookies de Google</a>
+            per a més detall.
+          </p>
+          <p>
+            No hi ha cap altre servei de tercers actiu al lloc web: en concret, no s'hi utilitza
+            Google Analytics, Meta Pixel, publicitat, remarketing ni cap altre traçador de
+            màrqueting.
           </p>
         </section>
 
         <section aria-labelledby="gestio-titol">
           <h2 id="gestio-titol">Gestió del consentiment</h2>
           <p>
-            Encara no s'ha implementat cap bàner de consentiment ni gestor de cookies (CMP). Es
-            preveu incorporar-lo quan es defineixin els serveis de tercers definitius del lloc web.
+            Pots acceptar, rebutjar o retirar un consentiment ja donat en qualsevol moment amb
+            l'enllaç «Configurar cookies» del peu de pàgina, disponible a totes les pàgines del
+            lloc. En clicar-hi es torna a mostrar l'avís de consentiment perquè puguis triar de
+            nou: si canvies d'Acceptar a Rebutjar, Google Maps deixa de carregar-se immediatament,
+            i a l'inrevés. La decisió es desa localment al navegador (no s'envia a cap servidor) i
+            no es tornarà a demanar fins que la canviïs.
           </p>
         </section>
 
@@ -107,6 +139,11 @@
             <li><a href="/legal/avis-legal.html">Avís legal</a></li>
             <li><a href="/legal/privacitat.html">Privacitat</a></li>
             <li><a href="/legal/cookies.html" aria-current="page">Cookies</a></li>
+            <li>
+              <button type="button" class="footer__legal-button" data-cookie-settings>
+                Configurar cookies
+              </button>
+            </li>
           </ul>
         </nav>
       </div>

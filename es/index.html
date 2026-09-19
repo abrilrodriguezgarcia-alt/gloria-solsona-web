@@ -128,31 +128,31 @@
 <section aria-labelledby="gloria-titol" class="section gloria" id="gloria">
 <div class="container gloria__row">
 <!--
-            Fotografia dedicada a aquest bloc (petició expressa 2026-09-12):
-            abans es reutilitzava el mateix asset del hero
-            (gloria-hero-provisional.jpg, retrat amb toga) amb un
-            enquadrament més tancat. Ara mostra, en seqüència automàtica,
-            quatre fotografies personals noves seleccionades i retallades a
-            partir dels originals que la clienta ha facilitat a
-            assets/images/ (gloria.png, "gloria 2.png", "Gloria 3.png",
-            "gloria 4.png" — vegeu docs/assets-status.md per a l'origen
-            complet i els criteris de selecció). Comportament a
-            src/components/gloria-slideshow.js: avanç automàtic cada 5s,
+            Fotografia dedicada a aquest bloc (petició expressa 2026-09-12,
+            selecció reduïda 2026-09-19 — vegeu docs/assets-status.md).
+            Mostra, en seqüència automàtica, 2 fotografies de Glòria amb
+            tractament (blanc i negre), enquadrament (mig cos) i qualitat
+            visual homogenis, perquè el bloc llegeixi com una selecció
+            editorial i no com un àlbum personal. S'han descartat
+            expressament les fotografies casuals (biblioteca amb motxilla,
+            selfie de primer pla), que es mantenen sense ús a
+            assets/images/gloria/ per si calen més endavant. Estructura
+            preparada perquè substituir qualsevol fotografia (o afegir-ne
+            una tercera) només requereixi canviar l'`src`/`alt` d'aquí i
+            l'etiqueta "de 2" dels punts de navegació — sense tocar
+            src/components/gloria-slideshow.js, que és agnòstic al nombre
+            de diapositives. Comportament: avanç automàtic cada 5s,
             pausable (compleix WCAG 2.2.2) i aturat per defecte si
             prefers-reduced-motion està actiu.
           -->
 <div aria-label="Fotografías de Glòria Solsona" aria-roledescription="carrusel" class="gloria__media gloria__slideshow" role="group">
 <div class="gloria__slideshow-stage">
 <img alt="Glòria Solsona Martí sonriendo en un retrato personal." class="gloria__slide gloria__slide--active" decoding="async" height="1375" loading="eager" src="/images/gloria/gloria-galeria-01.jpg" width="1100"/>
-<img alt="Glòria Solsona Martí en un momento distendido, rodeada de libros." class="gloria__slide" decoding="async" height="1375" loading="lazy" src="/images/gloria/gloria-galeria-02.jpg" width="1100"/>
-<img alt="Glòria Solsona Martí en un espacio de libros." class="gloria__slide" decoding="async" height="1375" loading="lazy" src="/images/gloria/gloria-galeria-03.jpg" width="1100"/>
-<img alt="Glòria Solsona Martí en un retrato cercano." class="gloria__slide" decoding="async" height="1375" loading="lazy" src="/images/gloria/gloria-galeria-04.jpg" width="1100"/>
+<img alt="Glòria Solsona Martí en un momento distendido, rodeada de libros." class="gloria__slide" decoding="async" height="1196" loading="lazy" src="/images/gloria/gloria-galeria-02.jpg" width="964"/>
 </div>
 <div class="gloria__slideshow-controls">
-<button aria-label="Fotografía 1 de 4" aria-pressed="true" class="gloria__slideshow-dot gloria__slideshow-dot--active" type="button"></button>
-<button aria-label="Fotografía 2 de 4" aria-pressed="false" class="gloria__slideshow-dot" type="button"></button>
-<button aria-label="Fotografía 3 de 4" aria-pressed="false" class="gloria__slideshow-dot" type="button"></button>
-<button aria-label="Fotografía 4 de 4" aria-pressed="false" class="gloria__slideshow-dot" type="button"></button>
+<button aria-label="Fotografía 1 de 2" aria-pressed="true" class="gloria__slideshow-dot gloria__slideshow-dot--active" type="button"></button>
+<button aria-label="Fotografía 2 de 2" aria-pressed="false" class="gloria__slideshow-dot" type="button"></button>
 <button aria-label="Pausa la secuencia de fotografías" aria-pressed="false" class="gloria__slideshow-toggle" type="button">
 <span aria-hidden="true" class="gloria__slideshow-toggle-icon"></span>
 </button>
@@ -199,22 +199,25 @@
 </section>
 <!--
         El despatx — docs/landing-master-spec.md §8a (secció afegida a
-        petició expressa, 2026-09-11; revisada 2026-09-12 §8a.5 a §8a.12).
+        petició expressa, 2026-09-11; revisada 2026-09-12 §8a.5 a §8a.12;
+        controls de la galeria simplificats 2026-09-19 §8a.14).
         Columna esquerra (títol, text i placa navy) intacta des de §8a.10 —
         no tocar sense instrucció expressa.
 
-        Galeria (§8a.12, reescrita segons proposta exacta de la clienta):
-        1 escenari gran + 3 miniatures visibles + fletxes per navegar per
-        una reserva de 7 fotografies secundàries + comptador "01 / 07".
-        8 fotografies reals en total (escenari inicial + les 7). Interacció
+        Galeria (§8a.14, petició expressa de simplificació dels controls):
+        1 escenari gran + 3 miniatures fixes, sense fletxes ni comptador —
+        la combinació anterior (miniatures + fletxes + comptador "01 / 07")
+        donava massa protagonisme a la secció, que ha de funcionar com a
+        context visual de l'espai, no com una galeria de projecte.
+        4 fotografies reals en total (escenari inicial + les 3 miniatures,
+        les mateixes que ja es veien per defecte a §8a.12). Interacció
         (src/components/despatx-gallery.js): clicar una miniatura
-        l'intercanvia amb l'escenari (fos suau); les fletxes desplacen la
-        finestra de 3 miniatures visibles per la reserva de 7 (cíclic, sense
-        autoplay). Totes 7 viuen sempre al DOM (per a l'i18n i perquè cap
-        lector de pantalla en perdi cap); les que no toca mostrar es marquen
-        `hidden` per JS. Ordre de la reserva = ordre exacte demanat: vidre
-        GS, escriptori de vidre, detall taula/llum/quadres/GS, vista ampla
-        amb impressora, taula amb flors, brodat GS, paret de llibres antics.
+        l'intercanvia amb l'escenari (fos suau) — la pròpia miniatura és el
+        control de navegació, sense cap element de UI addicional. Les altres
+        4 fotografies de la reserva de §8a.12 (vista ampla amb impressora,
+        taula amb flors, brodat GS, paret de llibres antics) deixen de
+        mostrar-se; es mantenen com a assets vàlids documentats a
+        docs/assets-status.md per si es volen recuperar.
       -->
 <section aria-labelledby="despatx-titol" class="section despatx" id="despatx">
 <div class="container despatx__layout">
@@ -234,10 +237,6 @@
 <div class="despatx__gallery-stage">
 <img alt="Zona de atención del despacho de Glòria Solsona: butacas, lámpara de pie, estantería y los cuadros de bolígrafo, pluma y lápiz." decoding="async" height="1200" id="despatx-gallery-stage-img" loading="lazy" src="/images/office/office-meeting-area.jpg" width="870"/>
 </div>
-<div class="despatx__gallery-nav">
-<button aria-label="Fotografías anteriores" class="despatx__gallery-arrow despatx__gallery-arrow--prev" type="button">
-<span aria-hidden="true">←</span>
-</button>
 <div aria-label="Más fotografías del despacho" class="despatx__gallery-thumbs" role="group">
 <button aria-label="Mostrar como principal: monograma GS en el cristal" class="despatx__gallery-thumb" data-full="/images/office/office-glass-logo.jpg" type="button">
 <img alt="Monograma GS grabado en el cristal del despacho." decoding="async" height="1200" loading="lazy" src="/images/office/office-glass-logo.jpg" width="1600"/>
@@ -248,26 +247,7 @@
 <button aria-label="Mostrar como principal: detalle de la mesa de cristal, la lámpara y los cuadros con la pieza GS" class="despatx__gallery-thumb" data-full="/images/office/office-desk-detail-gs.jpg" type="button">
 <img alt="Detalle del despacho: mesa de cristal, lámpara de pie y los cuadros de pluma y lápiz, con una pieza GS." decoding="async" height="770" loading="lazy" src="/images/office/office-desk-detail-gs.jpg" width="1026"/>
 </button>
-<button aria-label="Mostrar como principal: vista amplia con la mesa principal y la impresora" class="despatx__gallery-thumb" data-full="/images/office/office-wide-view.jpg" hidden="" type="button">
-<img alt="Vista amplia del despacho con la mesa principal, la estantería, la impresora y la lámpara de pie." decoding="async" height="1250" loading="lazy" src="/images/office/office-wide-view.jpg" width="2000"/>
-</button>
-<button aria-label="Mostrar como principal: mesa con flores y estanterías jurídicas" class="despatx__gallery-thumb" data-full="/images/office/office-legal-library-flowers.jpg" hidden="" type="button">
-<img alt="Mesa con flores frente a las estanterías de fondo jurídico del despacho." decoding="async" height="1250" loading="lazy" src="/images/office/office-legal-library-flowers.jpg" width="2000"/>
-</button>
-<button aria-label="Mostrar como principal: monograma GS bordado" class="despatx__gallery-thumb" data-full="/images/office/office-gs-embroidery.jpg" hidden="" type="button">
-<img alt="Monograma GS bordado, detalle decorativo del despacho." decoding="async" height="1656" loading="lazy" src="/images/office/office-gs-embroidery.jpg" width="1486"/>
-</button>
-<button aria-label="Mostrar como principal: pared de libros antiguos" class="despatx__gallery-thumb" data-full="/images/office/office-antique-books.jpg" hidden="" type="button">
-<img alt="Pared de libros antiguos del despacho de Glòria Solsona." decoding="async" height="1260" loading="lazy" src="/images/office/office-antique-books.jpg" width="2016"/>
-</button>
 </div>
-<button aria-label="Fotografías siguientes" class="despatx__gallery-arrow despatx__gallery-arrow--next" type="button">
-<span aria-hidden="true">→</span>
-</button>
-</div>
-<p aria-live="polite" class="despatx__gallery-counter">
-<span class="despatx__gallery-counter-current">01</span> / <span class="despatx__gallery-counter-total">07</span>
-</p>
 </div>
 </div>
 </section>
@@ -282,13 +262,19 @@
         perfil públic de Google del despatx. Originals en castellà; traduïdes
         al català a petició expressa (2026-09-11) per mantenir l'idioma
         coherent amb la resta del lloc — es preserva el sentit, no és el text
-        literal d'origen. Se n'omet el nom de la persona autora per
-        coherència amb les 3 primeres (el projecte encara no ha decidit si es
-        mostraran noms). PENDENT: confirmar la traducció i el contingut amb
+        literal d'origen. PENDENT: confirmar la traducció i el contingut amb
         la clienta abans de publicar-les en producció.
 
-        Atribució sempre "Opinió a Google" (mai "Ressenya publicada a
-        Google", que no forma part de la proposta).
+        Refinament (petició expressa, 2026-09-19): l'atribució a Google ja
+        no es repeteix a cada targeta ("Opinió a Google" per targeta); ara
+        hi ha un únic avís discret a la intro de la secció
+        (.ressenyes__notice). Cada targeta hauria de mostrar inicials +
+        context breu de la persona autora en lloc del nom complet, per
+        privacitat — però ni les inicials reals ni el context es poden
+        deduir amb seguretat del contingut actual del projecte, així que es
+        deixen absents per ara en lloc d'inventar-los (docs/content-status.md:
+        "mai substituir una dada pendent per una dada inventada"). Vegeu
+        també l'entrada afegida a docs/content-status.md.
       -->
 <section aria-labelledby="ressenyes-titol" class="section ressenyes" id="ressenyes">
 <div class="container ressenyes__layout">
@@ -298,6 +284,10 @@
 <p class="ressenyes__text">
               La confianza de quienes me han acompañado también se refleja en sus palabras.
             </p>
+<p class="ressenyes__notice">Opiniones publicadas en Google.</p>
+</div>
+<hr aria-hidden="true" class="divider-v"/>
+<div class="ressenyes__carousel">
 <div class="ressenyes__controls">
 <button aria-label="Reseña anterior" class="ressenyes__btn ressenyes__btn--prev" type="button">
 <span aria-hidden="true">←</span>
@@ -306,8 +296,6 @@
 <span aria-hidden="true">→</span>
 </button>
 </div>
-</div>
-<hr aria-hidden="true" class="divider-v"/>
 <div class="ressenyes__viewport">
 <ul class="ressenyes__track" role="list">
 <li class="ressenyes__card">
@@ -316,7 +304,6 @@
 </blockquote>
 <div class="ressenyes__meta">
 <p aria-label="5 de 5 estrellas" class="ressenyes__stars" role="img">★★★★★</p>
-<p class="ressenyes__source">Reseña en Google</p>
 </div>
 </li>
 <li class="ressenyes__card">
@@ -325,18 +312,16 @@
 </blockquote>
 <div class="ressenyes__meta">
 <p aria-label="5 de 5 estrellas" class="ressenyes__stars" role="img">★★★★★</p>
-<p class="ressenyes__source">Reseña en Google</p>
 </div>
 </li>
 <li class="ressenyes__card">
 <blockquote class="ressenyes__quote">
 <p>
-                    “Además de ser una gran profesional, transmite confianza y tranquilidad en todo momento.”
-                  </p>
+                      “Además de ser una gran profesional, transmite confianza y tranquilidad en todo momento.”
+                    </p>
 </blockquote>
 <div class="ressenyes__meta">
 <p aria-label="5 de 5 estrellas" class="ressenyes__stars" role="img">★★★★★</p>
-<p class="ressenyes__source">Reseña en Google</p>
 </div>
 </li>
 <li class="ressenyes__card">
@@ -345,18 +330,16 @@
 </blockquote>
 <div class="ressenyes__meta">
 <p aria-label="5 de 5 estrellas" class="ressenyes__stars" role="img">★★★★★</p>
-<p class="ressenyes__source">Reseña en Google</p>
 </div>
 </li>
 <li class="ressenyes__card">
 <blockquote class="ressenyes__quote">
 <p>
-                    “¡Muy buena profesional! nos ha ayudado mucho. Es muy empatica. Sin lugar a dudas es mi abogada de referencia.”
-                  </p>
+                      “¡Muy buena profesional! nos ha ayudado mucho. Es muy empatica. Sin lugar a dudas es mi abogada de referencia.”
+                    </p>
 </blockquote>
 <div class="ressenyes__meta">
 <p aria-label="5 de 5 estrellas" class="ressenyes__stars" role="img">★★★★★</p>
-<p class="ressenyes__source">Reseña en Google</p>
 </div>
 </li>
 <li class="ressenyes__card">
@@ -365,10 +348,10 @@
 </blockquote>
 <div class="ressenyes__meta">
 <p aria-label="5 de 5 estrellas" class="ressenyes__stars" role="img">★★★★★</p>
-<p class="ressenyes__source">Reseña en Google</p>
 </div>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </section>
@@ -450,30 +433,17 @@
 <h3 class="contacte__subtitle" id="ubicacio-titol">Ubicación</h3>
 <!--
               Google Maps: embed lliure sense API key (recuperat tal qual,
-              instrucció expressa 2026-09-11). Carrega darrere un gate de
-              consentiment gestionat per src/components/maps-consent.js: NO
-              hi ha cap <iframe> al marcat inicial, només el bloc de
-              consentiment de sota. El JS crea l'iframe dinàmicament quan
-              l'usuari clica "Acceptar i mostrar el mapa" (o si ja hi havia
-              consentiment desat).
-
-              PENDENT quan existeixi el banner global de cookies/consentiment
-              (docs/legal-requirements.md, secció "Google Maps"): connectar-hi
-              aquest gate en lloc del clic manual — vegeu comentari a
-              src/components/maps-consent.js per als dos punts d'integració
-              previstos (funció exportada i esdeveniment global).
+              instrucció expressa 2026-09-11). Renderitzat íntegrament per
+              src/components/location-map.js segons el consentiment global
+              de cookies/serveis de tercers (src/components/cookie-consent.js):
+              sense consentiment acceptat no hi ha cap <iframe> ni cap altre
+              recurs de Google al marcat, només l'estat alternatiu amb
+              enllaç extern a Google Maps. Contenidor buit a propòsit: el JS
+              hi injecta el mapa o l'estat alternatiu en carregar la pàgina i
+              els actualitza en viu si la decisió canvia des de «Configurar
+              cookies» (FASE 3).
             -->
-<div aria-labelledby="ubicacio-titol" class="contacte__map">
-<div class="contacte__map-consent" data-map-consent="">
-<p class="contacte__map-consent-title">Mapa de Google Maps</p>
-<p class="contacte__map-consent-text">
-                  Para visualizar el mapa es necesario aceptar las cookies de servicios externos.
-                </p>
-<button class="contacte__map-consent-button" data-map-consent-accept="" type="button">
-                  Aceptar y mostrar el mapa
-                </button>
-</div>
-</div>
+<div aria-labelledby="ubicacio-titol" class="contacte__map"></div>
 </div>
 <hr aria-hidden="true" class="divider-v"/>
 <div class="contacte__form-col">
@@ -542,6 +512,11 @@
 <li><a href="/es/legal/aviso-legal.html">Aviso legal</a></li>
 <li><a href="/es/legal/privacidad.html">Privacidad</a></li>
 <li><a href="/es/legal/cookies.html">Cookies</a></li>
+<li>
+<button class="footer__legal-button" data-cookie-settings="" type="button">
+                Configurar cookies
+              </button>
+</li>
 </ul>
 </nav>
 </div>

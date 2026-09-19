@@ -971,6 +971,52 @@ tablet/mòbil (<1025px, sense override propi) el `.section` per defecte
 segueix sense tocar. Cap canvi a la composició interna de cap de les
 dues seccions.
 
+## 8a.14 Simplificació dels controls de la galeria (petició expressa, 2026-09-19)
+
+**Feedback rebut:** la galeria de §8a.12 (1 principal + 3 miniatures
+visibles + fletxes per navegar una reserva de 7 + comptador "01 / 07")
+funciona bé quant a la fotografia principal, però la combinació
+"miniatures + fletxes + comptador" dona massa protagonisme a la secció i
+la fa llegir com una galeria de projecte d'arquitectura. `El despatx` ha
+de continuar sent context visual de la Glòria i del seu espai de treball,
+no una secció protagonista. Es demana reduir els controls al mínim
+necessari sense tocar la mida ni l'impacte de la fotografia principal.
+
+**Canvi:**
+
+- **S'eliminen les fletxes** (`.despatx__gallery-arrow`) **i el comptador**
+  (`.despatx__gallery-counter`, "01 / 07"). Ja no hi ha cap mecanisme de
+  finestra/reserva: les 3 miniatures deixen de ser una vista parcial de 7
+  fotografies i passen a ser fixes.
+- **Es mantenen exactament les 3 miniatures que ja eren visibles per
+  defecte a §8a.12** (`office-glass-logo.jpg`, `office-library.jpg`,
+  `office-desk-detail-gs.jpg`): la vista inicial de la secció no canvia
+  visualment, només es retira la possibilitat de navegar-hi amb fletxes.
+- **Única interacció restant:** clic sobre una miniatura intercanvia el
+  seu contingut amb l'escenari (mateix fos de 180ms, mateixa lògica
+  d'`aria-label` dinàmic), sense cap altre element de UI — la pròpia
+  miniatura és el control de navegació, seguint el mateix criteri ja
+  aplicat a §8a.8 ("la miniatura mateixa és el control de navegació").
+- **4 fotografies de la reserva de §8a.12 deixen d'utilitzar-se**
+  (`office-wide-view.jpg`, `office-legal-library-flowers.jpg`,
+  `office-gs-embroidery.jpg`, `office-antique-books.jpg`): ja no hi ha
+  cap fletxa que hi doni accés. Es mantenen com a assets vàlids,
+  documentats a `docs/assets-status.md`, per si es volen recuperar en el
+  futur (mateix criteri que `office-stationery-art.jpg` i
+  `office-detail-lamp.jpg` a §8a.10).
+- **`src/components/despatx-gallery.js` simplificat:** desapareixen
+  `windowStart`, `step()` i la gestió de l'atribut `hidden` sobre les
+  miniatures (ja no n'hi ha cap que calgui amagar), així com el swipe
+  horitzontal (existia només per moure la finestra amb les fletxes). Es
+  manté únicament `swap()`.
+- **CSS:** s'eliminen `.despatx__gallery-arrow*`,
+  `.despatx__gallery-counter` i `.despatx__gallery-thumb[hidden]`
+  (aquesta última ja no cal perquè cap miniatura porta `hidden`).
+  `.despatx__gallery-thumbs` ja no viu dins un `.despatx__gallery-nav`
+  flex (fletxa—miniatures—fletxa): passa a ser directament l'element grid
+  de 3 columnes dins `.despatx__gallery`. Sense cap altre canvi de mida,
+  `aspect-ratio` o espaiat respecte a §8a.12.
+
 ---
 
 # 9. Ressenyes

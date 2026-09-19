@@ -289,15 +289,22 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  margin-top: var(--space-8);
+  margin-top: calc(var(--space-8) + var(--space-2));
   width: fit-content;
   font-family: var(--font-sans);
-  font-size: var(--fs-small);
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   color: var(--color-navy);
   text-decoration: underline;
   text-underline-offset: 0.35em;
+  text-decoration-color: rgba(var(--color-navy-rgb), 0.45);
+  transition: text-decoration-color var(--motion-fast) var(--easing-standard);
+}
+
+.hero__cta:hover,
+.hero__cta:focus-visible {
+  text-decoration-color: var(--color-navy);
 }
 
 .hero__cta-arrow {
@@ -574,23 +581,26 @@
 }
 
 .gloria__row {
-  display: flex;
+  display: grid;
+  /* Ajust 2026-09-19: amb flexbox, la foto (flex-basis topada a 380px) i el
+     text (topat a 46ch) mai arribaven a omplir junts l'amplada del bloc,
+     deixant una franja buida morta a la dreta del text que llegia com a
+     manca de contingut. Amb una retícula de dues columnes proporcionals
+     (~45/55) foto i text es reparteixen sempre tota l'amplada disponible,
+     queden més relacionats visualment i l'espai sobrant desapareix. */
+  grid-template-columns: 9fr 11fr;
   align-items: center;
-  gap: var(--space-12);
-  /* Ajust 2026-09-13: amb el --container-max general (1440px) la foto i el
-     text, en assolir la seva amplada màxima pròpia, deixaven una franja
-     buida molt gran a la dreta (el contingut no arribava mai a omplir la
-     resta de l'espai flexible). Es limita l'amplada d'aquest bloc perquè
-     la composició foto+text quedi compacta i centrada, i l'espai sobrant
-     passi a ser marge simètric fora de la franja (deliberat) en lloc de
-     buit residual dins seu. No toca --container-max global. */
+  gap: var(--space-8);
+  /* Es manté el mateix límit d'amplada del bloc (vegeu historial 2026-09-13):
+     amb el --container-max general (1440px) la composició foto+text es feia
+     massa ampla; es manté compacta i centrada. No toca --container-max
+     global. */
   max-width: 1140px;
 }
 
 /* La fotografia arrenca a l'extrem del contenidor, no dins del padding */
 .gloria__media {
   position: relative;
-  flex: 0 0 min(38%, 380px);
   aspect-ratio: 4 / 5;
   margin-inline-start: calc(-1 * var(--container-padding));
   overflow: hidden;
@@ -762,40 +772,30 @@
 }
 
 .gloria__content {
-  flex: 1;
-  max-width: 46ch;
+  /* L'amplada la marca la columna de la retícula (~55% de 1140px), no un
+     topall de caràcters propi: així el text ocupa tot l'espai que li
+     correspon en comptes de deixar-hi un buit residual. */
+  max-width: none;
 }
 
 .gloria__text {
-  max-width: 42ch;
-}
-
-/* ---- Portàtil ---- */
-@media (max-width: 1100px) {
-  .gloria__row {
-    gap: var(--space-8);
-  }
+  max-width: none;
 }
 
 /* ---- Tablet estret / mòbil: composició apilada ---- */
 @media (max-width: 760px) {
   .gloria__row {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     align-items: stretch;
     gap: var(--space-8);
   }
 
   .gloria__media {
-    flex-basis: auto;
     /* Es manté la relació 4:5 (mateixa que desktop): les quatre fotografies
        de la diapositiva són retrats verticals, no un retall panoràmic com
        l'anterior. Un 4:5 a amplada completa de mòbil ja dona prou alçada
        sense necessitat d'acotar-la més. */
     margin-inline: calc(-1 * var(--container-padding));
-  }
-
-  .gloria__content {
-    max-width: none;
   }
 
   .gloria__text {
@@ -1012,8 +1012,7 @@
 /* Ritme vertical intern de la galeria (petició clienta): l'escenari i la
    fila de miniatures han de percebre's com un únic component, no com dos
    blocs separats — per això aquest marge és més ajustat (~24px) que el
-   que separa la fila de miniatures del comptador, just a sota, que manté
-   el ritme general de --space-4. */
+   ritme general de --space-4 utilitzat entre altres blocs de la secció. */
 .despatx__gallery-stage {
   aspect-ratio: 16 / 10;
   overflow: hidden;
@@ -1034,31 +1033,13 @@
   opacity: 0;
 }
 
-/* Fila de navegació: fletxa — 3 miniatures — fletxa. Les miniatures
-   ocupen tot l'espai disponible entre les dues fletxes. `gap` fixa la
-   distància entre cada fletxa i el bloc de miniatures (~24px, petició
-   expressa 2026-09-13: abans, el glif quedava centrat dins la caixa
-   clicable de 44px i semblava flotar lluny de les fotografies; ara el
-   glif s'alinea cap al costat de les miniatures —
-   `.despatx__gallery-arrow--prev/--next` més avall— i aquest `gap` és
-   exactament la distància visible resultant). */
-.despatx__gallery-nav {
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-  margin-bottom: var(--space-4);
-}
-
-/* 3 miniatures visibles (§8a.12): de les 7 que viuen al DOM (perquè
-   l'i18n i l'accessibilitat en tinguin sempre el text complet), només 3
-   estan sense l'atribut `hidden` en cada moment — la resta les amaga
-   src/components/despatx-gallery.js en desplaçar la finestra amb les
-   fletxes. `hidden` treu l'element del flux, així que el grid de 3
-   columnes sempre queda ple encara que la posició al DOM de les 3
-   visibles no sigui consecutiva. */
+/* 3 miniatures fixes (§8a.14, controls simplificats — abans hi havia
+   fletxes per navegar una reserva de 7 i un comptador "01 / 07"; la
+   combinació donava massa protagonisme a la secció). Ara només hi ha
+   aquestes 3 fotografies, sempre visibles, i la pròpia miniatura és
+   l'únic control de navegació (clicar-la intercanvia el seu contingut
+   amb l'escenari — src/components/despatx-gallery.js). */
 .despatx__gallery-thumbs {
-  flex: 1;
-  min-width: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
@@ -1070,14 +1051,6 @@
    en repòs; el canvi d'opacitat en hover/focus és només una pista
    d'interactivitat, seguint el mateix llenguatge discret (opacitat, no
    vores ni ombres) que la resta de la landing. */
-/* [hidden] ha de guanyar per sobre del `display: block` de sota (si no,
-   les 4 miniatures fora de la finestra visible de 3 quedarien igual de
-   visibles: un `display: block` amb selector de classe té més
-   especificitat que l'estil `[hidden]{display:none}` del navegador). */
-.despatx__gallery-thumb[hidden] {
-  display: none;
-}
-
 .despatx__gallery-thumb {
   padding: 0;
   border: 0;
@@ -1105,62 +1078,6 @@
 .despatx__gallery-thumb:focus-visible {
   outline: 2px solid var(--color-navy);
   outline-offset: 2px;
-}
-
-/* Fletxes de navegació: mateix llenguatge discret que .ressenyes__btn
-   (glif sol, sense caixa ni ombra, subratllat fi en hover/focus) —
-   coherent amb la resta de la landing, no un control de plantilla. Sense
-   `:disabled` perquè la navegació és cíclica (mai cal desactivar-les). */
-.despatx__gallery-arrow {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  font-size: 1rem;
-  color: var(--color-navy);
-  background: none;
-  border: 0;
-  cursor: pointer;
-  transition: opacity var(--motion-fast) var(--easing-standard);
-}
-
-/* El glif es desplaça cap al costat de les miniatures dins la mateixa
-   caixa clicable de 44px (l'àrea tàctil no canvia, només la posició del
-   glif dins seu), perquè quedi a la distància fixada pel `gap` de
-   `.despatx__gallery-nav` en lloc de quedar centrat i semblar flotant. */
-.despatx__gallery-arrow--prev {
-  justify-content: flex-end;
-}
-
-.despatx__gallery-arrow--next {
-  justify-content: flex-start;
-}
-
-.despatx__gallery-arrow span {
-  padding-bottom: var(--space-1);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--motion-fast) var(--easing-standard);
-}
-
-.despatx__gallery-arrow:hover span,
-.despatx__gallery-arrow:focus-visible span {
-  border-bottom-color: currentColor;
-}
-
-/* Comptador discret ("01 / 07"): text petit, alineat amb la fletxa dreta
-   perquè es llegeixi com a metadada de la galeria, no com un element amb
-   pes visual propi. */
-.despatx__gallery-counter {
-  margin: 0;
-  padding-right: 44px;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  color: var(--color-text-muted);
-  text-align: right;
 }
 
 /* Placa editorial navy: agrupa l'accent de la màquina d'escriure i la
@@ -1286,10 +1203,32 @@
   max-width: 26ch;
 }
 
+/* Avís únic d'atribució a Google (petició expressa, 2026-09-19):
+   substitueix el "Opinió a Google" que abans es repetia a cada targeta.
+   Mateix llenguatge visual que .ressenyes__source abans (text secundari
+   petit), ara viu un sol cop a la intro. */
+.ressenyes__notice {
+  margin: var(--space-4) 0 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+}
+
+/* Carrusel = fletxes + viewport agrupats en una sola columna, perquè els
+   controls es percebin com a part del component que mouen (petició
+   expressa, 2026-09-19) en lloc de quedar aïllats sota el text
+   introductori en una columna separada. */
+.ressenyes__carousel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .ressenyes__controls {
   display: flex;
-  gap: var(--space-2);
-  margin-top: var(--space-8);
+  justify-content: flex-end;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
 }
 
 /* Fletxes discretes: sense caixa de botó, només el glif amb una línia
@@ -1384,13 +1323,6 @@
   color: var(--color-navy);
   font-size: 0.9rem;
   letter-spacing: 0.15em;
-}
-
-.ressenyes__source {
-  margin-top: var(--space-2);
-  font-family: var(--font-sans);
-  font-size: var(--fs-small);
-  color: var(--color-text-secondary);
 }
 
 /* ---- Tablet: 2 ressenyes visibles ---- */
@@ -1508,6 +1440,15 @@
      blancs: el mapa passa a llegir-se com una continuació natural del bloc
      d'Ubicació, no com un component encaixat a sobre. */
   aspect-ratio: 4 / 3;
+  /* Alçada mínima (verificat en navegador, no deduïda): a columnes estretes
+     (~260-330px, típic de la franja de dues columnes de .contacte__grid
+     entre ~761-950px) el 4/3 dona una caixa de ~195-235px, insuficient per
+     al missatge alternatiu sense consentiment (.contacte__map-fallback:
+     títol + text + botó, ~212px de contingut real) — el text quedava
+     tallat i xocava visualment amb el títol "Ubicació" de sobre. El floor
+     no afecta l'iframe real (buit de contingut propi) ni el 4/3 en columnes
+     més amples, on ja dona més alçada que aquest mínim. */
+  min-height: 240px;
   border-top: 1px solid var(--color-line);
   overflow: hidden;
 }
@@ -1519,11 +1460,12 @@
   display: block;
 }
 
-/* Bloc de consentiment previ a carregar l'iframe de Google Maps — vegeu
-   src/components/maps-consent.js. Mateixes dimensions que el mapa final
-   (definides a .contacte__map) perquè el layout no "salti" en substituir-lo
-   per l'iframe un cop hi ha consentiment. */
-.contacte__map-consent {
+/* Estat alternatiu quan Google Maps no es carrega (sense consentiment
+   acceptat, o rebutjat) — vegeu src/components/location-map.js. Mateixes
+   dimensions que el mapa final (definides a .contacte__map) perquè el
+   layout no "salti" en substituir-lo per l'iframe si la persona usuària
+   accepta els serveis de tercers. */
+.contacte__map-fallback {
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -1534,14 +1476,14 @@
   text-align: center;
 }
 
-.contacte__map-consent-title {
+.contacte__map-fallback-title {
   margin: 0;
   font-family: var(--font-serif);
   font-size: var(--fs-h3);
   color: var(--color-navy);
 }
 
-.contacte__map-consent-text {
+.contacte__map-fallback-text {
   margin: 0;
   max-width: 32ch;
   font-family: var(--font-sans);
@@ -1549,7 +1491,8 @@
   color: var(--color-text-secondary);
 }
 
-.contacte__map-consent-button {
+.contacte__map-fallback-link {
+  display: inline-block;
   padding: var(--space-3) var(--space-8);
   font-family: var(--font-sans);
   font-size: var(--fs-small);
@@ -1558,11 +1501,10 @@
   color: var(--color-white);
   background-color: var(--color-navy);
   border: 0;
-  cursor: pointer;
   transition: background-color var(--motion-fast) var(--easing-standard);
 }
 
-.contacte__map-consent-button:hover {
+.contacte__map-fallback-link:hover {
   background-color: var(--color-navy-footer);
 }
 
@@ -1893,6 +1835,26 @@ textarea.contacte-form__control {
   border-bottom-color: currentColor;
 }
 
+/* Enllaç «Configurar cookies»: mateix pes visual que la resta d'enllaços
+   legals del peu, però és un <button> (reobre el banner, no navega). */
+.footer__legal-button {
+  display: inline-block;
+  padding-block: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--color-white);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  transition: border-color var(--motion-fast) var(--easing-standard);
+}
+
+.footer__legal-button:hover,
+.footer__legal-button:focus-visible {
+  border-bottom-color: currentColor;
+}
+
 .footer__rule {
   margin-block: var(--space-8);
   border: 0;
@@ -1976,4 +1938,125 @@ textarea.contacte-form__control {
 
 .legal__back {
   margin-top: var(--space-16);
+}
+
+/* ==========================================================================
+   Banner de consentiment de cookies/serveis de tercers
+   src/components/cookie-consent.js — injectat per JS a totes les pàgines
+   (landing i legals), just després del skip-link. Barra inferior discreta,
+   no un modal centrat: mateix llenguatge visual que la resta de la landing
+   (filet superior en lloc de caixa flotant, botó primari navy ple igual
+   que .contacte-form__submit / .contacte__map-fallback-link).
+   ========================================================================== */
+
+.cookie-consent {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 80;
+  background-color: var(--color-off-white);
+  border-top: 1px solid var(--color-line);
+  padding-block: var(--space-6);
+}
+
+.cookie-consent__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.cookie-consent__text {
+  max-width: 62ch;
+}
+
+.cookie-consent__title {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  color: var(--color-navy);
+}
+
+.cookie-consent__desc {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--color-text-secondary);
+}
+
+.cookie-consent__link {
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  transition: opacity var(--motion-fast) var(--easing-standard);
+}
+
+.cookie-consent__link:hover,
+.cookie-consent__link:focus-visible {
+  opacity: 0.75;
+}
+
+.cookie-consent__actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--space-3);
+}
+
+/* Rebutjar i acceptar amb el mateix padding/mida de tipus, mateix pes
+   funcional (CLAUDE.md §6, jerarquia sense patrons manipulatius): només
+   canvia si el fons és ple (acceptar) o de contorn (rebutjar). */
+.cookie-consent__button {
+  padding: var(--space-3) var(--space-8);
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--color-navy);
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast) var(--easing-standard),
+    color var(--motion-fast) var(--easing-standard);
+}
+
+.cookie-consent__button--accept {
+  color: var(--color-white);
+  background-color: var(--color-navy);
+}
+
+.cookie-consent__button--accept:hover {
+  background-color: var(--color-navy-footer);
+  border-color: var(--color-navy-footer);
+}
+
+.cookie-consent__button--reject {
+  color: var(--color-navy);
+  background-color: transparent;
+}
+
+.cookie-consent__button--reject:hover {
+  background-color: rgba(var(--color-navy-rgb), 0.08);
+}
+
+/* ---- Mòbil: text a sobre, botons apilats horitzontalment (no un sota
+   l'altre) per no allargar excessivament el banner en pantalles baixes. ---- */
+@media (max-width: 640px) {
+  .cookie-consent {
+    padding-block: var(--space-4);
+  }
+
+  .cookie-consent__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+  }
+
+  .cookie-consent__actions {
+    gap: var(--space-3);
+  }
+
+  .cookie-consent__button {
+    flex: 1;
+    padding-inline: var(--space-4);
+    text-align: center;
+  }
 }

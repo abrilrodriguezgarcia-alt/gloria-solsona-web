@@ -36,6 +36,7 @@ No incorporar com a dada definitiva fins que es confirmi:
 - política concreta de primera consulta o contacte;
 - idiomes d'atenció;
 - textos literals finals i consentiment/format definitiu de les ressenyes que es mostraran;
+- inicials i context breu (p. ex. "Dret de família") de la persona autora de cada ressenya: no s'han d'inventar; la landing les mostra només si es confirmen com a reals (2026-09-19);
 - preferència de formulari de contacte, si finalment se'n vol un;
 - destinació dels missatges del formulari, si s'implementa;
 - ús o no d'analítica;

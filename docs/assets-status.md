@@ -74,13 +74,50 @@ Aquest document identifica quins recursos visuals del projecte són definitius, 
   professional dedicada si Glòria Solsona ho considera oportú un cop vegi
   el resultat.
 
-## Fotografies d'«El despatx» (secció afegida 2026-09-11, ampliada i reorganitzada diverses vegades — vegeu §8a.9/§8a.11/§8a.12)
+### Reducció a 2 fotografies (petició expressa 2026-09-19)
 
-- Fitxers en ús (§8a.12, galeria 1 principal + 3 miniatures + 4 accessibles
-  amb fletxes, 8 fotografies en total): `office-meeting-area.jpg`,
-  `office-glass-logo.jpg`, `office-library.jpg`, `office-desk-detail-gs.jpg`,
-  `office-wide-view.jpg`, `office-legal-library-flowers.jpg`,
-  `office-gs-embroidery.jpg`, `office-antique-books.jpg`.
+- El carrusel es va reduir de 4 a **2 diapositives** perquè el bloc llegís
+  com una selecció editorial i no com un àlbum personal:
+  - `gloria-galeria-01.jpg` (platja, B/N) — es manté sense canvis.
+  - `gloria-galeria-02.jpg` (sofà de pell + llibreria) — es manté a
+    petició expressa, però **retallada de nou** (pla mig, des dels
+    prestatges fins per sobre la falda, excloent les sabatilles i el
+    peu del llum de terra que sortien a l'enquadrament original de cos
+    sencer) i **convertida a blanc i negre** perquè el tractament sigui
+    homogeni amb `01`. Font: mateix retall original (recuperable via
+    git, commit `6da9ecf`), reprocessat amb PIL (crop + `ImageOps.grayscale`).
+    Cap canvi de persona, roba o context: només enquadrament i gradació
+    tonal, mateix criteri ja aplicat a la fotografia del hero.
+- **Descartades del carrusel** (es mantenen als fitxers, sense ús, per si
+  calen en el futur — no s'esborren):
+  - `gloria-galeria-03.jpg`: biblioteca pública amb motxilla — to massa
+    casual/turístic per a l'apartat.
+  - `gloria-galeria-04.jpg`: selfie de primer pla en un aparador — enquadrament
+    i qualitat no coherents amb la resta.
+- **Estructura preparada per a substitució futura:** n'hi ha prou amb
+  canviar `src`/`alt`/`width`/`height` de les dues `<img class="gloria__slide">`
+  a `index.html` (i tornar a generar `es/index.html` amb
+  `python3 scripts/build-i18n.py` després d'actualitzar `src/i18n/es.json`
+  si canvia el text). `src/components/gloria-slideshow.js` no depèn del
+  nombre de diapositives; només cal mantenir el mateix nombre de punts
+  (`.gloria__slideshow-dot`) que d'imatges i actualitzar l'etiqueta "de N".
+- **Pendent per a producció:** aquesta selecció és provisional amb el
+  material disponible. Quan Glòria Solsona validi fotografia professional
+  definitiva, substituir aquestes dues imatges sense redissenyar el bloc.
+
+## Fotografies d'«El despatx» (secció afegida 2026-09-11, ampliada i reorganitzada diverses vegades — vegeu §8a.9/§8a.11/§8a.12/§8a.14)
+
+- **Fitxers en ús (§8a.14, controls de galeria simplificats — 1 principal +
+  3 miniatures fixes, sense fletxes):** `office-meeting-area.jpg`,
+  `office-glass-logo.jpg`, `office-library.jpg`, `office-desk-detail-gs.jpg`.
+- **`office-wide-view.jpg`, `office-legal-library-flowers.jpg`,
+  `office-gs-embroidery.jpg` i `office-antique-books.jpg`: sense ús des de
+  §8a.14** — formaven part de la reserva de 7 accessible amb fletxes a
+  §8a.12, però la simplificació dels controls (petició expressa,
+  2026-09-19: la combinació de miniatures + fletxes + comptador donava
+  massa protagonisme a la secció) elimina el mecanisme de finestra/reserva.
+  Es mantenen com a assets vàlids i documentats aquí (no s'esborren) per si
+  es volen recuperar en el futur.
 - Estat: **PROVISIONAL**. Fotografies reals fetes amb mòbil, seleccionades
   del moodboard de `assets/reference/` (o ja copiades directament a
   `assets/images/office/` per la clienta) a petició expressa, no
