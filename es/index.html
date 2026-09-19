@@ -200,24 +200,24 @@
 <!--
         El despatx — docs/landing-master-spec.md §8a (secció afegida a
         petició expressa, 2026-09-11; revisada 2026-09-12 §8a.5 a §8a.12;
-        controls de la galeria simplificats 2026-09-19 §8a.14).
+        controls de la galeria simplificats 2026-09-19 §8a.14, corregit
+        §8a.15 perquè no es perdés cap fotografia).
         Columna esquerra (títol, text i placa navy) intacta des de §8a.10 —
         no tocar sense instrucció expressa.
 
-        Galeria (§8a.14, petició expressa de simplificació dels controls):
-        1 escenari gran + 3 miniatures fixes, sense fletxes ni comptador —
-        la combinació anterior (miniatures + fletxes + comptador "01 / 07")
-        donava massa protagonisme a la secció, que ha de funcionar com a
-        context visual de l'espai, no com una galeria de projecte.
-        4 fotografies reals en total (escenari inicial + les 3 miniatures,
-        les mateixes que ja es veien per defecte a §8a.12). Interacció
-        (src/components/despatx-gallery.js): clicar una miniatura
-        l'intercanvia amb l'escenari (fos suau) — la pròpia miniatura és el
-        control de navegació, sense cap element de UI addicional. Les altres
-        4 fotografies de la reserva de §8a.12 (vista ampla amb impressora,
-        taula amb flors, brodat GS, paret de llibres antics) deixen de
-        mostrar-se; es mantenen com a assets vàlids documentats a
-        docs/assets-status.md per si es volen recuperar.
+        Galeria (§8a.15, petició expressa: simplificar només els controls,
+        sense reduir el contingut): 1 escenari gran + fletxes discretes +
+        un indicador de punts molt subtil. Les 8 fotografies reals
+        originals (escenari + les 7 de la reserva de §8a.12) es mantenen
+        totes accessibles — cap se n'elimina. Estructura
+        (src/components/despatx-gallery.js): cada fotografia viu com un
+        punt (`.despatx__gallery-dot`, botó amb la imatge a dins per a
+        l'i18n i les dades, visualment reduït a un punt petit); clicar-hi
+        o usar les fletxes ← → (cícliques) mostra aquella fotografia a
+        l'escenari (fos suau). El punt actiu es marca (opacitat +
+        `aria-pressed`) i l'escenari porta `aria-live="polite"` perquè un
+        lector de pantalla anunciï el nou `alt` en canviar de fotografia,
+        sense necessitat de cap comptador numèric visible.
       -->
 <section aria-labelledby="despatx-titol" class="section despatx" id="despatx">
 <div class="container despatx__layout">
@@ -234,18 +234,41 @@
 </div>
 </div>
 <div class="despatx__gallery">
-<div class="despatx__gallery-stage">
+<div aria-live="polite" class="despatx__gallery-stage">
 <img alt="Zona de atención del despacho de Glòria Solsona: butacas, lámpara de pie, estantería y los cuadros de bolígrafo, pluma y lápiz." decoding="async" height="1200" id="despatx-gallery-stage-img" loading="lazy" src="/images/office/office-meeting-area.jpg" width="870"/>
 </div>
-<div aria-label="Más fotografías del despacho" class="despatx__gallery-thumbs" role="group">
-<button aria-label="Mostrar como principal: monograma GS en el cristal" class="despatx__gallery-thumb" data-full="/images/office/office-glass-logo.jpg" type="button">
+<div class="despatx__gallery-nav">
+<button aria-label="Fotografías anteriores" class="despatx__gallery-arrow despatx__gallery-arrow--prev" type="button">
+<span aria-hidden="true">←</span>
+</button>
+<div aria-label="Más fotografías del despacho" class="despatx__gallery-dots" role="group">
+<button aria-label="Mostrar como principal: zona de atención del despacho" aria-pressed="true" class="despatx__gallery-dot despatx__gallery-dot--active" type="button">
+<img alt="Zona de atención del despacho de Glòria Solsona: butacas, lámpara de pie, estantería y los cuadros de bolígrafo, pluma y lápiz." decoding="async" height="1200" loading="lazy" src="/images/office/office-meeting-area.jpg" width="870"/>
+</button>
+<button aria-label="Mostrar como principal: monograma GS en el cristal" aria-pressed="false" class="despatx__gallery-dot" type="button">
 <img alt="Monograma GS grabado en el cristal del despacho." decoding="async" height="1200" loading="lazy" src="/images/office/office-glass-logo.jpg" width="1600"/>
 </button>
-<button aria-label="Mostrar como principal: escritorio de cristal frente a la estantería blanca" class="despatx__gallery-thumb" data-full="/images/office/office-library.jpg" type="button">
+<button aria-label="Mostrar como principal: escritorio de cristal frente a la estantería blanca" aria-pressed="false" class="despatx__gallery-dot" type="button">
 <img alt="Escritorio de cristal frente a la estantería blanca del despacho de Glòria Solsona." decoding="async" height="1200" loading="lazy" src="/images/office/office-library.jpg" width="1600"/>
 </button>
-<button aria-label="Mostrar como principal: detalle de la mesa de cristal, la lámpara y los cuadros con la pieza GS" class="despatx__gallery-thumb" data-full="/images/office/office-desk-detail-gs.jpg" type="button">
+<button aria-label="Mostrar como principal: detalle de la mesa de cristal, la lámpara y los cuadros con la pieza GS" aria-pressed="false" class="despatx__gallery-dot" type="button">
 <img alt="Detalle del despacho: mesa de cristal, lámpara de pie y los cuadros de pluma y lápiz, con una pieza GS." decoding="async" height="770" loading="lazy" src="/images/office/office-desk-detail-gs.jpg" width="1026"/>
+</button>
+<button aria-label="Mostrar como principal: vista amplia con la mesa principal y la impresora" aria-pressed="false" class="despatx__gallery-dot" type="button">
+<img alt="Vista amplia del despacho con la mesa principal, la estantería, la impresora y la lámpara de pie." decoding="async" height="1250" loading="lazy" src="/images/office/office-wide-view.jpg" width="2000"/>
+</button>
+<button aria-label="Mostrar como principal: mesa con flores y estanterías jurídicas" aria-pressed="false" class="despatx__gallery-dot" type="button">
+<img alt="Mesa con flores frente a las estanterías de fondo jurídico del despacho." decoding="async" height="1250" loading="lazy" src="/images/office/office-legal-library-flowers.jpg" width="2000"/>
+</button>
+<button aria-label="Mostrar como principal: monograma GS bordado" aria-pressed="false" class="despatx__gallery-dot" type="button">
+<img alt="Monograma GS bordado, detalle decorativo del despacho." decoding="async" height="1656" loading="lazy" src="/images/office/office-gs-embroidery.jpg" width="1486"/>
+</button>
+<button aria-label="Mostrar como principal: pared de libros antiguos" aria-pressed="false" class="despatx__gallery-dot" type="button">
+<img alt="Pared de libros antiguos del despacho de Glòria Solsona." decoding="async" height="1260" loading="lazy" src="/images/office/office-antique-books.jpg" width="2016"/>
+</button>
+</div>
+<button aria-label="Fotografías siguientes" class="despatx__gallery-arrow despatx__gallery-arrow--next" type="button">
+<span aria-hidden="true">→</span>
 </button>
 </div>
 </div>

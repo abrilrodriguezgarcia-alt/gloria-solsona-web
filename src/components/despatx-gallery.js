@@ -22,10 +22,19 @@ export function initDespatxGallery() {
 
   let currentIndex = 0;
 
+  // La imatge dins de cada punt (`dotImg.src`, propietat DOM ja resolta
+  // pel navegador a una URL absoluta) és la mateixa que Vite processa i
+  // reescriu amb el `base` configurat (localhost o el subdirectori de
+  // GitHub Pages) — així s'evita mantenir una segona ruta en un atribut
+  // `data-*` propi, que Vite no reescriu mai i que provocava 404 en
+  // navegar (la fotografia inicial de l'escenari carregava bé perquè és
+  // un `<img src>` real, però la resta només vivien en `data-full`).
+
   // Precarrega totes les fotos perquè la navegació sigui immediata i
   // sense parpelleig.
   dots.forEach((dot) => {
-    if (dot.dataset.full) new Image().src = dot.dataset.full;
+    const img = dot.querySelector('img');
+    if (img) new Image().src = img.src;
   });
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -35,11 +44,11 @@ export function initDespatxGallery() {
     currentIndex = index;
     const dot = dots[currentIndex];
     const dotImg = dot.querySelector('img');
-    if (!dot.dataset.full || !dotImg) return;
+    if (!dotImg) return;
 
     stage.classList.add('despatx__gallery-stage-img--fading');
     window.setTimeout(() => {
-      stage.src = dot.dataset.full;
+      stage.src = dotImg.src;
       stage.alt = dotImg.alt;
       stage.classList.remove('despatx__gallery-stage-img--fading');
     }, FADE_MS);

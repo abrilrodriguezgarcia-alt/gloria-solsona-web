@@ -1069,6 +1069,41 @@ deixi de ser accessible.
   miniatures+fletxes+comptador de §8a.12, però sense perdre cap
   fotografia.
 
+## 8a.16 Fix: fotografies trencades sota GitHub Pages/`base` de Vite (petició expressa, 2026-09-19)
+
+**Símptoma:** en desplegar-se sota un `base` de Vite no arrel (`/gloria-solsona-web/`,
+vegeu `vite.config.js`, configurat en paral·lel per a GitHub Pages), la
+fotografia inicial de l'escenari carregava bé però la resta de fotografies
+trencaven (icona d'imatge trencada + text `alt`) en navegar amb les
+fletxes o els punts, tant a `localhost` amb el servidor de Vite com un cop
+publicades.
+
+**Causa:** cada punt (`.despatx__gallery-dot`) guardava la ruta completa
+de la seva fotografia en un atribut `data-full="/images/office/..."`
+propi, que `src/components/despatx-gallery.js` llegia per canviar
+l'escenari. Vite reescriu automàticament els atributs `src`/`href`
+reconeguts (`<img src>`, `<link href>`, etc.) de l'HTML per anteposar-hi
+el `base` configurat — però **no** toca atributs `data-*` arbitraris.
+Per això la fotografia inicial (un `<img src>` real, sí reescrit)
+carregava bé, mentre que qualsevol altra fotografia demanada via
+`data-full` (mai reescrit) resolia a una URL absoluta incorrecta
+(`/images/...` en lloc de `/gloria-solsona-web/images/...`) i donava 404.
+Totes 8 fotografies existien igualment als fitxers del projecte
+(`assets/images/office/`, noms/extensions verificats un a un) — no era un
+problema d'assets absents ni de referències eliminades, només de com se
+n'obtenia la URL en navegar.
+
+**Fix (`src/components/despatx-gallery.js`, sense tocar cap `data-full` —
+directament s'eliminen dels 8 botons a `index.html`, ja no calen):** en
+lloc de mantenir una segona ruta pròpia, la galeria ara llegeix
+`dotImg.src` (la propietat DOM de la `<img>` que ja viu dins de cada punt
+per a l'i18n/dades) — una URL ja resolta pel navegador a partir de
+l'atribut que Vite sí ha reescrit correctament, tant en local com sota
+qualsevol `base`. Una única font de veritat per fotografia, sense cap
+ruta duplicada que es pugui desincronitzar. Sense cap canvi visual, de
+disseny ni de contingut: mateixos controls (fletxes discretes + punts),
+mateixes 8 fotografies, mateix escenari.
+
 ---
 
 # 9. Ressenyes
