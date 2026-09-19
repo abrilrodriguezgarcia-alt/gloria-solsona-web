@@ -32,13 +32,15 @@ PAGES = [
 ]
 
 # Enllaços interns que canvien de destí a la versió ES (assets, àncores de
-# secció i enllaços externs es deixen tal qual: són absoluts des de l'arrel
-# o no depenen de l'idioma).
+# secció i enllaços externs es deixen tal qual: els assets són absoluts des
+# de l'arrel del `publicDir` i no depenen de l'idioma; els enllaços de
+# navegació fan servir el placeholder %BASE_URL% de Vite perquè funcionin
+# tant en local com desplegats a un subdirectori, p. ex. GitHub Pages).
 LINK_MAP = {
-    "/": "/es/",
-    "/legal/avis-legal.html": "/es/legal/aviso-legal.html",
-    "/legal/privacitat.html": "/es/legal/privacidad.html",
-    "/legal/cookies.html": "/es/legal/cookies.html",
+    "%BASE_URL%": "%BASE_URL%es/",
+    "%BASE_URL%legal/avis-legal.html": "%BASE_URL%es/legal/aviso-legal.html",
+    "%BASE_URL%legal/privacitat.html": "%BASE_URL%es/legal/privacidad.html",
+    "%BASE_URL%legal/cookies.html": "%BASE_URL%es/legal/cookies.html",
 }
 
 

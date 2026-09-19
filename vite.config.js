@@ -4,6 +4,7 @@ import { fileURLToPath, URL } from 'node:url';
 // Els assets ja existents del projecte viuen a `assets/` (no `public/`).
 // `publicDir` respecta aquesta organització sense moure ni duplicar fitxers.
 export default defineConfig({
+  base: '/gloria-solsona-web/',
   publicDir: 'assets',
   build: {
     outDir: 'dist',

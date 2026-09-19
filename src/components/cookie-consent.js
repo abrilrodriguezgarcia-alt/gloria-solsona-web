@@ -26,7 +26,7 @@ const TEXT = {
     reject: 'Rebutjar',
     accept: 'Acceptar',
     policyLabel: 'Política de cookies',
-    policyHref: '/legal/cookies.html',
+    policyHref: `${import.meta.env.BASE_URL}legal/cookies.html`,
   },
   es: {
     label: 'Consentimiento de cookies y servicios de terceros',
@@ -36,7 +36,7 @@ const TEXT = {
     reject: 'Rechazar',
     accept: 'Aceptar',
     policyLabel: 'Política de cookies',
-    policyHref: '/es/legal/cookies.html',
+    policyHref: `${import.meta.env.BASE_URL}es/legal/cookies.html`,
   },
 };
 
