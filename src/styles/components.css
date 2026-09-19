@@ -289,6 +289,15 @@
   color: var(--color-text-muted);
 }
 
+.hero__motto {
+  margin-top: var(--space-2);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 0.3vw + 0.95rem, 1.1rem);
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+}
+
 .hero__divider {
   margin-block: var(--space-6);
   margin-inline-start: 0;
