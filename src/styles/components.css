@@ -104,11 +104,14 @@
   gap: var(--space-4);
 }
 
-/* Selector d'idioma — discret, no competeix amb la navegació principal. */
+/* Selector d'idioma — petit selector (CAT/ES), no dos links més del menú:
+   es diferencia per pes tipogràfic + subratllat fi (idioma actiu) i per
+   una opacitat més baixa en repòs amb hover elegant (idioma inactiu), no
+   per cap icona, globus o botó tipus pill. */
 .lang-switch {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
   font-family: var(--font-sans);
   font-size: 0.8rem;
   letter-spacing: 0.04em;
@@ -117,24 +120,39 @@
 .lang-switch__link {
   color: var(--color-navy);
   font-weight: 500;
+  opacity: 0.7;
   border-bottom: 1px solid transparent;
-  transition: font-weight var(--motion-fast) var(--easing-standard),
+  padding-bottom: 1px;
+  transition: opacity var(--motion-fast) var(--easing-standard),
+    font-weight var(--motion-fast) var(--easing-standard),
     border-color var(--motion-fast) var(--easing-standard);
 }
 
-.lang-switch__link--active,
-.lang-switch__link:hover,
-.lang-switch__link:focus-visible {
-  font-weight: 700;
-}
-
-.lang-switch__link:hover,
-.lang-switch__link:focus-visible {
+/* Idioma actiu: diferenciació subtil (no un pes molt marcat) + subratllat
+   fi permanent, perquè es distingeixi clarament del hover de l'altre. */
+.lang-switch__link--active {
+  font-weight: 600;
+  opacity: 1;
   border-bottom-color: currentColor;
 }
 
-.lang-switch__sep {
-  color: var(--color-navy);
+/* Idioma inactiu: hover/focus elegant que en deixa clar que és clicable,
+   sense arribar al pes tipogràfic de l'idioma actiu. */
+.lang-switch__link:hover,
+.lang-switch__link:focus-visible {
+  opacity: 1;
+  border-bottom-color: currentColor;
+}
+
+/* Separador molt fi i discret entre el selector d'idioma i la navegació
+   principal (o, a mòbil, el botó de menú). Es combina amb el gap del
+   contenidor (.hero__bar-controls) perquè la separació total ronde els
+   28–32px demanats, sense necessitat de cap marge addicional. */
+.hero__bar-divider {
+  width: 1px;
+  height: 18px;
+  background-color: var(--color-line);
+  flex-shrink: 0;
 }
 
 .logo {
