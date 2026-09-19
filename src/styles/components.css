@@ -1931,13 +1931,6 @@ textarea.contacte-form__control {
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* Identificació professional mínima al peu (col·legiatura/NIF), en línia
-   pròpia i discreta sota el copyright — docs/legal-requirements.md. */
-.footer__legal-id {
-  margin-top: var(--space-2);
-  color: rgba(255, 255, 255, 0.55);
-}
-
 /* ==========================================================================
    Pàgines legals provisionals (avís legal / privacitat / cookies)
    ========================================================================== */

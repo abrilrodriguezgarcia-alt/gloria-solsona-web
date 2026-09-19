@@ -1359,11 +1359,14 @@ Segona línia:
 
 No incloure crèdits ni dades personals de la desenvolupadora tret que s'acordi expressament més endavant.
 
-> **Addenda (2026-09-19, instrucció expressa):** s'afegeix una tercera línia
-> discreta (`.footer__legal-id`, mateix estil que el copyright però amb
-> menys opacitat) amb identificació professional mínima: nom, NIF i número
-> de col·legiada — `Glòria Solsona Martí · NIF 46675406B · Col·legiada
-> núm. 2011, ICASF`. No es toca la resta de la composició del footer.
+> **Addenda (2026-09-19, instrucció expressa) — aplicada i revertida el
+> mateix dia:** es va afegir una tercera línia discreta
+> (`.footer__legal-id`) amb identificació professional mínima (nom, NIF i
+> número de col·legiada). **Revertit (instrucció expressa):** aquestes
+> dades es retiren del footer i es mantenen només a les pàgines legals
+> (avís legal, privacitat) i, quan sigui pertinent, al bloc de contacte —
+> vegeu §10.2 i §11.1 (Composició original, sense tercera línia). El footer
+> torna a mostrar només logo + enllaços legals + copyright.
 
 ## 11.2 Revisió de jerarquia (FASE 7, 2026-09-12) — aplicada i revertida
 
