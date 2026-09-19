@@ -7,8 +7,14 @@
 // Cada fotografia viu com un punt (`.despatx__gallery-dot`, un botó amb
 // una imatge a dins perquè l'i18n i les dades es mantinguin al HTML,
 // visualment reduït a un punt petit). Clicar-hi, o usar les fletxes ← →
-// (cícliques, sense autoplay), mostra aquella fotografia a l'escenari
-// (fos suau) i marca el punt actiu.
+// (cícliques), mostra aquella fotografia a l'escenari (fos suau) i marca
+// el punt actiu.
+//
+// Autoplay (instrucció expressa): canvia sola cada ~5s, es pausa mentre el
+// cursor és sobre la galeria i es reinicia el compte enrere en qualsevol
+// interacció manual (fletxes, punts o swipe), perquè no "salti" just
+// després que la persona usuària hagi triat una fotografia. Es desactiva
+// per complet si `prefers-reduced-motion` és actiu.
 export function initDespatxGallery() {
   const root = document.querySelector('.despatx__gallery');
   if (!root) return;
@@ -64,13 +70,49 @@ export function initDespatxGallery() {
     render((currentIndex + delta + total) % total);
   }
 
+  // ---- Autoplay ----
+  const AUTOPLAY_MS = 5000;
+  let autoplayTimer = null;
+
+  function stopAutoplay() {
+    if (autoplayTimer !== null) {
+      window.clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function startAutoplay() {
+    if (reduceMotion || total <= 1) return;
+    stopAutoplay();
+    autoplayTimer = window.setInterval(() => step(1), AUTOPLAY_MS);
+  }
+
+  // Qualsevol interacció manual reinicia el compte enrere, perquè
+  // l'autoplay no "salti" a la següent just després que la persona
+  // usuària n'hagi triat una.
+  function restartAutoplay() {
+    if (reduceMotion) return;
+    startAutoplay();
+  }
+
   dots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
       if (i !== currentIndex) render(i);
+      restartAutoplay();
     });
   });
-  prevBtn?.addEventListener('click', () => step(-1));
-  nextBtn?.addEventListener('click', () => step(1));
+  prevBtn?.addEventListener('click', () => {
+    step(-1);
+    restartAutoplay();
+  });
+  nextBtn?.addEventListener('click', () => {
+    step(1);
+    restartAutoplay();
+  });
+
+  // Pausa mentre el cursor és sobre la galeria (escenari, fletxes i punts).
+  root.addEventListener('mouseenter', stopAutoplay);
+  root.addEventListener('mouseleave', restartAutoplay);
 
   // Swipe discret a mòbil sobre l'escenari (complementa les fletxes, no
   // les substitueix).
@@ -93,10 +135,13 @@ export function initDespatxGallery() {
         const SWIPE_THRESHOLD = 40;
         if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
           step(deltaX < 0 ? 1 : -1);
+          restartAutoplay();
         }
         touchStartX = null;
       },
       { passive: true }
     );
   }
+
+  startAutoplay();
 }

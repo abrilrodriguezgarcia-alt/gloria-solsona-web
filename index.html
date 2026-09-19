@@ -283,7 +283,8 @@
         petició expressa, 2026-09-11; revisada 2026-09-12 §8a.5 a §8a.12;
         controls de la galeria simplificats 2026-09-19 §8a.14, corregit
         §8a.15 perquè no es perdés cap fotografia; fix de rutes trencades
-        §8a.16; reordenada §8a.17 perquè la vista àmplia sigui la primera).
+        §8a.16; reordenada §8a.17 perquè la vista àmplia sigui la primera;
+        reordenada de nou i autoplay afegit a §8a.18).
         Columna esquerra (títol, text i placa navy) intacta des de §8a.10 —
         no tocar sense instrucció expressa.
 
@@ -301,18 +302,31 @@
         lector de pantalla anunciï el nou `alt` en canviar de fotografia,
         sense necessitat de cap comptador numèric visible.
 
-        Ordre (§8a.17, petició expressa): `office-wide-view.jpg` (vista
-        àmplia amb la taula principal i la impressora) és ara la primera
-        fotografia i la que es mostra per defecte a l'escenari en carregar
-        la pàgina — abans hi havia `office-meeting-area.jpg`, que ara passa
-        a segona posició. La resta de fotografies mantenen el seu ordre
-        relatiu (glass-logo, library, desk-detail-gs, legal-library-
-        flowers, gs-embroidery, antique-books). Cap fotografia s'elimina ni
-        se substitueix; només canvia l'ordre dels punts i quina és
-        l'escenari inicial. El primer `<button class="despatx__gallery-
+        Ordre (§8a.18, petició expressa): `office-meeting-area.jpg` (zona
+        de butaques) donava massa protagonisme a la làmpada i al mobiliari
+        en segona posició i no era prou representativa del despatx — es
+        manté a la galeria però es mou més endavant (ara 6a posició).
+        `office-legal-library-flowers.jpg` (taula de reunió oberta amb la
+        prestatgeria de fons jurídic) la substitueix com a segona
+        fotografia perquè explica millor l'espai. Ordre complet:
+        1) wide-view (portada), 2) legal-library-flowers (pla obert
+        complementari), 3) library, 4) antique-books, 5) glass-logo,
+        6) meeting-area, 7) desk-detail-gs, 8) gs-embroidery — detalls i
+        altres punts de vista a partir de la 3a posició. Cap fotografia
+        s'elimina ni se substitueix; només canvia l'ordre dels punts i
+        quina és l'escenari inicial (continua sent wide-view, sense canvis
+        respecte a §8a.17). El primer `<button class="despatx__gallery-
         dot">` del DOM és sempre la fotografia per defecte (JS: `let
         currentIndex = 0`), així que reordenar-les al HTML és l'únic canvi
         necessari.
+
+        Autoplay (§8a.18, petició expressa): la galeria canvia sola de
+        fotografia cada ~5s (fos suau, mateixa transició que la navegació
+        manual), és cíclica, es pausa amb el cursor a sobre i reinicia el
+        compte enrere en qualsevol interacció manual (fletxes, punts o
+        swipe). Es desactiva per complet si `prefers-reduced-motion` és
+        actiu. Lògica a src/components/despatx-gallery.js — no requereix
+        canvis d'HTML ni CSS.
       -->
       <section id="despatx" class="section despatx" aria-labelledby="despatx-titol">
         <div class="container despatx__layout">
@@ -363,32 +377,32 @@
                   <img src="/images/office/office-wide-view.webp" alt="Vista àmplia del despatx amb la taula principal, la prestatgeria, la impressora i la llum de peu." width="2000" height="1250" loading="lazy" decoding="async" />
                 </button>
 
-                <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: zona d'atenció del despatx" aria-pressed="false">
-                  <img src="/images/office/office-meeting-area.webp" alt="Zona d'atenció del despatx de Glòria Solsona: butaques, llum de peu, prestatgeria i els quadres de bolígraf, ploma i llapis." width="870" height="1200" loading="lazy" decoding="async" />
-                </button>
-
-                <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: monograma GS al vidre" aria-pressed="false">
-                  <img src="/images/office/office-glass-logo.webp" alt="Monograma GS gravat al vidre del despatx." width="1600" height="1200" loading="lazy" decoding="async" />
+                <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: taula amb flors i prestatgeries jurídiques" aria-pressed="false">
+                  <img src="/images/office/office-legal-library-flowers.webp" alt="Taula amb flors davant les prestatgeries de fons jurídic del despatx." width="2000" height="1250" loading="lazy" decoding="async" />
                 </button>
 
                 <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: escriptori de vidre davant la prestatgeria blanca" aria-pressed="false">
                   <img src="/images/office/office-library.webp" alt="Escriptori de vidre davant la prestatgeria blanca del despatx de Glòria Solsona." width="1600" height="1200" loading="lazy" decoding="async" />
                 </button>
 
+                <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: paret de llibres antics" aria-pressed="false">
+                  <img src="/images/office/office-antique-books.webp" alt="Paret de llibres antics del despatx de Glòria Solsona." width="2016" height="1260" loading="lazy" decoding="async" />
+                </button>
+
+                <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: monograma GS al vidre" aria-pressed="false">
+                  <img src="/images/office/office-glass-logo.webp" alt="Monograma GS gravat al vidre del despatx." width="1600" height="1200" loading="lazy" decoding="async" />
+                </button>
+
+                <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: zona d'atenció del despatx" aria-pressed="false">
+                  <img src="/images/office/office-meeting-area.webp" alt="Zona d'atenció del despatx de Glòria Solsona: butaques, llum de peu, prestatgeria i els quadres de bolígraf, ploma i llapis." width="870" height="1200" loading="lazy" decoding="async" />
+                </button>
+
                 <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: detall de la taula de vidre, la llum i els quadres amb la peça GS" aria-pressed="false">
                   <img src="/images/office/office-desk-detail-gs.webp" alt="Detall del despatx: taula de vidre, llum de peu i els quadres de ploma i llapis, amb una peça GS." width="1026" height="770" loading="lazy" decoding="async" />
                 </button>
 
-                <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: taula amb flors i prestatgeries jurídiques" aria-pressed="false">
-                  <img src="/images/office/office-legal-library-flowers.webp" alt="Taula amb flors davant les prestatgeries de fons jurídic del despatx." width="2000" height="1250" loading="lazy" decoding="async" />
-                </button>
-
                 <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: monograma GS brodat" aria-pressed="false">
                   <img src="/images/office/office-gs-embroidery.webp" alt="Monograma GS brodat, detall decoratiu del despatx." width="1486" height="1656" loading="lazy" decoding="async" />
-                </button>
-
-                <button type="button" class="despatx__gallery-dot" aria-label="Mostra com a principal: paret de llibres antics" aria-pressed="false">
-                  <img src="/images/office/office-antique-books.webp" alt="Paret de llibres antics del despatx de Glòria Solsona." width="2016" height="1260" loading="lazy" decoding="async" />
                 </button>
               </div>
 
