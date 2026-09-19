@@ -1249,17 +1249,16 @@ Comportament:
 
 ## 10.3 WhatsApp
 
-**PENDENT DE CONFIRMACIÓ.**
+**CONFIRMAT (2026-09-20).**
 
-La intenció és incorporar-lo només si la Glòria confirma que el despatx en disposa i facilita el número professional que s'ha d'utilitzar.
-
-No mostrar WhatsApp abans d'aquesta confirmació.
+Número professional: `+34 699 15 67 42`. S'enllaça amb `https://wa.me/34699156742` a `.contacte__list`, seguint el mateix patró que telèfon/correu.
 
 ## 10.4a Horari
 
-**PENDENT DE CONFIRMACIÓ** (docs/client-validation-checklist.md).
+**CONFIRMAT (2026-09-20).**
 
-No mostrar horari d'atenció fins que la Glòria el confirmi.
+- Dilluns a dijous: de 9 a 13 h i de 16 a 20 h.
+- Divendres: de 9 a 13 h.
 
 ## 10.4 Ubicació
 
