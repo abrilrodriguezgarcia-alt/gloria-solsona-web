@@ -13,7 +13,7 @@ Aquest document separa la informació **confirmada** de la informació **pendent
   - **Dret successori**.
   - **Dret civil català**.
 - Telèfon professional mostrat a la proposta aprovada: **93 277 79 95**.
-- Correu professional mostrat a la proposta aprovada: **gloria@gloriasolsona.cat**.
+- Correu professional mostrat a la proposta aprovada: **advocat@gloriasolsona.cat**.
 - Adreça professional mostrada a la proposta aprovada: **Carrer Pintor Carbonell, 17-19 entresol, 08750 Molins de Rei, Barcelona**.
 - La secció d'ubicació incorporarà **Google Maps**.
 - El carrer no cal repetir-lo com a text dins del bloc d'ubicació si el mapa ja compleix aquesta funció; la dada sí que es manté al bloc de contacte segons la maqueta aprovada.

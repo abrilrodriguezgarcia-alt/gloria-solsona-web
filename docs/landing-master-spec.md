@@ -1237,7 +1237,7 @@ El bloc ha de tenir **aire**. No compactar text, dades i mapa.
 **Dades mostrades a la maqueta:**
 
 - **Telèfon:** `93 277 79 95`
-- **Correu:** `gloria@gloriasolsona.cat`
+- **Correu:** `advocat@gloriasolsona.cat`
 - **Adreça:** `Carrer Pintor Carbonell, 17-19 entresol, 08750 Molins de Rei, Barcelona`
 
 Comportament:
