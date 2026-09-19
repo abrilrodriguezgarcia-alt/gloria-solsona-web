@@ -1017,6 +1017,58 @@ necessari sense tocar la mida ni l'impacte de la fotografia principal.
   de 3 columnes dins `.despatx__gallery`. Sense cap altre canvi de mida,
   `aspect-ratio` o espaiat respecte a §8a.12.
 
+## 8a.15 Correcció: recuperar totes les fotografies (petició expressa, 2026-09-19)
+
+**Feedback rebut:** la simplificació de controls de §8a.14 anava en la
+bona direcció, però va reduir per error el *contingut* de la galeria (de
+8 fotografies a 4) en lloc de tocar només els *controls*. Petició
+explícita: recuperar totes les fotografies originals i mantenir-les totes
+accessibles, conservant l'escenari gran sense canvis, amb una navegació
+"simple i discreta" — no cal recuperar la combinació sencera de
+miniatures + fletxes + comptador; per exemple, fletxes discretes més un
+indicador molt subtil ja compleixen l'objectiu, sempre que cap fotografia
+deixi de ser accessible.
+
+**Canvi respecte a §8a.14 (substitueix la solució, no el diagnòstic):**
+
+- **Es recuperen les 8 fotografies reals de §8a.12** (escenari +
+  `office-glass-logo.jpg`, `office-library.jpg`, `office-desk-detail-gs.jpg`,
+  `office-wide-view.jpg`, `office-legal-library-flowers.jpg`,
+  `office-gs-embroidery.jpg`, `office-antique-books.jpg`), totes
+  accessibles de nou. Cap fotografia de la selecció tancada de §8a.12 es
+  torna a eliminar.
+- **Ja no hi ha graella de miniatures.** Cada fotografia (incloent-hi la
+  que abans només feia d'escenari per defecte) viu com un
+  `.despatx__gallery-dot`: un botó real (navegable per teclat) que conté
+  la imatge a dins únicament perquè l'i18n en tradueixi l'`alt` i perquè
+  `src/components/despatx-gallery.js` en llegeixi les dades — visualment
+  es redueix a un punt de 6px via `::before` (opacitat 0.3 en repòs, 1 i
+  `scale(1.2)` quan és l'actiu), sense mostrar mai la fotografia a mida
+  visible. És l'"indicador molt subtil" demanat.
+- **Fletxes discretes** (`.despatx__gallery-arrow`, recuperades amb el
+  mateix llenguatge visual de §8a.12: glif sol, subratllat fi en
+  hover/focus, sense caixa ni ombra) avancen/retrocedeixen un punt,
+  cícliques. `.despatx__gallery-nav` torna a ser fletxa—indicador—fletxa,
+  ara centrat en lloc d'ocupar tot l'ample (ja no hi ha graella que
+  ompli l'espai).
+- **Sense comptador numèric visible.** En lloc de "01 / 08",
+  `.despatx__gallery-stage` porta `aria-live="polite"`: en canviar de
+  fotografia (amb fletxa o punt), un lector de pantalla anuncia el nou
+  `alt` de la imatge — informació equivalent (o més rica) que un simple
+  número, sense cap element visual addicional.
+- **Interacció reescrita a `src/components/despatx-gallery.js`:** ja no
+  hi ha "intercanvi" (`swap`) perquè ja no hi ha miniatures fixes que
+  necessitin conservar una fotografia en heretar-ne una altra. Ara és un
+  model d'índex actiu senzill: cada punt/fletxa fa `render(index)`, que
+  actualitza l'escenari (mateix fos de 180ms), l'atribut `aria-pressed`
+  de cada punt i la classe `--active`. El swipe horitzontal a mòbil es
+  mou de la fila de miniatures (que ja no existeix) a l'escenari mateix.
+- **Composició resultant:** mateix escenari gran (16/10, sense cap canvi
+  de mida ni `object-fit`), fila de navegació centrada amb dues fletxes i
+  8 punts diminuts entremig — molt més discreta que la combinació
+  miniatures+fletxes+comptador de §8a.12, però sense perdre cap
+  fotografia.
+
 ---
 
 # 9. Ressenyes

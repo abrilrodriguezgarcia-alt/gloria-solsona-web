@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<link href="/brand/monogram-gs.png" rel="icon" type="image/png"/>
+<link href="./brand/monogram-gs.png" rel="icon" type="image/png"/>
 <title>Glòria Solsona Martí — Abogada</title>
 <meta content="Sitio web profesional de Glòria Solsona Martí, abogada. Contenido en desarrollo." name="description"/>
 <!--
@@ -30,14 +30,14 @@
 <header class="site-header" id="site-header">
 <div class="site-header__bar">
 <div class="hero__bar container">
-<a class="logo" href="/es/">
-<img alt="Glòria Solsona Martí — Abogado" class="logo__image" height="200" src="/brand/logotip.png" width="568"/>
+<a class="logo" href="./">
+<img alt="Glòria Solsona Martí — Abogado" class="logo__image" height="200" src="./brand/logotip.png" width="568"/>
 </a>
 <div class="hero__bar-controls">
 <nav aria-label="Selector de idioma" class="lang-switch">
-<a class="lang-switch__link" href="/" hreflang="ca" lang="ca">CA</a>
+<a class="lang-switch__link" href="../" hreflang="ca" lang="ca">CA</a>
 <span aria-hidden="true" class="lang-switch__sep">/</span>
-<a aria-current="page" class="lang-switch__link lang-switch__link--active" href="/es/" hreflang="es" lang="es">ES</a>
+<a aria-current="page" class="lang-switch__link lang-switch__link--active" href="./" hreflang="es" lang="es">ES</a>
 </nav>
 <button aria-controls="nav-principal" aria-expanded="false" class="nav-toggle" type="button">
 <span class="visually-hidden">Abrir el menú</span>
@@ -57,13 +57,13 @@
 </div>
 <div class="hero">
 <div class="hero__media">
-<img alt="Glòria Solsona Martí, abogada, sentada con toga en un espacio con columnas de piedra." class="hero__photo" fetchpriority="high" height="1374" src="/images/gloria-hero-provisional.jpg" width="1145"/>
+<img alt="Glòria Solsona Martí, abogada, sentada con toga en un espacio con columnas de piedra." class="hero__photo" fetchpriority="high" height="1374" src="./images/gloria-hero-provisional.jpg" width="1145"/>
 <p class="hero__quote">
             “El derecho<br/>al servicio<br/>de las personas.”
             <span aria-hidden="true" class="hero__quote-line"></span>
 </p>
 </div>
-<img alt="" aria-hidden="true" class="hero__monogram" height="127" src="/brand/monogram-gs.png" width="120"/>
+<img alt="" aria-hidden="true" class="hero__monogram" height="127" src="./brand/monogram-gs.png" width="120"/>
 <div class="hero__content">
 <h1 class="hero__title">Glòria Solsona Martí</h1>
 <p class="hero__subtitle">Abogada</p>
@@ -147,8 +147,8 @@
           -->
 <div aria-label="Fotografías de Glòria Solsona" aria-roledescription="carrusel" class="gloria__media gloria__slideshow" role="group">
 <div class="gloria__slideshow-stage">
-<img alt="Glòria Solsona Martí sonriendo en un retrato personal." class="gloria__slide gloria__slide--active" decoding="async" height="1375" loading="eager" src="/images/gloria/gloria-galeria-01.jpg" width="1100"/>
-<img alt="Glòria Solsona Martí en un momento distendido, rodeada de libros." class="gloria__slide" decoding="async" height="1196" loading="lazy" src="/images/gloria/gloria-galeria-02.jpg" width="964"/>
+<img alt="Glòria Solsona Martí sonriendo en un retrato personal." class="gloria__slide gloria__slide--active" decoding="async" height="1375" loading="eager" src="./images/gloria/gloria-galeria-01.jpg" width="1100"/>
+<img alt="Glòria Solsona Martí en un momento distendido, rodeada de libros." class="gloria__slide" decoding="async" height="1196" loading="lazy" src="./images/gloria/gloria-galeria-02.jpg" width="964"/>
 </div>
 <div class="gloria__slideshow-controls">
 <button aria-label="Fotografía 1 de 2" aria-pressed="true" class="gloria__slideshow-dot gloria__slideshow-dot--active" type="button"></button>
@@ -177,7 +177,7 @@
         docs/assets-status.md.
       -->
 <section aria-labelledby="trajectoria-titol" class="section section--muted trajectoria" id="trajectoria">
-<img alt="" aria-hidden="true" class="trajectoria__emblem" decoding="async" height="963" loading="lazy" src="/images/brand/trajectoria-emblem.png" width="1074"/>
+<img alt="" aria-hidden="true" class="trajectoria__emblem" decoding="async" height="963" loading="lazy" src="./images/brand/trajectoria-emblem.png" width="1074"/>
 <div class="container trajectoria__grid">
 <div class="trajectoria__intro">
 <h2 class="trajectoria__title" id="trajectoria-titol">Trayectoria</h2>
@@ -200,24 +200,24 @@
 <!--
         El despatx — docs/landing-master-spec.md §8a (secció afegida a
         petició expressa, 2026-09-11; revisada 2026-09-12 §8a.5 a §8a.12;
-        controls de la galeria simplificats 2026-09-19 §8a.14).
+        controls de la galeria simplificats 2026-09-19 §8a.14, corregit
+        §8a.15 perquè no es perdés cap fotografia).
         Columna esquerra (títol, text i placa navy) intacta des de §8a.10 —
         no tocar sense instrucció expressa.
 
-        Galeria (§8a.14, petició expressa de simplificació dels controls):
-        1 escenari gran + 3 miniatures fixes, sense fletxes ni comptador —
-        la combinació anterior (miniatures + fletxes + comptador "01 / 07")
-        donava massa protagonisme a la secció, que ha de funcionar com a
-        context visual de l'espai, no com una galeria de projecte.
-        4 fotografies reals en total (escenari inicial + les 3 miniatures,
-        les mateixes que ja es veien per defecte a §8a.12). Interacció
-        (src/components/despatx-gallery.js): clicar una miniatura
-        l'intercanvia amb l'escenari (fos suau) — la pròpia miniatura és el
-        control de navegació, sense cap element de UI addicional. Les altres
-        4 fotografies de la reserva de §8a.12 (vista ampla amb impressora,
-        taula amb flors, brodat GS, paret de llibres antics) deixen de
-        mostrar-se; es mantenen com a assets vàlids documentats a
-        docs/assets-status.md per si es volen recuperar.
+        Galeria (§8a.15, petició expressa: simplificar només els controls,
+        sense reduir el contingut): 1 escenari gran + fletxes discretes +
+        un indicador de punts molt subtil. Les 8 fotografies reals
+        originals (escenari + les 7 de la reserva de §8a.12) es mantenen
+        totes accessibles — cap se n'elimina. Estructura
+        (src/components/despatx-gallery.js): cada fotografia viu com un
+        punt (`.despatx__gallery-dot`, botó amb la imatge a dins per a
+        l'i18n i les dades, visualment reduït a un punt petit); clicar-hi
+        o usar les fletxes ← → (cícliques) mostra aquella fotografia a
+        l'escenari (fos suau). El punt actiu es marca (opacitat +
+        `aria-pressed`) i l'escenari porta `aria-live="polite"` perquè un
+        lector de pantalla anunciï el nou `alt` en canviar de fotografia,
+        sense necessitat de cap comptador numèric visible.
       -->
 <section aria-labelledby="despatx-titol" class="section despatx" id="despatx">
 <div class="container despatx__layout">
@@ -228,24 +228,47 @@
               Un espacio cercano, sereno y pensado para atender cada consulta con la discreción que requiere.
             </p>
 <div class="despatx__editorial">
-<img alt="" aria-hidden="true" class="despatx__accent" decoding="async" height="1253" loading="lazy" src="/images/brand/typewriter-line-navy-card.png" width="1516"/>
+<img alt="" aria-hidden="true" class="despatx__accent" decoding="async" height="1253" loading="lazy" src="./images/brand/typewriter-line-navy-card.png" width="1516"/>
 <hr aria-hidden="true" class="despatx__plate-rule"/>
 <p class="despatx__quote">“El compromiso es un acto, no una palabra.”</p>
 </div>
 </div>
 <div class="despatx__gallery">
-<div class="despatx__gallery-stage">
-<img alt="Zona de atención del despacho de Glòria Solsona: butacas, lámpara de pie, estantería y los cuadros de bolígrafo, pluma y lápiz." decoding="async" height="1200" id="despatx-gallery-stage-img" loading="lazy" src="/images/office/office-meeting-area.jpg" width="870"/>
+<div aria-live="polite" class="despatx__gallery-stage">
+<img alt="Zona de atención del despacho de Glòria Solsona: butacas, lámpara de pie, estantería y los cuadros de bolígrafo, pluma y lápiz." decoding="async" height="1200" id="despatx-gallery-stage-img" loading="lazy" src="./images/office/office-meeting-area.jpg" width="870"/>
 </div>
-<div aria-label="Más fotografías del despacho" class="despatx__gallery-thumbs" role="group">
-<button aria-label="Mostrar como principal: monograma GS en el cristal" class="despatx__gallery-thumb" data-full="/images/office/office-glass-logo.jpg" type="button">
-<img alt="Monograma GS grabado en el cristal del despacho." decoding="async" height="1200" loading="lazy" src="/images/office/office-glass-logo.jpg" width="1600"/>
+<div class="despatx__gallery-nav">
+<button aria-label="Fotografías anteriores" class="despatx__gallery-arrow despatx__gallery-arrow--prev" type="button">
+<span aria-hidden="true">←</span>
 </button>
-<button aria-label="Mostrar como principal: escritorio de cristal frente a la estantería blanca" class="despatx__gallery-thumb" data-full="/images/office/office-library.jpg" type="button">
-<img alt="Escritorio de cristal frente a la estantería blanca del despacho de Glòria Solsona." decoding="async" height="1200" loading="lazy" src="/images/office/office-library.jpg" width="1600"/>
+<div aria-label="Más fotografías del despacho" class="despatx__gallery-dots" role="group">
+<button aria-label="Mostrar como principal: zona de atención del despacho" aria-pressed="true" class="despatx__gallery-dot despatx__gallery-dot--active" data-full="./images/office/office-meeting-area.jpg" type="button">
+<img alt="Zona de atención del despacho de Glòria Solsona: butacas, lámpara de pie, estantería y los cuadros de bolígrafo, pluma y lápiz." decoding="async" height="1200" loading="lazy" src="./images/office/office-meeting-area.jpg" width="870"/>
 </button>
-<button aria-label="Mostrar como principal: detalle de la mesa de cristal, la lámpara y los cuadros con la pieza GS" class="despatx__gallery-thumb" data-full="/images/office/office-desk-detail-gs.jpg" type="button">
-<img alt="Detalle del despacho: mesa de cristal, lámpara de pie y los cuadros de pluma y lápiz, con una pieza GS." decoding="async" height="770" loading="lazy" src="/images/office/office-desk-detail-gs.jpg" width="1026"/>
+<button aria-label="Mostrar como principal: monograma GS en el cristal" aria-pressed="false" class="despatx__gallery-dot" data-full="./images/office/office-glass-logo.jpg" type="button">
+<img alt="Monograma GS grabado en el cristal del despacho." decoding="async" height="1200" loading="lazy" src="./images/office/office-glass-logo.jpg" width="1600"/>
+</button>
+<button aria-label="Mostrar como principal: escritorio de cristal frente a la estantería blanca" aria-pressed="false" class="despatx__gallery-dot" data-full="./images/office/office-library.jpg" type="button">
+<img alt="Escritorio de cristal frente a la estantería blanca del despacho de Glòria Solsona." decoding="async" height="1200" loading="lazy" src="./images/office/office-library.jpg" width="1600"/>
+</button>
+<button aria-label="Mostrar como principal: detalle de la mesa de cristal, la lámpara y los cuadros con la pieza GS" aria-pressed="false" class="despatx__gallery-dot" data-full="./images/office/office-desk-detail-gs.jpg" type="button">
+<img alt="Detalle del despacho: mesa de cristal, lámpara de pie y los cuadros de pluma y lápiz, con una pieza GS." decoding="async" height="770" loading="lazy" src="./images/office/office-desk-detail-gs.jpg" width="1026"/>
+</button>
+<button aria-label="Mostrar como principal: vista amplia con la mesa principal y la impresora" aria-pressed="false" class="despatx__gallery-dot" data-full="./images/office/office-wide-view.jpg" type="button">
+<img alt="Vista amplia del despacho con la mesa principal, la estantería, la impresora y la lámpara de pie." decoding="async" height="1250" loading="lazy" src="./images/office/office-wide-view.jpg" width="2000"/>
+</button>
+<button aria-label="Mostrar como principal: mesa con flores y estanterías jurídicas" aria-pressed="false" class="despatx__gallery-dot" data-full="./images/office/office-legal-library-flowers.jpg" type="button">
+<img alt="Mesa con flores frente a las estanterías de fondo jurídico del despacho." decoding="async" height="1250" loading="lazy" src="./images/office/office-legal-library-flowers.jpg" width="2000"/>
+</button>
+<button aria-label="Mostrar como principal: monograma GS bordado" aria-pressed="false" class="despatx__gallery-dot" data-full="./images/office/office-gs-embroidery.jpg" type="button">
+<img alt="Monograma GS bordado, detalle decorativo del despacho." decoding="async" height="1656" loading="lazy" src="./images/office/office-gs-embroidery.jpg" width="1486"/>
+</button>
+<button aria-label="Mostrar como principal: pared de libros antiguos" aria-pressed="false" class="despatx__gallery-dot" data-full="./images/office/office-antique-books.jpg" type="button">
+<img alt="Pared de libros antiguos del despacho de Glòria Solsona." decoding="async" height="1260" loading="lazy" src="./images/office/office-antique-books.jpg" width="2016"/>
+</button>
+</div>
+<button aria-label="Fotografías siguientes" class="despatx__gallery-arrow despatx__gallery-arrow--next" type="button">
+<span aria-hidden="true">→</span>
 </button>
 </div>
 </div>
@@ -491,7 +514,7 @@
 <input id="contacte-privacitat" name="privacitat" required="" type="checkbox"/>
 <label for="contacte-privacitat">
                   He leído y acepto la
-                  <a href="/es/legal/privacidad.html">Política de privacidad</a>.
+                  <a href="./legal/privacitat.html">Política de privacidad</a>.
                 </label>
 </div>
 <button class="contacte-form__submit" type="submit">Enviar consulta</button>
@@ -504,14 +527,14 @@
 <!-- Footer — docs/landing-master-spec.md §11 -->
 <footer class="site-footer section--dark" id="site-footer">
 <div class="container footer__row">
-<a class="logo footer__brand" href="/es/">
-<img alt="Glòria Solsona Martí — Abogado" class="logo__image" height="200" src="/brand/logotip.png" width="568"/>
+<a class="logo footer__brand" href="./">
+<img alt="Glòria Solsona Martí — Abogado" class="logo__image" height="200" src="./brand/logotip.png" width="568"/>
 </a>
 <nav aria-label="Enlaces legales" class="footer__legal">
 <ul role="list">
-<li><a href="/es/legal/aviso-legal.html">Aviso legal</a></li>
-<li><a href="/es/legal/privacidad.html">Privacidad</a></li>
-<li><a href="/es/legal/cookies.html">Cookies</a></li>
+<li><a href="./legal/avis-legal.html">Aviso legal</a></li>
+<li><a href="./legal/privacitat.html">Privacidad</a></li>
+<li><a href="./legal/cookies.html">Cookies</a></li>
 <li>
 <button class="footer__legal-button" data-cookie-settings="" type="button">
                 Configurar cookies
@@ -525,6 +548,6 @@
 <p class="footer__copyright">© 2026 Glòria Solsona Martí. Todos los derechos reservados.</p>
 </div>
 </footer>
-<script src="/src/main.js" type="module"></script>
+<script src="./src/main.js" type="module"></script>
 </body>
 </html>

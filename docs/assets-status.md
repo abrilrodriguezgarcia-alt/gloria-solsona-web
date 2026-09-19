@@ -105,19 +105,18 @@ Aquest document identifica quins recursos visuals del projecte són definitius, 
   material disponible. Quan Glòria Solsona validi fotografia professional
   definitiva, substituir aquestes dues imatges sense redissenyar el bloc.
 
-## Fotografies d'«El despatx» (secció afegida 2026-09-11, ampliada i reorganitzada diverses vegades — vegeu §8a.9/§8a.11/§8a.12/§8a.14)
+## Fotografies d'«El despatx» (secció afegida 2026-09-11, ampliada i reorganitzada diverses vegades — vegeu §8a.9/§8a.11/§8a.12/§8a.15)
 
-- **Fitxers en ús (§8a.14, controls de galeria simplificats — 1 principal +
-  3 miniatures fixes, sense fletxes):** `office-meeting-area.jpg`,
-  `office-glass-logo.jpg`, `office-library.jpg`, `office-desk-detail-gs.jpg`.
-- **`office-wide-view.jpg`, `office-legal-library-flowers.jpg`,
-  `office-gs-embroidery.jpg` i `office-antique-books.jpg`: sense ús des de
-  §8a.14** — formaven part de la reserva de 7 accessible amb fletxes a
-  §8a.12, però la simplificació dels controls (petició expressa,
-  2026-09-19: la combinació de miniatures + fletxes + comptador donava
-  massa protagonisme a la secció) elimina el mecanisme de finestra/reserva.
-  Es mantenen com a assets vàlids i documentats aquí (no s'esborren) per si
-  es volen recuperar en el futur.
+- **Fitxers en ús (§8a.15, controls de galeria simplificats — fletxes
+  discretes + indicador de punts, sense reduir contingut, 8 fotografies en
+  total):** `office-meeting-area.jpg`, `office-glass-logo.jpg`,
+  `office-library.jpg`, `office-desk-detail-gs.jpg`, `office-wide-view.jpg`,
+  `office-legal-library-flowers.jpg`, `office-gs-embroidery.jpg`,
+  `office-antique-books.jpg`. **Nota (2026-09-19):** una passada intermèdia
+  (§8a.14, ja superada) havia reduït la galeria a només 4 d'aquestes 8
+  fotografies en simplificar els controls; es va corregir a §8a.15 perquè
+  la simplificació demanada era només de controls/interacció, no de
+  contingut — cap fotografia de la selecció tancada de §8a.12 s'elimina.
 - Estat: **PROVISIONAL**. Fotografies reals fetes amb mòbil, seleccionades
   del moodboard de `assets/reference/` (o ja copiades directament a
   `assets/images/office/` per la clienta) a petició expressa, no

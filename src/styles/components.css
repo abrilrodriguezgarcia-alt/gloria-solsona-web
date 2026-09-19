@@ -995,13 +995,13 @@
   max-width: 32ch;
 }
 
-/* Galeria compacta (§8a.12, proposta exacta de la clienta): 1 imatge gran
-   ("escenari") + 3 miniatures visibles + fletxes per navegar per una
-   reserva de 7 fotografies secundàries + comptador — mai la il·lustració
-   de la màquina d'escriure, que continua només a la placa navy. Pensada
-   per no allargar la secció: l'escenari té una relació d'aspecte apaïsada
-   (no la portrait alta d'abans de §8a.8) i les miniatures són petites.
-   Interacció (intercanvi + navegació per fletxes) a
+/* Galeria (§8a.15, controls simplificats sense reduir contingut): 1
+   imatge gran ("escenari") + fletxes discretes + un indicador de punts
+   molt subtil — mai la il·lustració de la màquina d'escriure, que
+   continua només a la placa navy. Les 8 fotografies reals originals
+   (escenari + reserva de 7 de §8a.12) es mantenen totes accessibles amb
+   les fletxes/punts, sense cap graella de miniatures que competeixi
+   visualment amb l'escenari. Interacció a
    src/components/despatx-gallery.js. */
 .despatx__gallery {
   grid-area: gallery;
@@ -1010,14 +1010,14 @@
 }
 
 /* Ritme vertical intern de la galeria (petició clienta): l'escenari i la
-   fila de miniatures han de percebre's com un únic component, no com dos
+   fila de navegació han de percebre's com un únic component, no com dos
    blocs separats — per això aquest marge és més ajustat (~24px) que el
    ritme general de --space-4 utilitzat entre altres blocs de la secció. */
 .despatx__gallery-stage {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   position: relative;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 
 .despatx__gallery-stage img {
@@ -1033,51 +1033,103 @@
   opacity: 0;
 }
 
-/* 3 miniatures fixes (§8a.14, controls simplificats — abans hi havia
-   fletxes per navegar una reserva de 7 i un comptador "01 / 07"; la
-   combinació donava massa protagonisme a la secció). Ara només hi ha
-   aquestes 3 fotografies, sempre visibles, i la pròpia miniatura és
-   l'únic control de navegació (clicar-la intercanvia el seu contingut
-   amb l'escenari — src/components/despatx-gallery.js). */
-.despatx__gallery-thumbs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
+/* Fila de navegació: fletxa — punts — fletxa, centrada. Molt més discreta
+   que l'antiga graella de miniatures: cap element hi mostra cap
+   fotografia a mida visible, només un indicador de posició. */
+.despatx__gallery-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
 }
 
-/* Miniatura: botó real (navegable per teclat), sense caixa ni ombra.
-   Ja no hi ha cap estat "actiu" entre miniatures (la fotografia activa és
-   sempre l'escenari, mai una miniatura) — totes tenen la mateixa opacitat
-   en repòs; el canvi d'opacitat en hover/focus és només una pista
-   d'interactivitat, seguint el mateix llenguatge discret (opacitat, no
-   vores ni ombres) que la resta de la landing. */
-.despatx__gallery-thumb {
+/* Fletxes de navegació: mateix llenguatge discret que .ressenyes__btn
+   (glif sol, sense caixa ni ombra, subratllat fi en hover/focus) —
+   coherent amb la resta de la landing, no un control de plantilla. Sense
+   `:disabled` perquè la navegació és cíclica (mai cal desactivar-les). */
+.despatx__gallery-arrow {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1rem;
+  color: var(--color-navy);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: opacity var(--motion-fast) var(--easing-standard);
+}
+
+.despatx__gallery-arrow span {
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--motion-fast) var(--easing-standard);
+}
+
+.despatx__gallery-arrow:hover span,
+.despatx__gallery-arrow:focus-visible span {
+  border-bottom-color: currentColor;
+}
+
+/* Indicador de punts: cada fotografia (8 en total) és un botó real
+   (navegable per teclat) que conté la imatge corresponent només perquè
+   l'i18n (`scripts/build-i18n.py`) en tradueixi l'`alt` i perquè
+   src/components/despatx-gallery.js en llegeixi les dades — visualment
+   es redueix a un punt petit via `::before`, mai s'hi veu la fotografia.
+   `overflow: hidden` amb mida 0 treu la imatge de la vista sense
+   amagar-la de l'arbre d'accessibilitat (l'`aria-label` del botó és el
+   que es llegeix, no cal ocultar-la del tot). */
+.despatx__gallery-dots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.despatx__gallery-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
   padding: 0;
   border: 0;
   background: none;
   cursor: pointer;
-  display: block;
-  aspect-ratio: 4 / 3;
+}
+
+.despatx__gallery-dot img {
+  width: 0;
+  height: 0;
   overflow: hidden;
-  opacity: 1;
-  transition: opacity var(--motion-fast) var(--easing-standard);
 }
 
-.despatx__gallery-thumb img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.despatx__gallery-dot::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-navy);
+  opacity: 0.3;
+  transition: opacity var(--motion-fast) var(--easing-standard),
+    transform var(--motion-fast) var(--easing-standard);
 }
 
-.despatx__gallery-thumb:hover,
-.despatx__gallery-thumb:focus-visible {
-  opacity: 0.8;
+.despatx__gallery-dot:hover::before,
+.despatx__gallery-dot:focus-visible::before {
+  opacity: 0.6;
 }
 
-.despatx__gallery-thumb:focus-visible {
+.despatx__gallery-dot:focus-visible {
   outline: 2px solid var(--color-navy);
   outline-offset: 2px;
+}
+
+.despatx__gallery-dot--active::before {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 /* Placa editorial navy: agrupa l'accent de la màquina d'escriure i la
@@ -1162,14 +1214,6 @@
 
   .despatx__text {
     max-width: none;
-  }
-}
-
-/* ---- Mòbil petit: miniatures una mica més altes (4/3 és massa baix a
-   ~110px d'amplada de columna) ---- */
-@media (max-width: 480px) {
-  .despatx__gallery-thumb {
-    aspect-ratio: 1;
   }
 }
 
