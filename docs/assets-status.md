@@ -105,6 +105,45 @@ Aquest document identifica quins recursos visuals del projecte són definitius, 
   material disponible. Quan Glòria Solsona validi fotografia professional
   definitiva, substituir aquestes dues imatges sense redissenyar el bloc.
 
+### Reenquadrament de `gloria-galeria-02` (petició expressa, 2026-09-19)
+
+- **Motiu:** el retall "pla mig" fet a la reducció anterior (més amunt)
+  quedava massa ampliat — la cara hi ocupava massa protagonisme per al
+  to serè i editorial de la resta de la web.
+- **Canvi:** nou retall fet directament des de l'original sense modificar
+  (`assets/images/gloria 2.png`, 1616×1612), aquest cop més obert: mostra
+  el sofà sencer, les dues prestatgeries completes i el llum de peu, amb
+  la Glòria a escala natural dins l'espai en lloc de dominar l'enquadrament.
+  Mateix procés que abans (crop + redimensionat a 1100×1375, idèntic a
+  `01`, + `ImageOps.grayscale`) — cap zoom a la cara, cap canvi de
+  persona, roba o context, només un enquadrament més allunyat.
+  `.gloria__media`/`.gloria__slide` (contenidor 4:5, `object-fit: cover`)
+  no s'han tocat: en igualar les dimensions amb `01` no calia cap ajust
+  de CSS.
+- El fitxer anterior (retall "pla mig") és recuperable via git (commit
+  `971dfc8`) si en el futur es prefereix tornar-hi.
+
+### Versions WebP (petició expressa, 2026-09-19)
+
+- Totes les fotografies i recursos de marca raster **realment utilitzats
+  a la web** (aquesta selecció de Glòria, la galeria d'«El despatx», la
+  foto del hero, el logotip, el monograma i les il·lustracions de marca)
+  tenen ara una versió `.webp` bessona al mateix directori (mateix nom,
+  extensió `.webp`), generada amb Pillow: `quality=85` per a fotografies
+  i `lossless=True` per als gràfics amb transparència (logotip, monograma,
+  il·lustracions de línia). `index.html`, `es/index.html` i les pàgines
+  legals ara apunten a aquestes versions `.webp`.
+- **Els fitxers originals (`.jpg`/`.png`) es mantenen tots al repositori**
+  com a còpia de seguretat i font per a qualsevol reconversió futura —
+  no s'esborra res.
+- **Excepció deliberada:** el `<link rel="icon">` (favicon) continua
+  apuntant a `monogram-gs.png`, no a la versió `.webp`, pel suport
+  desigual de `.webp` com a favicon en alguns navegadors/SO; l'ús del
+  mateix fitxer com a `<img>` decoratiu al hero sí que és `.webp`.
+- Fitxers **no convertits a propòsit** perquè no es carreguen mai a la
+  web (originals de referència, retalls superats o material del moodboard
+  d'`assets/reference/`): es mantenen tal qual, sense versió `.webp`.
+
 ## Fotografies d'«El despatx» (secció afegida 2026-09-11, ampliada i reorganitzada diverses vegades — vegeu §8a.9/§8a.11/§8a.12/§8a.15)
 
 - **Fitxers en ús (§8a.15, controls de galeria simplificats — fletxes

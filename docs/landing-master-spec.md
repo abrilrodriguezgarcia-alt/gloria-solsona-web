@@ -1104,6 +1104,27 @@ ruta duplicada que es pugui desincronitzar. Sense cap canvi visual, de
 disseny ni de contingut: mateixos controls (fletxes discretes + punts),
 mateixes 8 fotografies, mateix escenari.
 
+## 8a.17 Reordenar: la vista àmplia passa a ser la primera fotografia (petició expressa, 2026-09-19)
+
+**Petició:** `office-wide-view.jpg` (vista àmplia del despatx amb la
+taula principal, la prestatgeria, la impressora i la llum de peu) ha de
+ser la primera fotografia de la galeria i la que es mostra per defecte a
+l'escenari en carregar la pàgina — no només un canvi de contingut, sinó
+també de quin punt apareix actiu en primer lloc. Només ordre; cap canvi
+de disseny, mides, controls ni composició.
+
+**Canvi:** a `index.html`, `office-wide-view.jpg` passa a ser el primer
+`.despatx__gallery-dot` del DOM (amb `despatx__gallery-dot--active` i
+`aria-pressed="true"`) i la imatge per defecte de
+`#despatx-gallery-stage-img`. `office-meeting-area.jpg` (que abans hi
+era) passa a segona posició. La resta (glass-logo, library,
+desk-detail-gs, legal-library-flowers, gs-embroidery, antique-books)
+mantenen el seu ordre relatiu sense cap altre canvi. Com
+`src/components/despatx-gallery.js` sempre arrenca amb `currentIndex = 0`
+(el primer punt del DOM), reordenar els botons a l'HTML n'hi ha prou —
+cap canvi al component JS ni al CSS. `es/index.html` es regenera amb
+`scripts/build-i18n.py` per mantenir el mateix ordre traduït.
+
 ---
 
 # 9. Ressenyes
