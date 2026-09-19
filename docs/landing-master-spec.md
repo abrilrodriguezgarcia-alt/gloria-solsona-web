@@ -1237,7 +1237,7 @@ El bloc ha de tenir **aire**. No compactar text, dades i mapa.
 **Dades mostrades a la maqueta:**
 
 - **Telèfon:** `93 277 79 95`
-- **Correu:** `gloria@gloriasolsona.cat`
+- **Correu:** ~~`gloria@gloriasolsona.cat`~~ → `advocat@gloriasolsona.cat` (instrucció expressa, 2026-09-19: substitueix el correu de la maqueta a totes les seccions i pàgines legals)
 - **Adreça:** `Carrer Pintor Carbonell, 17-19 entresol, 08750 Molins de Rei, Barcelona`
 
 Comportament:
@@ -1249,17 +1249,15 @@ Comportament:
 
 ## 10.3 WhatsApp
 
-**PENDENT DE CONFIRMACIÓ.**
+**Confirmat (instrucció expressa, 2026-09-19):** número `+34 699 156 742`.
 
-La intenció és incorporar-lo només si la Glòria confirma que el despatx en disposa i facilita el número professional que s'ha d'utilitzar.
-
-No mostrar WhatsApp abans d'aquesta confirmació.
+Afegit com a `<dt>`/`<dd>` addicional a `.contacte__list`, amb enllaç oficial `https://wa.me/34699156742`, seguint el mateix patró que telèfon/correu.
 
 ## 10.4a Horari
 
-**PENDENT DE CONFIRMACIÓ** (docs/client-validation-checklist.md).
+**Confirmat (instrucció expressa, 2026-09-19):** dilluns a dijous, de 9 a 13 h i de 16 a 20 h; divendres, de 9 a 13 h.
 
-No mostrar horari d'atenció fins que la Glòria el confirmi.
+Afegit com a `<dt>`/`<dd>` addicional a `.contacte__list`, a continuació de WhatsApp.
 
 ## 10.4 Ubicació
 
@@ -1360,6 +1358,12 @@ Segona línia:
 `© 2026 Glòria Solsona Martí. Tots els drets reservats.`
 
 No incloure crèdits ni dades personals de la desenvolupadora tret que s'acordi expressament més endavant.
+
+> **Addenda (2026-09-19, instrucció expressa):** s'afegeix una tercera línia
+> discreta (`.footer__legal-id`, mateix estil que el copyright però amb
+> menys opacitat) amb identificació professional mínima: nom, NIF i número
+> de col·legiada — `Glòria Solsona Martí · NIF 46675406B · Col·legiada
+> núm. 2011, ICASF`. No es toca la resta de la composició del footer.
 
 ## 11.2 Revisió de jerarquia (FASE 7, 2026-09-12) — aplicada i revertida
 

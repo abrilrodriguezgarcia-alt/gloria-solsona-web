@@ -29,10 +29,12 @@ Aquest document recull només la informació que cal confirmar amb la clienta ab
 
 ## Dades professionals
 
+**Resolt (2026-09-19, instrucció expressa):** número de col·legiació (2011),
+col·legi professional (ICASF) i formació professional — vegeu
+`docs/content-status.md`.
+
 - Nom professional definitiu.
 - Forma exacta de presentar la professió.
-- Número de col·legiació.
-- Col·legi professional.
 - Anys de trajectòria que es poden comunicar públicament.
 - Àrees de pràctica definitives.
 - Text biogràfic / presentació.
@@ -40,14 +42,12 @@ Aquest document recull només la informació que cal confirmar amb la clienta ab
 
 ## Contacte
 
-- Telèfon professional.
-- Correu professional.
-- Adreça exacta i format preferit.
-- Confirmar si vol WhatsApp.
-- Si vol WhatsApp, confirmar el número.
+**Resolt (2026-09-19, instrucció expressa):** telèfon professional, correu
+professional, adreça, WhatsApp (confirmat, +34 699 156 742) i horari
+d’atenció — vegeu `docs/content-status.md`.
+
 - Confirmar si vol formulari de contacte o només canals directes.
 - Si hi ha formulari, confirmar a quin correu han d’arribar els missatges.
-- Horari d’atenció, si es vol mostrar.
 
 ## Ressenyes
 
@@ -64,11 +64,10 @@ Aquest document recull només la informació que cal confirmar amb la clienta ab
 
 ## Legal i titularitat
 
-- Titular legal de la web.
-- NIF/CIF o dada identificativa requerida.
-- Domicili a efectes legals.
-- Correu de contacte legal.
-- Dades professionals obligatòries del despatx.
+**Resolt (2026-09-19, instrucció expressa):** titular legal, NIF, domicili a
+efectes legals, correu de contacte legal i dades professionals obligatòries
+— vegeu `docs/content-status.md` i `legal/avis-legal.html`.
+
 - Serveis externs que es faran servir.
 - Confirmar si hi haurà analítica.
 - Confirmar si s’utilitzaran cookies no essencials.

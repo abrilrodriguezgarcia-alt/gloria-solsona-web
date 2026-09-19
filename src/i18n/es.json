@@ -83,6 +83,9 @@
   "Telèfon": "Teléfono",
   "Correu": "Correo",
   "Adreça": "Dirección",
+  "Horari": "Horario",
+  "Dilluns a dijous, de 9 a 13 h i de 16 a 20 h": "Lunes a jueves, de 9 a 13 h y de 16 a 20 h",
+  "Divendres, de 9 a 13 h": "Viernes, de 9 a 13 h",
 
   "Ubicació": "Ubicación",
 
@@ -96,6 +99,7 @@
   "Enviar consulta": "Enviar consulta",
 
   "© 2026 Glòria Solsona Martí. Tots els drets reservats.": "© 2026 Glòria Solsona Martí. Todos los derechos reservados.",
+  "Glòria Solsona Martí · NIF 46675406B · Col·legiada núm. 2011, ICASF": "Glòria Solsona Martí · NIF 46675406B · Colegiada núm. 2011, ICASF",
   "Avís legal": "Aviso legal",
   "Privacitat": "Privacidad",
   "Enllaços legals": "Enlaces legales",
@@ -110,8 +114,14 @@
   "per al detall complet del que resta pendent.": "para el detalle completo de lo que queda pendiente.",
   "Titularitat del lloc web": "Titularidad del sitio web",
   "Pendent de confirmar: denominació legal de la titular, NIF/CIF i domicili a efectes legals.": "Pendiente de confirmar: denominación legal de la titular, NIF/CIF y domicilio a efectos legales.",
+  "Aquest lloc web és titularitat de": "Este sitio web es titularidad de",
+  ", amb NIF 46675406B i domicili professional al Carrer Pintor Carbonell, 17-19 entresol, 08750 Molins de Rei, Barcelona.": ", con NIF 46675406B y domicilio profesional en la Carrer Pintor Carbonell, 17-19 entresol, 08750 Molins de Rei, Barcelona.",
+  "Glòria Solsona Martí, amb NIF 46675406B i domicili professional al Carrer Pintor Carbonell, 17-19 entresol, 08750 Molins de Rei, Barcelona.": "Glòria Solsona Martí, con NIF 46675406B y domicilio profesional en la Carrer Pintor Carbonell, 17-19 entresol, 08750 Molins de Rei, Barcelona.",
   "Dades identificatives i professionals": "Datos identificativos y profesionales",
   "Pendent de confirmar: número de col·legiació i col·legi professional corresponent.": "Pendiente de confirmar: número de colegiación y colegio profesional correspondiente.",
+  "Col·legiada núm. 2011 a l'ICASF.": "Colegiada núm. 2011 en el ICASF.",
+  "Col·legiada núm.": "Colegiada núm.",
+  "Formació: llicenciada en Dret; Màster en Dret de Família; curs d'especialització en Dret de Família a l'Il·lustre Col·legi d'Advocats de Barcelona (ICAB).": "Formación: licenciada en Derecho; Máster en Derecho de Familia; curso de especialización en Derecho de Familia en el Ilustre Colegio de la Abogacía de Barcelona (ICAB).",
   "Condicions d'ús": "Condiciones de uso",
   "Pendent de redactar un cop es defineixin amb la titular els usos permesos del lloc web.": "Pendiente de redactar una vez se definan con la titular los usos permitidos del sitio web.",
   "Propietat intel·lectual": "Propiedad intelectual",
@@ -143,6 +153,7 @@
   "Drets de les persones interessades": "Derechos de las personas interesadas",
   "Contacte en matèria de privacitat": "Contacto en materia de privacidad",
   "Pendent de confirmar quina via de contacte s'ha d'utilitzar per a qüestions de privacitat.": "Pendiente de confirmar qué vía de contacto debe utilizarse para cuestiones de privacidad.",
+  "Per a qüestions relacionades amb la privacitat, pots escriure a": "Para cuestiones relacionadas con la privacidad, puedes escribir a",
 
   "Política de cookies del lloc web de Glòria Solsona Martí. Document en preparació, pendent d'auditoria tècnica.": "Política de cookies del sitio web de Glòria Solsona Martí. Documento en preparación, pendiente de auditoría técnica.",
   "Aquest document és provisional i no constitueix una política de cookies definitiva.": "Este documento es provisional y no constituye una política de cookies definitiva.",

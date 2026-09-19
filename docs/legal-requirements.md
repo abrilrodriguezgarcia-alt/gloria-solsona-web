@@ -20,14 +20,12 @@ La necessitat i contingut final de cada pàgina dependrà de les funcionalitats 
 
 Abans de redactar versions definitives, cal confirmar amb Glòria:
 
-- titular real del lloc web;
-- nom complet / denominació que legalment correspongui;
-- NIF/CIF si és necessari mostrar-lo;
-- domicili professional o dada equivalent aplicable;
-- correu de contacte legal;
-- telèfon professional si s'ha de publicar;
-- número de col·legiació;
-- col·legi professional;
+> **Actualització (2026-09-19, instrucció expressa):** titular real, nom
+> complet, NIF, domicili professional, correu de contacte legal, telèfon
+> professional, número de col·legiació i col·legi professional ja estan
+> confirmats — vegeu `docs/content-status.md` i `legal/avis-legal.html`.
+> Resten pendents els punts següents.
+
 - domini definitiu;
 - proveïdor d'allotjament, quan sigui necessari per a la informació legal;
 - finalitats del formulari de contacte;
