@@ -2007,6 +2007,27 @@ textarea.contacte-form__control {
   max-width: 68ch;
 }
 
+.legal__list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: var(--space-6);
+  row-gap: var(--space-3);
+  margin: var(--space-3) 0 0;
+}
+
+.legal__list dt {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.legal__list dd {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
 .legal__back {
   margin-top: var(--space-16);
 }

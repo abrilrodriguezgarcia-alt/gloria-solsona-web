@@ -14,6 +14,16 @@ Com a base, la web haurà de contemplar:
 - Política de privacitat.
 - Política de cookies.
 
+**Estat (2026-09-20):** les tres pàgines (`legal/avis-legal.html`, `legal/privacitat.html`,
+`legal/cookies.html`, i les seves versions `/es/`) tenen ja un redactat complet basat en les
+dades confirmades i en la implementació tècnica real del lloc web (formulari sense servei
+d'enviament actiu, banner de consentiment i mapa de Google Maps segons
+`src/components/cookie-consent.js` i `src/components/location-map.js`, sense cap eina
+d'analítica). Segueixen sense ser definitives: resta pendent el domini, el proveïdor
+d'allotjament, si s'incorporarà analítica i el servei d'enviament del formulari (vegeu les
+seccions corresponents més avall), a més de la validació final del text amb Glòria abans de
+publicar.
+
 La necessitat i contingut final de cada pàgina dependrà de les funcionalitats efectivament activades.
 
 ## Informació pendent necessària
