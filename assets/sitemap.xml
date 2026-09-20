@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  sitemap.xml — Glòria Solsona Martí, advocada.
+  Domini de treball (a confirmar amb la clienta, docs/seo-plan.md):
+  gloriasolsona.cat — coincideix amb el correu de contacte ja confirmat
+  (advocat@gloriasolsona.cat). Substituir totes les URLs si el domini
+  definitiu resulta ser un altre. No inclou 404.html (mai s'ha d'indexar
+  una pàgina d'error).
+-->
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://gloriasolsona.cat/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://gloriasolsona.cat/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gloriasolsona.cat/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gloriasolsona.cat/" />
+  </url>
+  <url>
+    <loc>https://gloriasolsona.cat/es/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://gloriasolsona.cat/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gloriasolsona.cat/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gloriasolsona.cat/" />
+  </url>
+  <url>
+    <loc>https://gloriasolsona.cat/legal/avis-legal.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://gloriasolsona.cat/legal/avis-legal.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gloriasolsona.cat/es/legal/aviso-legal.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gloriasolsona.cat/legal/avis-legal.html" />
+  </url>
+  <url>
+    <loc>https://gloriasolsona.cat/es/legal/aviso-legal.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://gloriasolsona.cat/legal/avis-legal.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gloriasolsona.cat/es/legal/aviso-legal.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gloriasolsona.cat/legal/avis-legal.html" />
+  </url>
+  <url>
+    <loc>https://gloriasolsona.cat/legal/privacitat.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://gloriasolsona.cat/legal/privacitat.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gloriasolsona.cat/es/legal/privacidad.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gloriasolsona.cat/legal/privacitat.html" />
+  </url>
+  <url>
+    <loc>https://gloriasolsona.cat/es/legal/privacidad.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://gloriasolsona.cat/legal/privacitat.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gloriasolsona.cat/es/legal/privacidad.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gloriasolsona.cat/legal/privacitat.html" />
+  </url>
+  <url>
+    <loc>https://gloriasolsona.cat/legal/cookies.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://gloriasolsona.cat/legal/cookies.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gloriasolsona.cat/es/legal/cookies.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gloriasolsona.cat/legal/cookies.html" />
+  </url>
+  <url>
+    <loc>https://gloriasolsona.cat/es/legal/cookies.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://gloriasolsona.cat/legal/cookies.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gloriasolsona.cat/es/legal/cookies.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gloriasolsona.cat/legal/cookies.html" />
+  </url>
+</urlset>

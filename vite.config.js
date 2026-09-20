@@ -20,6 +20,11 @@ export default defineConfig({
         esAvisoLegal: fileURLToPath(new URL('./es/legal/aviso-legal.html', import.meta.url)),
         esPrivacidad: fileURLToPath(new URL('./es/legal/privacidad.html', import.meta.url)),
         esCookies: fileURLToPath(new URL('./es/legal/cookies.html', import.meta.url)),
+        // 404 personalitzada (Fase 2 SEO, docs/seo-plan.md): cal registrar-la
+        // com a entrada perquè Vite hi apliqui el mateix processament de
+        // `base`/assets que a la resta de pàgines. GitHub Pages la troba
+        // automàticament a l'arrel del contingut publicat (dist/404.html).
+        notFound: fileURLToPath(new URL('./404.html', import.meta.url)),
       },
     },
   },

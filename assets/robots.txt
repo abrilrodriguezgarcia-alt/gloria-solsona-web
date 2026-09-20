@@ -1,0 +1,16 @@
+# robots.txt — Glòria Solsona Martí, advocada
+#
+# Domini de treball (a confirmar amb la clienta, docs/seo-plan.md):
+# gloriasolsona.cat — coincideix amb el correu de contacte ja confirmat
+# (advocat@gloriasolsona.cat). Substituir la línia Sitemap: si el domini
+# definitiu resulta ser un altre.
+#
+# Aquest fitxer permet el rastreig tècnic del lloc, però totes les pàgines
+# mantenen encara `<meta name="robots" content="noindex, nofollow">`
+# deliberadament (CLAUDE.md §2.5): la indexació real no s'activarà fins que
+# la clienta autoritzi la publicació.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://gloriasolsona.cat/sitemap.xml

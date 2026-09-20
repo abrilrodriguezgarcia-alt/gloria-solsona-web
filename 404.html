@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/brand/monogram-gs.png" />
+    <title>Pàgina no trobada (404) — Glòria Solsona Martí</title>
+    <meta name="description" content="La pàgina que cerques no existeix o s'ha mogut." />
+    <!--
+      404 personalitzada — Fase 2 SEO (2026-09-20). GitHub Pages serveix
+      automàticament aquest fitxer (a l'arrel del contingut publicat) per a
+      qualsevol ruta que no existeixi, amb estat HTTP 404 real. `noindex`
+      perquè Google no indexi mai una pàgina d'error; `follow` perquè pugui
+      seguir els enllaços d'aquí cap a la resta del lloc. Reutilitza
+      l'esquelet visual de les pàgines legals (mateixes classes CSS) per no
+      introduir cap disseny nou.
+    -->
+    <meta name="robots" content="noindex, follow" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contingut-legal">Salta al contingut principal</a>
+
+    <header class="legal-header">
+      <div class="container legal-header__row">
+        <a class="logo" href="%BASE_URL%">
+          <img
+            class="logo__image"
+            src="/brand/logotip.webp"
+            alt="Glòria Solsona Martí — Advocat"
+            width="568"
+            height="200"
+          />
+        </a>
+        <div class="legal-header__controls">
+          <a class="legal-header__back" href="%BASE_URL%">← Tornar a l'inici</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="contingut-legal">
+      <div class="container legal">
+        <h1>Pàgina no trobada</h1>
+
+        <p class="legal__notice">
+          Error 404. La pàgina que cerques no existeix, s'ha mogut o l'adreça no és correcta.
+        </p>
+
+        <p>
+          Pots tornar a l'inici o consultar-hi directament les seccions principals: àrees de
+          pràctica, presentació, el despatx, ressenyes i contacte.
+        </p>
+
+        <p class="legal__back"><a href="%BASE_URL%">← Inici en català</a></p>
+        <p class="legal__back"><a href="%BASE_URL%es/">Ir al inicio en español →</a></p>
+      </div>
+    </main>
+
+    <footer class="site-footer section--dark" id="site-footer">
+      <div class="container footer__row">
+        <a class="logo footer__brand" href="%BASE_URL%">
+          <img
+            class="logo__image"
+            src="/brand/logotip.webp"
+            alt="Glòria Solsona Martí — Advocat"
+            width="568"
+            height="200"
+          />
+        </a>
+
+        <nav class="footer__legal" aria-label="Enllaços legals">
+          <ul role="list">
+            <li><a href="%BASE_URL%legal/avis-legal.html">Avís legal</a></li>
+            <li><a href="%BASE_URL%legal/privacitat.html">Privacitat</a></li>
+            <li><a href="%BASE_URL%legal/cookies.html">Cookies</a></li>
+            <li>
+              <button type="button" class="footer__legal-button" data-cookie-settings>
+                Configurar cookies
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <hr class="footer__rule" aria-hidden="true" />
+
+      <div class="container">
+        <p class="footer__copyright">© 2026 Glòria Solsona Martí. Tots els drets reservats.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/legal.js"></script>
+  </body>
+</html>

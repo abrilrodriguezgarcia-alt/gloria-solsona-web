@@ -5,14 +5,194 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="/brand/monogram-gs.png" rel="icon" type="image/png"/>
-<title>Glòria Solsona Martí — Abogada</title>
-<meta content="Sitio web profesional de Glòria Solsona Martí, abogada. Contenido en desarrollo." name="description"/>
+<title>Glòria Solsona Martí | Abogada en Molins de Rei</title>
+<meta content="Glòria Solsona Martí, abogada en Molins de Rei (Barcelona). Especialista en derecho de familia, derecho sucesorio y derecho civil catalán, con más de 25 años de experiencia." name="description"/>
 <!--
-      SEO tècnic (title/description definitius, Open Graph, canonical,
-      dades estructurades) es completa a la fase de SEO un cop les dades
-      estiguin confirmades. Vegeu docs/seo-plan.md.
+      SEO tècnic — Fase 2 (2026-09-20), docs/seo-plan.md. Domini de treball
+      (a confirmar amb la clienta): gloriasolsona.cat, ja usat al correu de
+      contacte (advocat@gloriasolsona.cat) — si el domini definitiu resulta
+      ser un altre, cal substituir-lo aquí, a la resta de pàgines, a
+      sitemap.xml i a robots.txt. `noindex, nofollow` es manté
+      deliberadament fins que la clienta autoritzi la publicació real
+      (CLAUDE.md §2.5).
     -->
+<link href="https://gloriasolsona.cat/es/" rel="canonical"/>
+<link href="https://gloriasolsona.cat/" hreflang="ca" rel="alternate"/>
+<link href="https://gloriasolsona.cat/es/" hreflang="es" rel="alternate"/>
+<link href="https://gloriasolsona.cat/" hreflang="x-default" rel="alternate"/>
+<meta content="website" property="og:type"/>
+<meta content="Glòria Solsona Martí" property="og:site_name"/>
+<meta content="es_ES" property="og:locale"/>
+<meta content="ca_ES" property="og:locale:alternate"/>
+<meta content="https://gloriasolsona.cat/es/" property="og:url"/>
+<meta content="Glòria Solsona Martí | Abogada en Molins de Rei" property="og:title"/>
+<meta content="Glòria Solsona Martí, abogada en Molins de Rei (Barcelona). Especialista en derecho de familia, derecho sucesorio y derecho civil catalán, con más de 25 años de experiencia." property="og:description"/>
+<meta content="https://gloriasolsona.cat/images/gloria-hero-provisional.jpg" property="og:image"/>
+<meta content="1145" property="og:image:width"/>
+<meta content="1374" property="og:image:height"/>
 <meta content="noindex, nofollow" name="robots"/>
+<!--
+      Dades estructurades (JSON-LD) — Fase GEO/schema.org (2026-09-20).
+      Un únic node `Attorney` (subtipus més específic de `LegalService` /
+      `LocalBusiness` a schema.org, coherent amb "Advocada" com a professió
+      real) + un node `Person` enllaçat, més els 3 serveis dins
+      `hasOfferCatalog`. Cada dada prové literalment del contingut ja
+      aprovat d'aquesta pàgina o de legal/avis-legal.html (NAP, horari,
+      col·legiació, titulació) — sense inventar cap dada nova. Deliberadament
+      SENSE `aggregateRating`/`review`: no hi ha cap sistema propi de
+      recollida de ressenyes que compleixi les Rich Results Guidelines de
+      Google, i les ressenyes mostrades a la secció «Ressenyes» no porten
+      atribució identificable (vegeu docs/content-status.md). `@id` es manté
+      idèntic a la versió catalana i castellana (mateixa entitat real,
+      dues URLs); `url` sí canvia per pàgina (gestionat per
+      scripts/build-i18n.py). Vegeu l'explicació completa entregada al xat.
+    -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Attorney",
+      "@id": "https://gloriasolsona.cat/#legalservice",
+      "name": "Glòria Solsona Martí",
+      "description": "Especialista en derecho de familia, derecho sucesorio y derecho civil catalán. Más de 25 años de profesionalidad a tu servicio, con dedicación y formación continuada.",
+      "url": "https://gloriasolsona.cat/es/",
+      "inLanguage": "es",
+      "image": "https://gloriasolsona.cat/images/gloria-hero-provisional.jpg",
+      "logo": "https://gloriasolsona.cat/brand/logotip.png",
+      "telephone": "+34932777995",
+      "email": "advocat@gloriasolsona.cat",
+      "sameAs": [
+        "https://wa.me/34699156742"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carrer Pintor Carbonell, 17-19, entresol",
+        "postalCode": "08750",
+        "addressLocality": "Molins de Rei",
+        "addressRegion": "Barcelona",
+        "addressCountry": "ES"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "opens": "09:00",
+          "closes": "13:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "opens": "16:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ],
+      "employee": {
+        "@id": "https://gloriasolsona.cat/#gloria-solsona-marti"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Áreas de práctica",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Derecho de familia",
+              "description": "Separaciones, divorcios, custodia y relaciones familiares.",
+              "provider": {
+                "@id": "https://gloriasolsona.cat/#legalservice"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Derecho sucesorio",
+              "description": "Herencias, testamentos y sucesiones.",
+              "provider": {
+                "@id": "https://gloriasolsona.cat/#legalservice"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Derecho civil catalán",
+              "description": "Derecho civil propio de Cataluña en el ámbito patrimonial y familiar.",
+              "areaServed": {
+                "@type": "AdministrativeArea",
+                "name": "Cataluña"
+              },
+              "provider": {
+                "@id": "https://gloriasolsona.cat/#legalservice"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://gloriasolsona.cat/#gloria-solsona-marti",
+      "name": "Glòria Solsona Martí",
+      "jobTitle": "Abogada",
+      "description": "Especialista en derecho de familia, derecho sucesorio y derecho civil catalán. Más de 25 años de profesionalidad a tu servicio, con dedicación y formación continuada.",
+      "image": "https://gloriasolsona.cat/images/gloria-hero-provisional.jpg",
+      "url": "https://gloriasolsona.cat/es/",
+      "inLanguage": "es",
+      "telephone": "+34932777995",
+      "email": "advocat@gloriasolsona.cat",
+      "worksFor": {
+        "@id": "https://gloriasolsona.cat/#legalservice"
+      },
+      "knowsAbout": [
+        "Derecho de familia",
+        "Derecho sucesorio",
+        "Derecho civil catalán"
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Ilustre Colegio de Abogados de Sant Feliu (ICASF)"
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "degree",
+          "name": "Licenciada en Derecho. Máster en Derecho de Familia y curso de especialización en Derecho de Familia del Ilustre Colegio de Abogados de Barcelona (ICAB)."
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "license",
+          "identifier": "2011",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Ilustre Colegio de Abogados de Sant Feliu (ICASF)"
+          }
+        }
+      ]
+    }
+  ]
+}</script>
 </head>
 <body>
 <a class="skip-link" href="#contingut-principal">Saltar al contenido principal</a>
@@ -468,6 +648,7 @@
 <p class="contacte__intro">
               Si quieres concertar una consulta o simplemente resolver una duda, escríbeme o llámame directamente.
             </p>
+<address>
 <dl class="contacte__list">
 <dt>Teléfono</dt>
 <dd><a href="tel:932777995">93 277 79 95</a></dd>
@@ -476,22 +657,23 @@
 <dt>WhatsApp</dt>
 <dd>
 <a href="https://wa.me/34699156742" rel="noopener noreferrer" target="_blank">
-                  699 15 67 42
-                </a>
+                    699 15 67 42
+                  </a>
 </dd>
 <dt>Horario</dt>
 <dd>
-                De lunes a jueves, de 9 a 13 h y de 16 a 20 h<br/>
-                Viernes, de 9 a 13 h
-              </dd>
+                  De lunes a jueves, de 9 a 13 h y de 16 a 20 h<br/>
+                  Viernes, de 9 a 13 h
+                </dd>
 <dt>Dirección</dt>
 <dd>
 <a href="https://www.google.com/maps/search/?api=1&amp;query=Carrer%20Pintor%20Carbonell%2C%2017-19%2C%2008750%20Molins%20de%20Rei%2C%20Barcelona" rel="noopener noreferrer" target="_blank">
-                  Carrer Pintor Carbonell, 17-19 entresol<br/>
-                  08750 Molins de Rei, Barcelona
-                </a>
+                    Carrer Pintor Carbonell, 17-19 entresol<br/>
+                    08750 Molins de Rei, Barcelona
+                  </a>
 </dd>
 </dl>
+</address>
 <h3 class="contacte__subtitle" id="ubicacio-titol">Ubicación</h3>
 <!--
               Google Maps: embed lliure sense API key (recuperat tal qual,
