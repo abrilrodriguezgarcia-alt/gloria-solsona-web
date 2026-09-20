@@ -17,8 +17,8 @@ Aquest document separa la informació **confirmada** de la informació **pendent
 - Adreça professional mostrada a la proposta aprovada: **Carrer Pintor Carbonell, 17-19 entresol, 08750 Molins de Rei, Barcelona**.
 - NIF a efectes d'avís legal: **46675406B** (confirmat 2026-09-20, incorporat a `legal/avis-legal.html`).
 - Telèfon/WhatsApp professional confirmat per a l'avís legal: **+34 699 15 67 42** (2026-09-20; coincideix amb el WhatsApp ja publicat a Contacte).
-- Col·legi professional: **ICASF** (2026-09-20). Falta confirmar la denominació oficial completa per mostrar-la a l'avís legal.
-- Número de col·legiada: **2011** (2026-09-20). Falta confirmar si aquest número és el de col·legiació davant l'ICASF o una altra dada (p. ex. any), i el format exacte en què s'ha de mostrar.
+- Col·legi professional: **Il·lustre Col·legi d'Advocats de Sant Feliu (ICASF)** (denominació completa confirmada 2026-09-20, incorporada a `legal/avis-legal.html`).
+- Número de col·legiada: **2011** (format confirmat 2026-09-20).
 - Titulació acadèmica confirmada (2026-09-20): Llicenciada en Dret. Màster en Dret de Família i curs d'especialització en Dret de Família de l'Il·lustre Col·legi d'Advocats de Barcelona (ICAB).
 - La secció d'ubicació incorporarà **Google Maps**.
 - El carrer no cal repetir-lo com a text dins del bloc d'ubicació si el mapa ja compleix aquesta funció; la dada sí que es manté al bloc de contacte segons la maqueta aprovada.
@@ -31,8 +31,6 @@ Aquest document separa la informació **confirmada** de la informació **pendent
 
 No incorporar com a dada definitiva fins que es confirmi:
 
-- format exacte del número de col·legiada davant l'ICASF (2026-09-20: es va facilitar "2011 ICASF", pendent de confirmar si és el número de col·legiació o una altra dada);
-- denominació oficial completa del col·legi professional ICASF, per a l'avís legal;
 - assegurança de responsabilitat civil professional, per a l'avís legal;
 - textos biogràfics o de trajectòria si es volen modificar respecte de la maqueta;
 - política concreta de primera consulta o contacte;

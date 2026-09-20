@@ -31,8 +31,8 @@ Aquest document recull només la informació que cal confirmar amb la clienta ab
 
 - Nom professional definitiu.
 - Forma exacta de presentar la professió.
-- Número de col·legiació. **Facilitat 2026-09-20 ("2011 ICASF"): pendent confirmar si "2011" és el número de col·legiada o una altra dada, i el format exacte de presentació.**
-- Col·legi professional. **Facilitat 2026-09-20: ICASF. Pendent la denominació oficial completa per a l'avís legal.**
+- Número de col·legiació. **Confirmat 2026-09-20: 2011.**
+- Col·legi professional. **Confirmat 2026-09-20: Il·lustre Col·legi d'Advocats de Sant Feliu (ICASF).**
 - Anys de trajectòria que es poden comunicar públicament.
 - Àrees de pràctica definitives.
 - Text biogràfic / presentació.
@@ -68,7 +68,7 @@ Aquest document recull només la informació que cal confirmar amb la clienta ab
 - NIF/CIF o dada identificativa requerida. **Confirmat 2026-09-20: 46675406B.**
 - Domicili a efectes legals. **Confirmat: Carrer Pintor Carbonell, 17-19 entresol, 08750 Molins de Rei (Barcelona).**
 - Correu de contacte legal. **Confirmat: advocat@gloriasolsona.cat.**
-- Dades professionals obligatòries del despatx. Veure número de col·legiada i col·legi professional a "Dades professionals": falta confirmar denominació oficial completa del col·legi i format exacte del número.
+- Dades professionals obligatòries del despatx. **Confirmat 2026-09-20** — veure número de col·legiada i col·legi professional a "Dades professionals".
 - Proveïdor d’allotjament, si cal indicar-lo a l’avís legal.
 - Assegurança de responsabilitat civil professional, si es vol indicar a l’avís legal.
 - Serveis externs que es faran servir.
